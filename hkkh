@@ -1,22 +1,19 @@
 #NOT OPERABLE YET!!!!!< 
 #OPERABLE!!!!! 
 """ 
-ISSUE: "dodge" mechanic adds total player damage taken when user dodges one 
-move, not just that one prompt(WHICH IT SHOULD JUST BE THAT ONE PROMPT) 
-""" 
-""" 
 The story is about a young man named Max who has to save princess Misty from  
 the evil dragon Joshro. There are 4 endings that the user can have based on  
 their choices throughout the course of the game. 
 """ 
 """ 
+ISSUES-
+#I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE(Lines 152, 183, 205)
+""" 
+
+""" 
 IDEAS-  
-    Be able to press "i" and print the user's inventory. 
-    Have a health and stamina system that ranges from 1 to 100 (possibly could  
-be upgraded). 
-    Include enemies that have health and stamina that increases linearly with  
-the user's character until a certain point. 
-    I NEED TO ADD DODGE MECHANIC SOON!!! 
+#!!!ENDING ONE!!!(Lines 177, 199)
+#MAKE playerHealth AND weapon strength HALF(Line 203)
 """ 
 #End of notes. 
 import random  
@@ -51,7 +48,7 @@ def fightSequence(enemy, playerHealth, location):
         print(introMessages[1]) 
     while enemy > 0 and playerHealth > 0: 
         print(enemy, "Enemy's health: ") 
-        print(playerHealth, "Max's health: ") 
+        print(playerHealth, "Max's health: ")
         if allIn == False: 
             prompt = input(" 'hit' or 'dodge' ? ") 
         elif allIn == True: 
@@ -63,11 +60,6 @@ def fightSequence(enemy, playerHealth, location):
             playerDamage = random.randint(10,20) 
             playerHealth -= playerDamage 
             print("The enemy hit you and you took " + str(playerDamage) + " damage!") 
-            #print "you/the enemy dodged the attack!"" everytime health doesn't 
-            #decrease (take advantage of whatever int is produce by  
-            #random.randint)[I got this to work, but dodging attacks totals ALL 
-            #of the damage the character has taken during the whole fight, 
-            #not just that one prompt(which it should just be that one prompt)] 
         elif prompt == "dodge": 
             damage = random.randint(0,5) 
             playerHealth -= damage 
@@ -103,7 +95,6 @@ poisonous spider bites you and everything goes black- forever...")
             print("You grab the key quickly, and open the box to find a potion \
 that increases your health by 50. You drink it, and continue along the path.") 
             playerHealth = playerHealth + 50 
-#Use global mechanic to increase player health by 50. 
     elif key == "let it be": 
         print("You decide it's not worth the risk, and continue walking on the \
 road.") 
@@ -136,9 +127,6 @@ print(" ")
 weapon = input("Do you take a 'bow' , 'axe' , 'sword' , or 'nothing' ?: ") 
 weaponSelect() 
 print(" ") 
-print("As you walk past the village tavern, a drunken ogre unfortunately \
-mistakes you for the same villager that stole his favorite gold coin, \
-and pulls out his rusty dagger to take it back.") 
 fightRun = input("Do you want to 'fight' or 'run' away from the ogre? ") 
 if fightRun == "fight": 
     fightSequence(ogre, playerHealth, location) 
@@ -161,10 +149,59 @@ to the village exit.")
 like a dog as he searches himself for the dagger he carries. You get back \
 on your feet and pull out your weapon.") 
         fightSequence(ogre, playerHealth, location) 
+        #I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE
 print(" ")
 location = "forest" 
 playerHealth = deadlyTreasure(playerHealth)
 print(" ")
-fightSequence(goblin, playerHealth, location) 
-
+print("After walking through the forest some more, you come across a \
+clearing that gives you a clear view of the castle where Misty is being held. \
+As you stop to drink from your canteen, a goblin jumps out of the bushes and \
+steals your pack! Goblins were hit especially hard by the last war, but you \
+also know that that doesn't excuse it stealing your stuff.")
+fightPersuade = input("Do you want to 'fight' or 'persuade' the goblin? ")
+if fightPersuade == "fight":
+    fightSequence(goblin, playerHealth, location) 
+elif fightPersuade == "persuade":
+    parkour = input("To catch up to the goblin, you can either 'slide' under a fallen log, or \
+'vault' over a thorny bush. What do you do? ")
+    if parkour == "slide":
+        persuade = input("You successfully slide under the log, and find the goblin scurried up on a tree branch, \
+just out of reach. What do you say to the scared creature? \
+1. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
+2. Don't make me come up there you dirty vermin! \
+(pick a number): ")
+        if persuade == "1":
+            print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
+back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
+            #!!!ENDING ONE!!!
+        elif persuade == "2":
+            print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
+You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+            #MAKE playerHealth AND weapon strength HALF
+            fightSequence(goblin, playerHealth, location)
+            #I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE
+    elif parkour == "vault":
+        weakStrong = random.randint(0,1)
+        if weakStrong == 0:
+            print("You try to vault over the bush, but because you skipped leg day \
+at the medieval gym, you fail and fall face first into some *very* sharp thorns")
+            end()
+        elif weakStrong == 1:
+            persuade = input("You successfully vault over the bush, and find the goblin scurried up on a tree branch, \
+just out of reach. What do you say to the scared creature? \
+1. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
+2. Don't make me come up there you dirty vermin! \
+(pick a number): ")
+            if persuade == "1":
+                        print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
+            back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
+                        #!!!ENDING ONE!!!
+            elif persuade == "2":
+                print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
+            You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+                #MAKE playerHealth AND weapon strength HALF
+                fightSequence(goblin, playerHealth, location)
+                #I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE
+print(" ")
  
