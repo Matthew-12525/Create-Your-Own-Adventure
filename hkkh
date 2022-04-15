@@ -1,0 +1,170 @@
+#NOT OPERABLE YET!!!!!< 
+#OPERABLE!!!!! 
+""" 
+ISSUE: "dodge" mechanic adds total player damage taken when user dodges one 
+move, not just that one prompt(WHICH IT SHOULD JUST BE THAT ONE PROMPT) 
+""" 
+""" 
+The story is about a young man named Max who has to save princess Misty from  
+the evil dragon Joshro. There are 4 endings that the user can have based on  
+their choices throughout the course of the game. 
+""" 
+""" 
+IDEAS-  
+    Be able to press "i" and print the user's inventory. 
+    Have a health and stamina system that ranges from 1 to 100 (possibly could  
+be upgraded). 
+    Include enemies that have health and stamina that increases linearly with  
+the user's character until a certain point. 
+    I NEED TO ADD DODGE MECHANIC SOON!!! 
+""" 
+#End of notes. 
+import random  
+#Functions 
+def weaponSelect(): 
+    global weaponStrength 
+    if weapon == "bow": 
+        weaponStrength = 2 
+        print("A ranged weapon. It will allow you to strike from afar, but leaves \
+you vulnerable up close. You take both it and a quiver full of sharp \
+iron arrows.") 
+    elif weapon == "axe": 
+        weaponStrength = 6 
+        print("A sturdy but lightweight melee weapon. Its metal shimmers as \
+you pick it up.") 
+    elif weapon == "sword": 
+        weaponStrength = 10 
+        print("A longsword made out of high quality steel. Its high quality and \
+damage comes at the cost of using more stamina with each attack. You struggle \
+to put it in your holster, and the blacksmith insultingly laughs.") 
+    else: 
+        weaponStrength = 1 
+        print("Nothing?! You are a brave soul indeed. The blacksmith yells at \
+you to leave his store if you're not there to buy anything.") 
+def end(): 
+    print("You have been slain.") 
+    x = input("This is the end of the game.") 
+def fightSequence(enemy, playerHealth, location):   
+    if location == "village": 
+        print(introMessages[0]) 
+    elif location == "forest": 
+        print(introMessages[1]) 
+    while enemy > 0 and playerHealth > 0: 
+        print(enemy, "Enemy's health: ") 
+        print(playerHealth, "Max's health: ") 
+        if allIn == False: 
+            prompt = input(" 'hit' or 'dodge' ? ") 
+        elif allIn == True: 
+            prompt = input(" 'hit' or 'dodge' or 'all in' ? ")
+        if prompt == "hit": 
+            enemyDamage = random.randint(0,5) 
+            enemy -= enemyDamage * weaponStrength 
+            print("You hit the enemy and they took " + str(enemyDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(10,20) 
+            playerHealth -= playerDamage 
+            print("The enemy hit you and you took " + str(playerDamage) + " damage!") 
+            #print "you/the enemy dodged the attack!"" everytime health doesn't 
+            #decrease (take advantage of whatever int is produce by  
+            #random.randint)[I got this to work, but dodging attacks totals ALL 
+            #of the damage the character has taken during the whole fight, 
+            #not just that one prompt(which it should just be that one prompt)] 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!") 
+        elif prompt == "all in": 
+            damage = random.randint(0,1) 
+            if damage == 0: 
+                end() 
+            elif damage == 1: 
+                if location == "village": 
+                    print(outroMessages[0]) 
+                elif location == "forest": 
+                    print(outroMessages[1]) 
+        if playerHealth <= 0: 
+            end() 
+    if location == "village": 
+                print(outroMessages[0]) 
+    elif location == "forest": 
+                print(outroMessages[1]) 
+
+def deadlyTreasure(playerHealth): 
+    print("While walking through the forest, you come across a golden box \
+that shimmers in the sunlight. A key lays inside the tree next to the box, \
+but the tree hole is too dark for you to see what else is inside the tree.") 
+    key = input("Do you 'take the key' or 'let it be' ? ") 
+    dieLive = random.randint(1,3) 
+    if key == "take the key": 
+        if dieLive == 1: 
+            print("You reach inside the hole to grab the key, but a \
+poisonous spider bites you and everything goes black- forever...") 
+            end() 
+        elif dieLive == 2 or 3: 
+            print("You grab the key quickly, and open the box to find a potion \
+that increases your health by 50. You drink it, and continue along the path.") 
+            playerHealth = playerHealth + 50 
+#Use global mechanic to increase player health by 50. 
+    elif key == "let it be": 
+        print("You decide it's not worth the risk, and continue walking on the \
+road.") 
+    return playerHealth 
+#Variables 
+goblin = 75 
+ogre = 100 
+playerHealth = 100 
+allIn = False 
+weapons = [("sword",10), ("axe", 6), ("bow", 2)] 
+introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
+mistakes you for the same villager that stole his favorite gold coin, \
+and pulls out his rusty dagger to take it back.", "After walking through the forest some more, you come across a \
+clearing that gives you a clear view of the castle where Misty is being held. \
+As you stop to drink from your canteen, a goblin jumps out of the bushes and \
+steals your pack! Goblins were hit especially hard by the last war, but you \
+also know that that doesn't excuse it stealing your stuff."] 
+outroMessages = ["The ogre stumbles to the ground, but before you can search him \
+for anything valuable, a guard approaches from the distance, and \
+you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
+as you collect your items and continue towards the castle."] 
+location = "village" 
+#Opening Scene 
+print("You are Max, a young man who takes on the brave quest of saving the \
+beautiful princess \
+Misty from the evil dragon Joshro. Your story begins at the village \
+blacksmith, where you must decide what kind of weapon you will bring with you \
+on your journey.") 
+print(" ") 
+weapon = input("Do you take a 'bow' , 'axe' , 'sword' , or 'nothing' ?: ") 
+weaponSelect() 
+print(" ") 
+print("As you walk past the village tavern, a drunken ogre unfortunately \
+mistakes you for the same villager that stole his favorite gold coin, \
+and pulls out his rusty dagger to take it back.") 
+fightRun = input("Do you want to 'fight' or 'run' away from the ogre? ") 
+if fightRun == "fight": 
+    fightSequence(ogre, playerHealth, location) 
+    allIn = True 
+elif fightRun == "run": 
+    print("Before you can run, the ogre grabs your shirt and pulls you back, \
+and asks in a booming but obviously slurred voice:''Bretton, do you have ma \
+gold coin yet or not?''") 
+    fightAvoid = input(" \
+'1' . Lie and say its back at the inn and you'll get it as soon as he lets you go.\
+'2' . Tell him to let you go or else he'll have to worry about more than just \
+a stupid gold coin. \
+(pick a number): ") 
+    if fightAvoid == "1": 
+        print("The ogre seems to like that option, and lets you go as he \
+meanders back to the tavern. You regain your composure and continue walking \
+to the village exit.") 
+    elif fightAvoid == "2": 
+        print("The ogre becomes enraged and slams you on the ground, howling \
+like a dog as he searches himself for the dagger he carries. You get back \
+on your feet and pull out your weapon.") 
+        fightSequence(ogre, playerHealth, location) 
+print(" ")
+location = "forest" 
+playerHealth = deadlyTreasure(playerHealth)
+print(" ")
+fightSequence(goblin, playerHealth, location) 
+
+ 
