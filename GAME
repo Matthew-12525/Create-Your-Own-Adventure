@@ -7,7 +7,6 @@ their choices throughout the course of the game.
 """ 
 """ 
 ISSUES-
-#I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE(Lines 152, 183, 205)
 """ 
 
 """ 
@@ -37,9 +36,7 @@ to put it in your holster, and the blacksmith insultingly laughs.")
 def end(): 
     print("You have been slain.") 
     x = input("This is the end of the game.") 
-def fightSequence(enemy, playerHealth, location):   
-    print("heloo")
-    
+def fightSequence(enemy, playerHealth, location):       
     while enemy > 0 and playerHealth > 0: 
         print(enemy, "Enemy's health: ") 
         print(playerHealth, "Max's health: ")
@@ -99,7 +96,6 @@ ogre = 100
 playerHealth = 100 
 allIn = False 
 poison = False
-
 weapons = [("sword",10), ("axe", 6), ("bow", 2)] 
 introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
 mistakes you for the same villager that stole his favorite gold coin, \
@@ -117,18 +113,17 @@ print("You are Max, a young man who takes on the brave quest of saving the \
 beautiful princess \
 Misty from the evil dragon Joshro. Your story begins at the village \
 blacksmith, where you must decide what kind of weapon you will bring with you \
-on your journey.") 
-print(" ") 
+on your journey.")  
 weapon = input("Do you take a 'bow' , 'axe' , 'sword' , or 'nothing' ?: ") 
 weaponSelect() 
 print(" ") 
 location = "village"
 if location == "village": 
-    print("hi")
     print(introMessages[0]) 
 elif location == "forest": 
     print(introMessages[1]) 
 fightRun = input("Do you want to 'fight' or 'run' away from the ogre? ") 
+
 if fightRun == "fight": 
     fightSequence(ogre, playerHealth, location) 
     allIn = True 
@@ -136,6 +131,8 @@ elif fightRun == "run":
     print("Before you can run, the ogre grabs your shirt and pulls you back, \
 and asks in a booming but obviously slurred voice:''Bretton, do you have ma \
 gold coin yet or not?''") 
+else:
+    continue
     fightAvoid = input(" \
 '1' . Lie and say its back at the inn and you'll get it as soon as he lets you go.\
 '2' . Tell him to let you go or else he'll have to worry about more than just \
@@ -149,20 +146,20 @@ to the village exit.")
         print("The ogre becomes enraged and slams you on the ground, howling \
 like a dog as he searches himself for the dagger he carries. You get back \
 on your feet and pull out your weapon.") 
-        fightSequence(ogre, playerHealth, location) 
-        #I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE
+        fightSequence(ogre, playerHealth, location)
+        allIn = True
 print(" ")
-
+location = "forest"
+if location == "village": 
+    print(introMessages[0]) 
+elif location == "forest": 
+    print(introMessages[1]) 
 playerHealth = deadlyTreasure(playerHealth)
 print(" ")
-print("After walking through the forest some more, you come across a \
-clearing that gives you a clear view of the castle where Misty is being held. \
-As you stop to drink from your canteen, a goblin jumps out of the bushes and \
-steals your pack! Goblins were hit especially hard by the last war, but you \
-also know that that doesn't excuse it stealing your stuff.")
 fightPersuade = input("Do you want to 'fight' or 'persuade' the goblin? ")
 if fightPersuade == "fight":
-    fightSequence(goblin, playerHealth, location) 
+    fightSequence(goblin, playerHealth, location)
+    allIn = True 
 elif fightPersuade == "persuade":
     parkour = input("To catch up to the goblin, you can either 'slide' under a fallen log, or \
 'vault' over a thorny bush. What do you do? ")
@@ -180,8 +177,10 @@ back after you finish your quest to come work for him to pay off your debt. You 
             print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
             #MAKE playerHealth AND weapon strength HALF
+            weaponStrength = int(weaponStrength/2)
+            playerHealth = int(playerHealth/2)
             fightSequence(goblin, playerHealth, location)
-            #I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE
+            allIn = True
     elif parkour == "vault":
         weakStrong = random.randint(0,1)
         if weakStrong == 0:
@@ -199,12 +198,10 @@ just out of reach. What do you say to the scared creature? \
             back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                         #!!!ENDING ONE!!!
             elif persuade == "2":
-                weaponStrength = int(weaponStrength/2)
-                playerHealth = int(playerHealth/2)
                 print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
             You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
-
-                #MAKE playerHealth AND weapon strength HALF
+                weaponStrength = int(weaponStrength/2)
+                playerHealth = int(playerHealth/2)
                 fightSequence(goblin, playerHealth, location)
-                #I NEED TO REMOVE location PARAMETER SO THAT THE FIGHT MAKES SENSE
+                allIn = True
 print(" ")
