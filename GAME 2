@@ -116,7 +116,7 @@ beautiful princess \
 Misty from the evil dragon Joshro. Your story begins at the village \
 blacksmith, where you must decide what kind of weapon you will bring with you \
 on your journey.")  
-weapon = input("Do you take a 'bow', 'axe', 'sword'?: ") 
+weapon = input("Do you take a 'bow', 'axe', or 'sword'?: ")
 weaponSelect() 
 print(" ") 
 location = "village"
