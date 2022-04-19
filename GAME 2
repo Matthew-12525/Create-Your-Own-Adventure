@@ -1,0 +1,206 @@
+#NOT OPERABLE YET!!!!!< 
+#OPERABLE!!!!! 
+""" 
+The story is about a young man named Max who has to save princess Misty from  
+the evil dragon Joshro. There are 4 endings that the user can have based on  
+their choices throughout the course of the game. 
+""" 
+""" 
+ISSUES-
+MAJOR GLITCH!!! I need to try to figure out how to correct players and let them know that they can't give invalid inputs and repeat the question again.
+""" 
+
+""" 
+IDEAS-  
+#!!!ENDING ONE!!!(Lines 177, 199)
+""" 
+#End of notes. 
+import random  
+#Functions 
+def weaponSelect(): 
+    global weaponStrength 
+    if weapon == "bow": 
+        weaponStrength = 2 
+        print("A ranged weapon. It will allow you to strike from afar, but leaves \
+you vulnerable up close. You take both it and a quiver full of sharp \
+iron arrows.") 
+    elif weapon == "axe": 
+        weaponStrength = 6 
+        print("A sturdy but lightweight melee weapon. Its metal shimmers as \
+you pick it up.") 
+    elif weapon == "sword": 
+        weaponStrength = 10 
+        print("A longsword made out of high quality steel. Its high quality and \
+damage comes at the cost of using more stamina with each attack. You struggle \
+to put it in your holster, and the blacksmith insultingly laughs.")  
+def end(): 
+    print("You have been slain.") 
+    x = input("This is the end of the game.") 
+def fightSequence(enemy, playerHealth, location):       
+    while enemy > 0 and playerHealth > 0: 
+        print(enemy, "Enemy's health: ") 
+        print(playerHealth, "Max's health: ")
+        if allIn == False: 
+            prompt = input(" 'hit' or 'dodge'? ") 
+        elif allIn == True: 
+            prompt = input(" 'hit' or 'dodge' or 'all in'? ")
+        if prompt == "hit": 
+            enemyDamage = random.randint(0,5) 
+            enemy -= enemyDamage * weaponStrength 
+            print("You hit the enemy and they took " + str(enemyDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(10,20) 
+            playerHealth -= playerDamage 
+            print("The enemy hit you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!") 
+        elif prompt == "all in": 
+            damage = random.randint(0,1) 
+            if damage == 0: 
+                end() 
+            elif damage == 1: 
+                if location == "village": 
+                    print(outroMessages[0]) 
+                elif location == "forest": 
+                    print(outroMessages[1]) 
+        if playerHealth <= 0: 
+            end() 
+    if location == "village": 
+                print(outroMessages[0]) 
+    elif location == "forest": 
+                print(outroMessages[1]) 
+
+def deadlyTreasure(playerHealth): 
+    print("While walking through the forest, you come across a golden box \
+that shimmers in the sunlight. A key lays inside the tree next to the box, \
+but the tree hole is too dark for you to see what else is inside the tree.") 
+    key = input("Do you 'take the key' or 'let it be'? ") 
+    dieLive = random.randint(1,3) 
+    if key == "take the key": 
+        if dieLive == 1: 
+            print("You reach inside the hole to grab the key, but a \
+poisonous spider bites you and everything goes black- forever...") 
+            end() 
+        elif dieLive == 2 or 3: 
+            print("You grab the key quickly, and open the box to find a potion \
+that increases your health by 50. You drink it, and continue along the path.") 
+            playerHealth = playerHealth + 50 
+    elif key == "let it be": 
+        print("You decide it's not worth the risk, and continue walking on the \
+road.") 
+    return playerHealth 
+#Variables 
+goblin = 75 
+ogre = 100 
+playerHealth = 100 
+allIn = False 
+weapons = [("sword",10), ("axe", 6), ("bow", 2)] 
+introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
+mistakes you for the same villager that stole his favorite gold coin, \
+and pulls out his rusty dagger to take it back.", "After walking through the forest some more, you come across a \
+clearing that gives you a clear view of the castle where Misty is being held. \
+As you stop to drink from your canteen, a goblin jumps out of the bushes and \
+steals your pack! Goblins were hit especially hard by the last war, but you \
+also know that that doesn't excuse it stealing your stuff."] 
+outroMessages = ["The ogre stumbles to the ground, but before you can search him \
+for anything valuable, a guard approaches from the distance, and \
+you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
+as you collect your items and continue towards the castle."] 
+#Opening Scene 
+print("You are Max, a young man who takes on the brave quest of saving the \
+beautiful princess \
+Misty from the evil dragon Joshro. Your story begins at the village \
+blacksmith, where you must decide what kind of weapon you will bring with you \
+on your journey.")  
+weapon = input("Do you take a 'bow', 'axe', 'sword'?: ") 
+weaponSelect() 
+print(" ") 
+location = "village"
+if location == "village": 
+    print(introMessages[0]) 
+elif location == "forest": 
+    print(introMessages[1]) 
+fightRun = input("Do you want to 'fight' or 'run' away from the ogre? ")
+while fightRun != ("run" or "fight"):
+    #MAJOR GLITCH!!!
+    fightRun = input("That won't work this time! Do you want to 'fight' or 'run' away from the ogre? ") 
+if fightRun == "fight": 
+    fightSequence(ogre, playerHealth, location) 
+    allIn = True 
+elif fightRun == "run": 
+    print("Before you can run, the ogre grabs your shirt and pulls you back, \
+and asks in a booming but obviously slurred voice:''Bretton, do you have ma \
+gold coin yet or not?''") 
+else:
+    fightAvoid = input(" \
+'1' . Lie and say its back at the inn and you'll get it as soon as he lets you go.\
+'2' . Tell him to let you go or else he'll have to worry about more than just \
+a stupid gold coin. \
+(pick a number): ") 
+    if fightAvoid == "1": 
+        print("The ogre seems to like that option, and lets you go as he \
+meanders back to the tavern. You regain your composure and continue walking \
+to the village exit.") 
+    elif fightAvoid == "2": 
+        print("The ogre becomes enraged and slams you on the ground, howling \
+like a dog as he searches himself for the dagger he carries. You get back \
+on your feet and pull out your weapon.") 
+        fightSequence(ogre, playerHealth, location)
+        allIn = True
+print(" ")
+location = "forest"
+if location == "village": 
+    print(introMessages[0]) 
+elif location == "forest": 
+    print(introMessages[1]) 
+playerHealth = deadlyTreasure(playerHealth)
+print(" ")
+fightPersuade = input("Do you want to 'fight' or 'persuade' the goblin? ")
+if fightPersuade == "fight":
+    fightSequence(goblin, playerHealth, location)
+    allIn = True 
+elif fightPersuade == "persuade":
+    parkour = input("To catch up to the goblin, you can either 'slide' under a fallen log, or \
+'vault' over a thorny bush. What do you do? ")
+    if parkour == "slide":
+        persuade = input("You successfully slide under the log, and find the goblin scurried up on a tree branch, \
+just out of reach. What do you say to the scared creature? \
+1. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
+2. Don't make me come up there you dirty vermin! \
+(pick a number): ")
+        if persuade == "1":
+            print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
+back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
+            #!!!ENDING ONE!!!
+        elif persuade == "2":
+            print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
+You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+            weaponStrength = int(weaponStrength/2)
+            playerHealth = int(playerHealth/2)
+            fightSequence(goblin, playerHealth, location)
+            allIn = True
+    elif parkour == "vault":
+        weakStrong = random.randint(0,1)
+        if weakStrong == 0:
+            print("You try to vault over the bush, but because you skipped leg day \
+at the medieval gym, you fail and fall face first into some *very* sharp thorns")
+            end()
+        elif weakStrong == 1:
+            persuade = input("You successfully vault over the bush, and find the goblin scurried up on a tree branch, \
+just out of reach. What do you say to the scared creature? \
+1. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
+2. Don't make me come up there you dirty vermin! \
+(pick a number): ")
+            if persuade == "1":
+                        print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
+            back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
+                        #!!!ENDING ONE!!!
+            elif persuade == "2":
+                print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
+            You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+                weaponStrength = int(weaponStrength/2)
+                playerHealth = int(playerHealth/2)
+                fightSequence(goblin, playerHealth, location)
+                allIn = True
+print(" ")
