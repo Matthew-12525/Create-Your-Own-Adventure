@@ -13,6 +13,8 @@ MAJOR GLITCH!!! I need to try to figure out how to correct players and let them 
 """ 
 IDEAS-  
 #!!!ENDING ONE!!!(Lines 177, 199)
+I want to take advantage of strings and their various uses to make a guessing game that rewards the player with +50 playerHealth if they get it right. \
+I'll print one letter of the mystery word at the end of every pacifist option(ex: avoiding the fight with the ogre, working for the goblin, etc.)
 """ 
 #End of notes. 
 import random  
