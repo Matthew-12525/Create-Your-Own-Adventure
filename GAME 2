@@ -18,7 +18,7 @@ I'll print one letter of the mystery word at the end of every pacifist option(ex
 The word will be STRING, and the possibility to get the extra health will come right before the boss fight:)
 """ 
 #End of notes. 
-import random  
+import random
 #Functions 
 def weaponSelect(): 
     global weaponStrength 
@@ -96,21 +96,19 @@ that increases your health by 50. You drink it, and continue along the path.")
 road.") 
     return playerHealth 
 
-def stringWord():
+def stringWord(emptyStr):
     letter = random.choice(strings)
-    for i in strings:
-        if letter == i:
-            print(letter)
-            strings.remove(letter)
-        else:
-            print("*")
-    return strings
+    strings.remove(letter)
+    emptyStr += letter
+    print(emptyStr)
+    return emptyStr, strings
 #Variables 
 goblin = 75 
 ogre = 100 
 playerHealth = 100 
 allIn = False 
 strings = ["s", "t", "r", "i", "n", "g"]
+emptyStr = ""
 weaponList = ["sword","axe","bow"] 
 weapons = [("sword",10), ("axe", 6), ("bow", 2)] 
 
@@ -163,7 +161,7 @@ if fightAvoid == "1":
     print("The ogre seems to like that option, and lets you go as he \
 meanders back to the tavern. You regain your composure and continue walking \
 to the village exit.")
-    strings = stringWord()
+    emptyStr, strings = stringWord(emptyStr)
 elif fightAvoid == "2": 
     print("The ogre becomes enraged and slams you on the ground, howling \
 like a dog as he searches himself for the dagger he carries. You get back \
@@ -196,7 +194,7 @@ just out of reach. What do you say to the scared creature? \
         if persuade == "1":
             print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
 back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
-            strings = stringWord()
+            emptyStr, strings = stringWord(emptyStr)
             #!!!ENDING ONE!!!
         elif persuade == "2":
             print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
@@ -222,7 +220,7 @@ just out of reach. What do you say to the scared creature? \
             if persuade == "1":
                 print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
 back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
-                strings = stringWord()
+                emptyStr, strings = stringWord(emptyStr)
                         #!!!ENDING ONE!!!
             elif persuade == "2":
                 print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
