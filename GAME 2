@@ -1,5 +1,5 @@
-#NOT OPERABLE YET!!!!!< 
-#OPERABLE!!!!! 
+#NOT OPERABLE YET!!!!!
+#OPERABLE!!!!!<
 """ 
 The story is about a young man named Max who has to save princess Misty from  
 the evil dragon Joshro. There are 4 endings that the user can have based on  
@@ -7,7 +7,7 @@ their choices throughout the course of the game.
 """ 
 """ 
 ISSUES-
-MAJOR GLITCH!!! I need to try to figure out how to correct players and let them know that they can't give invalid inputs and repeat the question again.
+NONE AT THE MOMENT YAY!!
 """ 
 
 """ 
@@ -17,9 +17,11 @@ I want to take advantage of strings and their various uses to make a guessing ga
 I'll print one letter of the mystery word at the end of every pacifist option(ex: avoiding the fight with the ogre, working for the goblin, etc.) \
 The word will be STRING, and the possibility to get the extra health will come right before the boss fight:)
 """ 
+#End of notes.
 #End of notes. 
 import random
-#Functions 
+#Functions
+#Functions
 def weaponSelect(): 
     global weaponStrength 
     if weapon == "bow": 
@@ -102,7 +104,8 @@ def stringWord(emptyStr):
     emptyStr += letter
     print(emptyStr)
     return emptyStr, strings
-#Variables 
+#Variables
+#Variables
 goblin = 75 
 ogre = 100 
 playerHealth = 100 
@@ -110,9 +113,7 @@ allIn = False
 strings = ["s", "t", "r", "i", "n", "g"]
 emptyStr = ""
 weaponList = ["sword","axe","bow"] 
-weapons = [("sword",10), ("axe", 6), ("bow", 2)] 
-
-
+weapons = [("sword",5), ("axe", 5), ("bow", 5)] 
 introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
 mistakes you for the same villager that stole his favorite gold coin, \
 and pulls out his rusty dagger to take it back.", "After walking through the forest some more, you come across a \
@@ -124,7 +125,8 @@ outroMessages = ["The ogre stumbles to the ground, but before you can search him
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
 as you collect your items and continue towards the castle."] 
-#Opening Scene 
+#GAME BEGINS AFTER HERE
+#GAME BEGINS AFTER HERE
 print("You are Max, a young man who takes on the brave quest of saving the \
 beautiful princess \
 Misty from the evil dragon Joshro. Your story begins at the village \
@@ -132,7 +134,7 @@ blacksmith, where you must decide what kind of weapon you will bring with you \
 on your journey.")  
 weapon = input("Do you take a 'bow', 'axe', or 'sword'?: ")
 while weapon not in weaponList:
-    weapon = input("That won't work this time! Do you take a 'bow', 'axe', or 'sword'?: ")
+    weapon = input("That weapon isn't here! Do you take a 'bow', 'axe', or 'sword'?: ")
 weaponSelect() 
 print(" ") 
 location = "village"
@@ -150,24 +152,23 @@ elif fightRun == "run":
     print("Before you can run, the ogre grabs your shirt and pulls you back, \
 and asks in a booming but obviously slurred voice:''Bretton, do you have ma \
 gold coin yet or not?''") 
-fightAvoid = input(" \
-'1' . Lie and say its back at the inn and you'll get it as soon as he lets you go.\
-'2' . Tell him to let you go or else he'll have to worry about more than just \
-a stupid gold coin. \
-(pick a number): ")
-while fightAvoid != "1" and fightAvoid != "2":
-    fightAvoid = input("That won't work this time! PICK A NUMBER: ")
-if fightAvoid == "1": 
-    print("The ogre seems to like that option, and lets you go as he \
+    fightAvoid = input(" \
+'1'. Lie and say its back at the inn and you'll get it as soon as he lets you go.\
+'2'. Tell him to let you go or else he'll have to worry about more than just \
+a stupid gold coin. (pick a number): ")
+    while fightAvoid != "1" and fightAvoid != "2":
+        fightAvoid = input("That won't work this time! PICK A NUMBER: ")
+    if fightAvoid == "1": 
+        print("The ogre seems to like that option, and lets you go as he \
 meanders back to the tavern. You regain your composure and continue walking \
 to the village exit.")
-    emptyStr, strings = stringWord(emptyStr)
-elif fightAvoid == "2": 
-    print("The ogre becomes enraged and slams you on the ground, howling \
+        emptyStr, strings = stringWord(emptyStr)
+    elif fightAvoid == "2": 
+        print("The ogre becomes enraged and slams you on the ground, howling \
 like a dog as he searches himself for the dagger he carries. You get back \
 on your feet and pull out your weapon.") 
-    fightSequence(ogre, playerHealth, location)
-    allIn = True
+        fightSequence(ogre, playerHealth, location)
+        allIn = True
 print(" ")
 playerHealth = deadlyTreasure(playerHealth)
 print(" ")
@@ -177,19 +178,23 @@ if location == "village":
 elif location == "forest": 
     print(introMessages[1]) 
 fightPersuade = input("Do you want to 'fight' or 'persuade' the goblin? ")
+while fightPersuade != "fight" and fightPersuade != "persuade":
+    fightPersuade = input("That won't work this time! Do you want to 'fight' or 'persuade' the goblin? ")
 if fightPersuade == "fight":
     fightSequence(goblin, playerHealth, location)
     allIn = True 
 elif fightPersuade == "persuade":
     parkour = input("To catch up to the goblin, you can either 'slide' under a fallen log, or \
 'vault' over a thorny bush. What do you do? ")
+    while parkour != "slide" and parkour != "vault":
+        parkour = input("That won't work this time! What do you do? ")
     if parkour == "slide":
         persuade = input("You successfully slide under the log, and find the goblin scurried up on a tree branch, \
 just out of reach. What do you say to the scared creature? \
 1. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
 2. Don't make me come up there you dirty vermin! \
 (pick a number): ")
-        while not persuade.isnumeric():
+        while persuade != "1" and persuade != "2":
             persuade = input("That won't work this time! PICK A NUMBER: ")
         if persuade == "1":
             print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
@@ -215,7 +220,7 @@ just out of reach. What do you say to the scared creature? \
 1. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
 2. Don't make me come up there you dirty vermin! \
 (pick a number): ")
-            while not persuade.isnumeric():
+            while persuade != "1" and persuade != "2":
                 persuade = input("That won't work this time! PICK A NUMBER: ")
             if persuade == "1":
                 print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
@@ -224,7 +229,7 @@ back after you finish your quest to come work for him to pay off your debt. You 
                         #!!!ENDING ONE!!!
             elif persuade == "2":
                 print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
-            You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
                 weaponStrength = int(weaponStrength/2)
                 playerHealth = int(playerHealth/2)
                 fightSequence(goblin, playerHealth, location)
