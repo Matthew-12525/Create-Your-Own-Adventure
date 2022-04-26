@@ -97,6 +97,22 @@ that increases your health by 50. You drink it, and continue along the path.")
         print("You decide it's not worth the risk, and continue walking on the \
 road.") 
     return playerHealth 
+def riverEscape():
+    print("You reach a river that could separate you from the ferocious carnivores, if you can reach the other side \
+of course. Fortunately, an old fisherman is seen walking towards his flimsy boat, and you take this opportunity to ask the man \
+for safe passage across the swift rapids. The only issue is, the man is not picking up the social cues that indicate your panic, so \
+you must repeatedly prod him into picking up the pace to save both of your souls!")
+    """
+    my_dict = {}
+    wolfRun = {}
+
+    while len(my_dict) != 20 and/or while len(wolfRun) != 25:
+        prod = input("Say 'yes': ")
+        my_dict += prod
+        #use random.randint to add either 0 or 1 to wolfRun
+    #if len(my_dict) == 20, then say that you successfully crossed the river.
+    #if len(wolfRun) == 25, then say that the wolves got to you first and you became a family's next meal.
+    """
 
 def stringWord(emptyStr):
     letter = random.choice(strings)
@@ -120,7 +136,9 @@ and pulls out his rusty dagger to take it back.", "After walking through the for
 clearing that gives you a clear view of the castle where Misty is being held. \
 As you stop to drink from your canteen, a goblin jumps out of the bushes and \
 steals your pack! Goblins were hit especially hard by the last war, but you \
-also know that that doesn't excuse it stealing your stuff."] 
+also know that that doesn't excuse it stealing your stuff.", "The castle doesn't seem so far now, which gives you a glimpse of hope \
+that Misty can be saved. That hope quickly comes crashing down when you see a horde of werewolves descend from the dark depths of the \
+the tree line, and you sprint towards the castle in hopes of finding safety from the hungry monsters."] 
 outroMessages = ["The ogre stumbles to the ground, but before you can search him \
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
@@ -235,3 +253,10 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
                 fightSequence(goblin, playerHealth, location)
                 allIn = True
 print(" ")
+location = "river"
+if location == "village": 
+    print(introMessages[0]) 
+elif location == "forest": 
+    print(introMessages[1]) 
+elif location == "river": 
+    print(introMessages[2]) 
