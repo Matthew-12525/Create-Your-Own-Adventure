@@ -98,21 +98,34 @@ that increases your health by 50. You drink it, and continue along the path.")
 road.") 
     return playerHealth 
 def riverEscape():
+    wolfSteps = random.randint(20,30)
     print("You reach a river that could separate you from the ferocious carnivores, if you can reach the other side \
 of course. Fortunately, an old fisherman is seen walking towards his flimsy boat, and you take this opportunity to ask the man \
 for safe passage across the swift rapids. The only issue is, the man is not picking up the social cues that indicate your panic, so \
 you must repeatedly prod him into picking up the pace to save both of your souls!")
-    """
-    my_dict = {}
-    wolfRun = {}
-
-    while len(my_dict) != 20 and/or while len(wolfRun) != 25:
-        prod = input("Say 'yes': ")
-        my_dict += prod
-        #use random.randint to add either 0 or 1 to wolfRun
-    #if len(my_dict) == 20, then say that you successfully crossed the river.
-    #if len(wolfRun) == 25, then say that the wolves got to you first and you became a family's next meal.
-    """
+    print("You need to continously say yes to the man 20 times before the wolves advance the " + str(wolfSteps) + " steps needed to close the distance \
+and devour you.")
+    prod = 0
+    wolfRun = 0
+    while prod != 20 and wolfRun != wolfSteps:
+        prodInput = input("Say 'yes': ")
+        if prodInput == "yes":
+            prod = prod + 1
+            print("You've advanced " + str(prod) + " total step(s)")
+        wolfAdvance = random.randint(1,3)
+        if wolfAdvance == 1 or 2:
+            print("The werewolves advanced " + str(wolfRun) + " total step(s)")
+            wolfRun = wolfRun + 1
+        elif wolfAdvance == 3:
+            print("The werewolves advanced " + str(wolfRun) + " total step(s)")
+    if prod == 20:
+        print("The fisherman FINALLY finishes talking and gets the boat going, and you breathe a much-deserved \
+sigh of relief as you sit back and watch the werewolves cower in fear from the rushing water.")
+        print("Once you get across the river, the fisherman bids you farewell, and you venture on towards the castle.")
+    elif wolfRun == wolfSteps:
+        print("The fisherman doesn't seem to get the hint, even after the " + str(prod) + " times you told him to hurry up. \
+The werewolves close in swiftly, and you and the fisherman become a hungry family's next meal.")
+        end()
 
 def stringWord(emptyStr):
     letter = random.choice(strings)
@@ -259,4 +272,5 @@ if location == "village":
 elif location == "forest": 
     print(introMessages[1]) 
 elif location == "river": 
-    print(introMessages[2]) 
+    print(introMessages[2])
+riverEscape()
