@@ -25,12 +25,12 @@ import random
 def weaponSelect(): 
     global weaponStrength 
     if weapon == "bow": 
-        weaponStrength = 10 
+        weaponStrength = 4 
         print("A ranged weapon. It will allow you to strike from afar, but leaves \
 you vulnerable up close. You take both it and a quiver full of sharp \
 iron arrows.") 
     elif weapon == "axe": 
-        weaponStrength = 10
+        weaponStrength = 7
         print("A sturdy but lightweight melee weapon. Its metal shimmers as \
 you pick it up.") 
     elif weapon == "sword": 
@@ -140,13 +140,15 @@ def stringWord(emptyStr):
 #Variables
 #Variables
 goblin = 75 
-ogre = 100 
+ogre = 100
+troll = 125
 playerHealth = 100 
 allIn = False 
 strings = ["s", "t", "r", "i", "n", "g"]
 emptyStr = ""
 weaponList = ["sword","axe","bow"] 
 weapons = [("sword",5), ("axe", 5), ("bow", 5)] 
+###ADD A WEAPON THAT IS ONLY ATTAINABLE IF A CONDITION IS MET AND UNAVAILABLE OTHERWISE
 introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
 mistakes you for the same villager that stole his favorite gold coin, \
 and pulls out his rusty dagger to take it back.", "After walking through the forest some more, you come across a \
@@ -155,7 +157,7 @@ As you stop to drink from your canteen, a goblin jumps out of the bushes and \
 steals your pack! Goblins were hit especially hard by the last war, but you \
 also know that that doesn't excuse it stealing your stuff.", "The castle doesn't seem so far now, which gives you a glimpse of hope \
 that Misty can be saved. That hope quickly comes crashing down when you see a horde of werewolves descend from the dark depths of the \
-the tree line, and you sprint towards the castle in hopes of finding safety from the hungry monsters."] 
+the tree line, and you sprint towards the castle in hopes of finding safety from the hungry monsters.", "] 
 outroMessages = ["The ogre stumbles to the ground, but before you can search him \
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
@@ -277,3 +279,15 @@ elif location == "forest":
 elif location == "river": 
     print(introMessages[2])
 riverEscape()
+print(" ")
+print("The sun starts to set, and you decide that you must find a nice place to hit the hay for the night. There are only two places available: \
+n\ a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \
+n\ and an abandoned watchtower 
+##CONTINUE HERE AND ADD EVENT WHERE NEW WEAPON CAN BE EQUIPPED DEPENDING ON WHERE USER DECIDES TO SLEEP
+location = "old bridge"
+if location == "village": 
+    print(introMessages[0]) 
+elif location == "forest": 
+    print(introMessages[1]) 
+elif location == "river": 
+    print(introMessages[2])
