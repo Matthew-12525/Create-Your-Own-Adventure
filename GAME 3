@@ -40,7 +40,7 @@ damage comes at the cost of using more stamina with each attack. You struggle \
 to put it in your holster, and the blacksmith insultingly laughs.")  
 def end(): 
     print("You have been slain.") 
-    x = input("This is the end of the game.") 
+    enter = input("Press 'enter' on your keyboard to start a new game:)") 
     global restart
     restart = True
 
@@ -109,7 +109,7 @@ road.")
     return playerHealth
     
 def riverEscape():
-    wolfSteps = random.randint(20,30)
+    wolfSteps = random.randint(21,30)
     print("You reach a river that could separate you from the ferocious carnivores, if you can reach the other side \
 of course. Fortunately, an old fisherman is seen walking towards his flimsy boat, and you take this opportunity to ask the man \
 for safe passage across the swift rapids. The only issue is, the man is not picking up the social cues that indicate your panic, so \
@@ -143,7 +143,9 @@ def stringWord(emptyStr):
     letter = random.choice(strings)
     strings.remove(letter)
     emptyStr += letter
+    print("******")
     print(emptyStr)
+    print("******")
     return emptyStr, strings
 #Two functions in relation to the "caveWatchtower" scene
 def cave(playerHealth):
@@ -158,16 +160,15 @@ Before you take a swig, you doubt how safe ingesting the bottle's contents will 
             print("You drink the potion, but after sitting down, you instantly pass out. You wake up in the morning feeling strangely \
 healthier, and relish in the fact that you now have 50 more health!")
             playerHealth = playerHealth + 50
-            return playerHealth
         elif healthNothingdeadly == 2:
             print("You drink the potion, but feel nothing. You wake up in the morning and notice that you are in fact still alive, \
 and end up assuming that the benefits of the drink became nullified just like the person who left it.")
         elif healthNothingdeadly == 3:
-            print("You drink the potion, and feel completely normal. \
-n\
-n\
-n\
-You wake up, slay the dragon, save Misty, and live a happy and carefree life....NOT.")
+            print("You drink the potion, and feel completely normal.")
+            print(" ")
+            print(" ")
+            print(" ")
+            print("You wake up, slay the dragon, save Misty, and live a happy and carefree life....NOT.")
             end()
             return
     elif drinkDroptake == "drop":
@@ -178,7 +179,7 @@ below. You go to sleep, and wake up, happy that you avoided a possibly deadly dr
 to store it in your pack for later use. You have a dream that a large green creature asks you for the potion in exchange for \
 safe passage across a path, but brush it off as your mind playing tricks on you and have a pretty uneventful rest of the night.")
         potionTroll = True
-
+    return playerHealth
 ###ADD A WEAPON THAT IS ONLY ATTAINABLE IF A CONDITION IS MET AND UNAVAILABLE OTHERWISE
 introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
 mistakes you for the same villager that stole his favorite gold coin, \
@@ -212,12 +213,12 @@ def main():
     emptyStr = ""
     weaponList = ["sword","axe","bow"] 
     weapons = [("sword",5), ("axe", 5), ("bow", 5)]
-
+    print("---------------------------------------------------------------------------------------------------------------------------")
     print("You are Max, a young man who takes on the brave quest of saving the \
-    beautiful princess \
-    Misty from the evil dragon Joshro. Your story begins at the village \
-    blacksmith, where you must decide what kind of weapon you will bring with you \
-    on your journey.")  
+beautiful princess \
+Misty from the evil dragon Joshro. Your story begins at the village \
+blacksmith, where you must decide what kind of weapon you will bring with you \
+on your journey.")  
     weapon = input("Do you take a 'bow', 'axe', or 'sword'?: ")
     while weapon not in weaponList:
         weapon = input("That weapon isn't here! Do you take a 'bow', 'axe', or 'sword'?: ")
@@ -238,22 +239,22 @@ def main():
         allIn = True 
     elif fightRun == "run": 
         print("Before you can run, the ogre grabs your shirt and pulls you back, \
-    and asks in a booming but obviously slurred voice:''Bretton, do you have ma \
-    gold coin yet or not?''") 
-        fightAvoid = input("'1'. Lie and say its back at the inn and you'll get it as soon as he lets you go.\
-    \n'2'. Tell him to let you go or else he'll have to worry about more than just a stupid gold coin. \
-    \n(pick a number): ")
+and asks in a booming but obviously slurred voice:''Bretton, do you have ma \
+gold coin yet or not?''") 
+        fightAvoid = input("'1'. Lie and say its back at the inn and you'll get it as soon as he lets you go.\n\
+'2'. Tell him to let you go or else he'll have to worry about more than just a stupid gold coin. \n\
+(pick a number): ")
         while fightAvoid != "1" and fightAvoid != "2":
             fightAvoid = input("That won't work this time! PICK A NUMBER: ")
         if fightAvoid == "1": 
             print("The ogre seems to like that option, and lets you go as he \
-    meanders back to the tavern. You regain your composure and continue walking \
-    to the village exit.")
+meanders back to the tavern. You regain your composure and continue walking \
+to the village exit.")
             emptyStr, strings = stringWord(emptyStr)
         elif fightAvoid == "2": 
             print("The ogre becomes enraged and slams you on the ground, howling \
-    like a dog as he searches himself for the dagger he carries. You get back \
-    on your feet and pull out your weapon.") 
+like a dog as he searches himself for the dagger he carries. You get back \
+on your feet and pull out your weapon.") 
             fightSequence(ogre, playerHealth, location)
             if restart:
                 return
@@ -278,25 +279,25 @@ def main():
         allIn = True 
     elif fightPersuade == "persuade":
         parkour = input("To catch up to the goblin, you can either 'slide' under a fallen log, or \
-    'vault' over a thorny bush. What do you do? ")
+'vault' over a thorny bush. What do you do? ")
         while parkour != "slide" and parkour != "vault":
             parkour = input("That won't work this time! What do you do? ")
         if parkour == "slide":
             persuade = input("You successfully slide under the log, and find the goblin scurried up on a tree branch, \
-    just out of reach. What do you say to the scared creature? \
-    \n'1'. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
-    \n'2'. Don't make me come up there you dirty vermin! \
-    \n(pick a number): ")
+just out of reach. What do you say to the scared creature? \n\
+'1'. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \n\
+'2'. Don't make me come up there you dirty vermin! \n\
+(pick a number): ")
             while persuade != "1" and persuade != "2":
                 persuade = input("That won't work this time! PICK A NUMBER: ")
             if persuade == "1":
                 print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
-    back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
+back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                 emptyStr, strings = stringWord(emptyStr)
                 #!!!ENDING ONE!!!
             elif persuade == "2":
                 print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
-    You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
                 weaponStrength = int(weaponStrength/2)
                 playerHealth = int(playerHealth/2)
                 fightSequence(goblin, playerHealth, location)
@@ -305,25 +306,25 @@ def main():
             weakStrong = random.randint(0,1)
             if weakStrong == 0:
                 print("You try to vault over the bush, but because you skipped leg day \
-    at the medieval gym, you fail and fall face first into some *very* sharp thorns")
+at the medieval gym, you fail and fall face first into some *very* sharp thorns")
                 end()
                 return
             elif weakStrong == 1:
                 persuade = input("You successfully vault over the bush, and find the goblin scurried up on a tree branch, \
-    just out of reach. What do you say to the scared creature? \
-    \n'1'. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \
-    \n'2'. Don't make me come up there you dirty vermin! \
-    \n(pick a number): ")
+just out of reach. What do you say to the scared creature? \n\
+'1'. I won't hurt you I promise, just please give me back my stuff and I promise I'll make it up to you. \n\
+'2'. Don't make me come up there you dirty vermin! \n\
+(pick a number): ")
                 while persuade != "1" and persuade != "2":
                     persuade = input("That won't work this time! PICK A NUMBER: ")
                 if persuade == "1":
                     print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \
-    back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
+back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                     emptyStr, strings = stringWord(emptyStr)
                             #!!!ENDING ONE!!!
                 elif persuade == "2":
                     print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \
-    You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
+You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
                     weaponStrength = int(weaponStrength/2)
                     playerHealth = int(playerHealth/2)
                     fightSequence(goblin, playerHealth, location)
@@ -342,13 +343,12 @@ def main():
     if restart:
         return
     print(" ")
-    print("The sun starts to set, and you decide that you must find a nice place to hit the hay for the night. There are only two places available: \
-    n\ a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \
-    n\ and an abandoned watchtower that accentuates the damaging effects of the past war.")
+    print("The sun starts to set, and you decide that you must find a nice place to hit the hay for the night. There are only two places available: \n\
+a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \n\
+and an abandoned watchtower that accentuates the damaging effects of the past war.")
     caveWatchtower = input("Do you take shelter in the 'cave' or the 'watchtower'? ")
     if caveWatchtower == "cave":
         playerHealth = cave(playerHealth)
-        print(playerHealth)
     ##CONTINUE HERE AND ADD EVENT WHERE NEW WEAPON CAN BE EQUIPPED DEPENDING ON WHERE USER DECIDES TO SLEEP
     location = "old bridge"
     if location == "village": 
