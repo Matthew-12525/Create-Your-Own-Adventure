@@ -4,7 +4,34 @@
 The story is about a young man named Max who has to save princess Misty from  
 the evil dragon Joshro. There are 4 endings that the user can have based on  
 their choices throughout the course of the game. 
-""" 
+"""
+"""
+grunt = ["guh", "gurr", "rawr"]
+correct = True
+exercise = True
+gruntCount = 0
+while exercise:
+    for j in range(2):
+        userGrunt = []
+        gruntCount += 1
+        if correct == False:
+            break
+        if gruntCount == 6:
+            exercise = False
+            break
+        for i in range(3):
+            muscle = input("Exert your strength: ")
+            userGrunt.append(muscle)
+            print(userGrunt)
+            if userGrunt[i] == grunt[i]:
+                pass
+            else:
+                userGrunt = []
+                print("You strain your back and have to start over!")
+                gruntCount = 0
+                break
+print("You did it!")
+"""
 """ 
 ISSUES-
 NONE AT THE MOMENT YAY!!
@@ -154,6 +181,8 @@ seems to favor you in this instance, and no trace of another inhabitant is visib
 a perfectly preserved elixir that has the label 'Miriam's Medical Miracle' stamped in fine lettering across the brownish glass. \
 Before you take a swig, you doubt how safe ingesting the bottle's contents will be, and pause.")
     drinkDroptake = input("Do you 'drink' or 'drop' or 'take' the bottle? ")
+    while drinkDroptake != "drink" and drinkDroptake != "drop" and drinkDroptake != "take":
+        drinkDroptake = input("That won't work this time! Do you 'drink' or 'drop' or 'take' the bottle? ")
     if drinkDroptake == "drink":
         healthNothingdeadly = random.randint(1,3)
         if healthNothingdeadly == 1:
@@ -179,7 +208,29 @@ below. You go to sleep, and wake up, happy that you avoided a possibly deadly dr
 to store it in your pack for later use. You have a dream that a large green creature asks you for the potion in exchange for \
 safe passage across a path, but brush it off as your mind playing tricks on you and have a pretty uneventful rest of the night.")
         potionTroll = True
-    return playerHealth
+    return playerHealth, potionTroll
+def watchtower():
+    print("You enter the grey space, and find the area surprisingly empty, save for a single longsword of strikingly amazing quality. \
+The only issue is the fact that the sword is coincidentally stuck in a slab of stone. You've seen this somewhere before, and know that \
+swords stuck in stone are probably very good, but it's getting late and all that walking has you in an increasingly apparent state of exhaustion.")
+    tryAvoid = input("Do you want to 'try' to take the sword out of the stone or 'avoid' the strenuous act altogether? ")
+    while tryAvoid != "try" and tryAvoid != "avoid":
+        tryAvoid = input("That won't work this time! \
+Do you want to 'try' to take the sword out of the stone or 'avoid' the strenuous act altogether? ")
+    if tryAvoid == "try":
+        print("As everyone knows, making grunting sounds while exerting energy always helps you accomplish the desired task. \
+This goes the same when trying to pull metal out of stone, and in order to successfully dislodge the blade from its spot, \n\
+you must alternate between 'guh', 'gurr', and 'rawr'.")
+        grunt = ["guh", "gurr", "rawr"]
+        userGrunt = []
+        for i in range(3):
+            muscle = input("Exert your strength: ")
+            userGrunt.append(muscle)
+            if userGrunt[i] == grunt[i]:
+                print("Hello")
+    if tryAvoid == "avoid":
+        print("You decide that your rest is more important than something that almost certainly seems as if it could be useful to you, \
+and go to sleep restlessly on the cold hard floor.")
 ###ADD A WEAPON THAT IS ONLY ATTAINABLE IF A CONDITION IS MET AND UNAVAILABLE OTHERWISE
 introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
 mistakes you for the same villager that stole his favorite gold coin, \
@@ -198,11 +249,11 @@ as you collect your items and continue towards the castle."]
 #GAME BEGINS AFTER HERE
 #Variables
 #Variables
-global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weaponList, weapon, restart
+global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weaponList, weapon, restart, weaponStrength
 restart = True
 
 def main():
-    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weaponList, weapon, restart
+    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weaponList, weapon, restart, weaponStrength
     restart = False
     goblin = 75 
     ogre = 100
@@ -211,8 +262,6 @@ def main():
     allIn = False 
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
-    weaponList = ["sword","axe","bow"] 
-    weapons = [("sword",5), ("axe", 5), ("bow", 5)]
     print("---------------------------------------------------------------------------------------------------------------------------")
     print("You are Max, a young man who takes on the brave quest of saving the \
 beautiful princess \
@@ -347,10 +396,14 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
 a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \n\
 and an abandoned watchtower that accentuates the damaging effects of the past war.")
     caveWatchtower = input("Do you take shelter in the 'cave' or the 'watchtower'? ")
+    while caveWatchtower != "cave" and caveWatchtower != "watchtower":
+        caveWatchtower = input("That won't work this time! Do you take shelter in the 'cave' or the 'watchtower'? ")
     if caveWatchtower == "cave":
-        playerHealth = cave(playerHealth)
+        playerHealth, potionTroll = cave(playerHealth)
     ##CONTINUE HERE AND ADD EVENT WHERE NEW WEAPON CAN BE EQUIPPED DEPENDING ON WHERE USER DECIDES TO SLEEP
-    location = "old bridge"
+    potionTroll = False
+    if caveWatchtower == "watchtower": 
+        pass
     if location == "village": 
         print(introMessages[0]) 
     elif location == "forest": 
