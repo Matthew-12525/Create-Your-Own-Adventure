@@ -1,42 +1,14 @@
-#NOT OPERABLE YET!!!!!
-#OPERABLE!!!!!<
+#NOT OPERABLE AT THE MOMENT!!!!!<
+#OPERABLE!!!!!
 """ 
 The story is about a young man named Max who has to save princess Misty from  
 the evil dragon Joshro. There are 4 endings that the user can have based on  
 their choices throughout the course of the game. 
 """
-"""
-grunt = ["guh", "gurr", "rawr"]
-correct = True
-exercise = True
-gruntCount = 0
-while exercise:
-    for j in range(2):
-        userGrunt = []
-        gruntCount += 1
-        if correct == False:
-            break
-        if gruntCount == 6:
-            exercise = False
-            break
-        for i in range(3):
-            muscle = input("Exert your strength: ")
-            userGrunt.append(muscle)
-            print(userGrunt)
-            if userGrunt[i] == grunt[i]:
-                pass
-            else:
-                userGrunt = []
-                print("You strain your back and have to start over!")
-                gruntCount = 0
-                break
-print("You did it!")
-"""
 """ 
 ISSUES-
-NONE AT THE MOMENT YAY!!
+There's issues, and they're commented at their respective locations:((((((
 """ 
-
 """ 
 IDEAS-  
 #!!!ENDING ONE!!!(Lines 177, 199)
@@ -136,16 +108,16 @@ road.")
     return playerHealth
     
 def riverEscape():
-    wolfSteps = random.randint(21,30)
+    stepsYes = random.randint(21,30)
     print("You reach a river that could separate you from the ferocious carnivores, if you can reach the other side \
 of course. Fortunately, an old fisherman is seen walking towards his flimsy boat, and you take this opportunity to ask the man \
 for safe passage across the swift rapids. The only issue is, the man is not picking up the social cues that indicate your panic, so \
 you must repeatedly prod him into picking up the pace to save both of your souls!")
-    print("You need to continously say yes to the man 20 times before the wolves advance the " + str(wolfSteps) + " steps needed to close the distance \
+    print("You need to continously say yes to the man " + str(stepsYes) + " times before the wolves advance the " + str(stepsYes) + " steps needed to close the distance \
 and devour you.")
     prod = 0
     wolfRun = 0
-    while prod != 20 and wolfRun != wolfSteps:
+    while prod != stepsYes and wolfRun != stepsYes:
         prodInput = input("Say 'yes': ")
         if prodInput == "yes":
             prod = prod + 1
@@ -156,11 +128,11 @@ and devour you.")
             wolfRun = wolfRun + 1
         elif wolfAdvance == 3:
             print("The werewolves advanced " + str(wolfRun) + " total step(s)")
-    if prod == 20:
+    if prod == stepsYes:
         print("The fisherman FINALLY finishes talking and gets the boat going, and you breathe a much-deserved \
 sigh of relief as you sit back and watch the werewolves cower in fear from the rushing water.")
         print("Once you get across the river, the fisherman bids you farewell, and you venture on towards the castle.")
-    elif wolfRun == wolfSteps:
+    elif wolfRun == stepsYes:
         print("The fisherman doesn't seem to get the hint, even after the " + str(prod) + " times you told him to hurry up. \
 The werewolves close in swiftly, and you and the fisherman become a hungry family's next meal.")
         end()
@@ -192,6 +164,8 @@ healthier, and relish in the fact that you now have 50 more health!")
         elif healthNothingdeadly == 2:
             print("You drink the potion, but feel nothing. You wake up in the morning and notice that you are in fact still alive, \
 and end up assuming that the benefits of the drink became nullified just like the person who left it.")
+            ###DOESN'T CONTINUE CODE
+            ###DOESN'T CONTINUE CODE
         elif healthNothingdeadly == 3:
             print("You drink the potion, and feel completely normal.")
             print(" ")
@@ -209,7 +183,40 @@ to store it in your pack for later use. You have a dream that a large green crea
 safe passage across a path, but brush it off as your mind playing tricks on you and have a pretty uneventful rest of the night.")
         potionTroll = True
     return playerHealth, potionTroll
-def watchtower():
+def swordPull():
+    grunt = ["guh", "gurr", "rawr"]
+    correct = True
+    exercise = True
+    gruntCount = 0
+    while exercise:
+        for j in range(2):
+            userGrunt = []
+            gruntCount += 1
+            if correct == False:
+                break
+            if gruntCount == 6:
+                exercise = False
+                break
+            for i in range(3):
+                muscle = input("Exert your strength: ")
+                userGrunt.append(muscle)
+                print(userGrunt)
+                if userGrunt[i] == grunt[i]:
+                    pass
+                else:
+                    userGrunt = []
+                    print("You strain your back and have to start over!")
+                    gruntCount = 0
+                    break
+    print("Huzzah! The sword finally nudges out of its nested position, and you bask in its strangely magical glory. 'The Python' is \
+engraved on the side of the blade, and you deduce that this is the name of the sword.")
+    print("Attached to the handle of the blade is a leaflet that reveals why 'The Python' feels so powerful: 'The blade decides \
+the enemy's fate, not you'. You take this as a good sign, and place the sword at your side as you get ready for bed. The night is otherwise \
+uneventful, and you wake up feeling strangely refreshed after having that small victory the previous night!")
+    pythonrandWepstrength = random.randint(0,100)
+    weaponStrength = pythonrandWepstrength
+    return weaponStrength
+def watchTower():
     print("You enter the grey space, and find the area surprisingly empty, save for a single longsword of strikingly amazing quality. \
 The only issue is the fact that the sword is coincidentally stuck in a slab of stone. You've seen this somewhere before, and know that \
 swords stuck in stone are probably very good, but it's getting late and all that walking has you in an increasingly apparent state of exhaustion.")
@@ -221,13 +228,7 @@ Do you want to 'try' to take the sword out of the stone or 'avoid' the strenuous
         print("As everyone knows, making grunting sounds while exerting energy always helps you accomplish the desired task. \
 This goes the same when trying to pull metal out of stone, and in order to successfully dislodge the blade from its spot, \n\
 you must alternate between 'guh', 'gurr', and 'rawr'.")
-        grunt = ["guh", "gurr", "rawr"]
-        userGrunt = []
-        for i in range(3):
-            muscle = input("Exert your strength: ")
-            userGrunt.append(muscle)
-            if userGrunt[i] == grunt[i]:
-                print("Hello")
+        swordPull()
     if tryAvoid == "avoid":
         print("You decide that your rest is more important than something that almost certainly seems as if it could be useful to you, \
 and go to sleep restlessly on the cold hard floor.")
@@ -240,7 +241,9 @@ As you stop to drink from your canteen, a goblin jumps out of the bushes and \
 steals your pack! Goblins were hit especially hard by the last war, but you \
 also know that that doesn't excuse it stealing your stuff.", "The castle doesn't seem so far now, which gives you a glimpse of hope \
 that Misty can be saved. That hope quickly comes crashing down when you see a horde of werewolves descend from the dark depths of the \
-the tree line, and you sprint towards the castle in hopes of finding safety from the hungry monsters."] 
+the tree line, and you sprint towards the castle in hopes of finding safety from the hungry monsters.", "The sun starts to set, and you decide that you must find a nice place to hit the hay for the night. There are only two places available: \n\
+a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \n\
+and an abandoned watchtower that accentuates the damaging effects of the past war."] 
 outroMessages = ["The ogre stumbles to the ground, but before you can search him \
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
@@ -249,13 +252,13 @@ as you collect your items and continue towards the castle."]
 #GAME BEGINS AFTER HERE
 #Variables
 #Variables
-global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weaponList, weapon, restart, weaponStrength
+global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll
 restart = True
 
 def main():
-    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weaponList, weapon, restart, weaponStrength
+    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll
     restart = False
-    goblin = 75 
+    goblin = 25 #CHANGE
     ogre = 100
     troll = 125
     playerHealth = 100 
@@ -269,7 +272,7 @@ Misty from the evil dragon Joshro. Your story begins at the village \
 blacksmith, where you must decide what kind of weapon you will bring with you \
 on your journey.")  
     weapon = input("Do you take a 'bow', 'axe', or 'sword'?: ")
-    while weapon not in weaponList:
+    while weapon != "bow" and weapon != "axe" and weapon != "sword":
         weapon = input("That weapon isn't here! Do you take a 'bow', 'axe', or 'sword'?: ")
     weaponSelect() 
     print(" ") 
@@ -380,6 +383,10 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
                     if restart:
                         return
                     allIn = True
+                    ##DOESN'T RESTART!!!! URGENT
+                    ##DOESN'T RESTART!!!!
+                    ##DOESN'T RESTART!!!!
+                    ##DOESN'T RESTART!!!!
     print(" ")
     location = "river"
     if location == "village": 
@@ -392,25 +399,24 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
     if restart:
         return
     print(" ")
-    print("The sun starts to set, and you decide that you must find a nice place to hit the hay for the night. There are only two places available: \n\
-a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \n\
-and an abandoned watchtower that accentuates the damaging effects of the past war.")
-    caveWatchtower = input("Do you take shelter in the 'cave' or the 'watchtower'? ")
-    while caveWatchtower != "cave" and caveWatchtower != "watchtower":
-        caveWatchtower = input("That won't work this time! Do you take shelter in the 'cave' or the 'watchtower'? ")
-    if caveWatchtower == "cave":
-        playerHealth, potionTroll = cave(playerHealth)
-    ##CONTINUE HERE AND ADD EVENT WHERE NEW WEAPON CAN BE EQUIPPED DEPENDING ON WHERE USER DECIDES TO SLEEP
-    potionTroll = False
-    if caveWatchtower == "watchtower": 
-        pass
+    location = "cave/watchtower"
     if location == "village": 
         print(introMessages[0]) 
     elif location == "forest": 
         print(introMessages[1]) 
     elif location == "river": 
         print(introMessages[2])
-    elif location == "old bridge":
-        print()
+    elif location == "cave/watchtower":
+        print(introMessages[3])
+    caveWatchtower = input("Do you take shelter in the 'cave' or the 'watchtower'? ")
+    while caveWatchtower != "cave" and caveWatchtower != "watchtower":
+        caveWatchtower = input("That won't work this time! Do you take shelter in the 'cave' or the 'watchtower'? ")
+    if caveWatchtower == "cave":
+        playerHealth, potionTroll = cave(playerHealth)
+    potionTroll = False
+    if caveWatchtower == "watchtower": 
+        watchTower()
+    #DOESN'T CONTINUE CODE!!!!!!!!
+    print("poopoo")
 while restart:
     main()
