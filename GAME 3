@@ -243,7 +243,10 @@ also know that that doesn't excuse it stealing your stuff.", "The castle doesn't
 that Misty can be saved. That hope quickly comes crashing down when you see a horde of werewolves descend from the dark depths of the \
 the tree line, and you sprint towards the castle in hopes of finding safety from the hungry monsters.", "The sun starts to set, and you decide that you must find a nice place to hit the hay for the night. There are only two places available: \n\
 a small and unassuming cave that offers shelter at the expense of not knowing whether or not an animal ALSO considers the cave its home, \n\
-and an abandoned watchtower that accentuates the damaging effects of the past war."] 
+and an abandoned watchtower that accentuates the damaging effects of the past war.", "Being alive for this long is very commendable, \
+so you pat yourself on the back as you cross a boring old bridge. You actually notice how distinctly boring this bridge is, \
+and voice your distaste of the structure. As you do this, a rumbling can be heard from under you, and as you recover from the friction,\
+a gross troll appears in front of you, and you're able to notice that it did NOT approve of your comment, and lets you know just as much."] 
 outroMessages = ["The ogre stumbles to the ground, but before you can search him \
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
@@ -252,11 +255,13 @@ as you collect your items and continue towards the castle."]
 #GAME BEGINS AFTER HERE
 #Variables
 #Variables
-global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll
+global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
+location
 restart = True
 
 def main():
-    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll
+    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
+    location
     restart = False
     goblin = 25 #CHANGE
     ogre = 100
@@ -417,6 +422,28 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
     if caveWatchtower == "watchtower": 
         watchTower()
     #DOESN'T CONTINUE CODE!!!!!!!!
+    #DOESN'T CONTINUE CODE!!!!!!!!
     print("poopoo")
+    if caveWatchtower == "cave":
+        print("You leave the cave, and trek on towards the increasingly visible castle.")
+    elif caveWatchtower == "watchtower":
+        print("You exit the watchtower, and trek on towards the increasingly visible castle.")
+    #Troll encounter/fight!!
+    location = "old bridge"
+    if location == "village": 
+        print(introMessages[0]) 
+    elif location == "forest": 
+        print(introMessages[1]) 
+    elif location == "river": 
+        print(introMessages[2])
+    elif location == "cave/watchtower":
+        print(introMessages[3])
+    else:
+        print(introMessages[4])
+        #TRYING SOMETHING NEW OUT, MAY NOT WORK!!
+    print("'I'm tired of you rude humans criticizing my bridge upkeep skills!:( Gah! All this yelling has got me thirsty, \
+    would you happen to have anything that could satiate my thirst?")
+    if potionTroll == True:
+        bargainFight = input("")
 while restart:
     main()
