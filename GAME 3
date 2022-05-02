@@ -76,14 +76,17 @@ def fightSequence(enemy, playerHealth, location):
                     print(outroMessages[0]) 
                 elif location == "forest": 
                     print(outroMessages[1]) 
+                elif location == "old bridge":
+                    print(outroMessages[2])
         if playerHealth <= 0: 
             end()
             return
     if location == "village": 
-                print(outroMessages[0]) 
+        print(outroMessages[0]) 
     elif location == "forest": 
-                print(outroMessages[1]) 
-
+        print(outroMessages[1]) 
+    elif location == "old bridge":
+        print(outroMessages[2])
 def deadlyTreasure(playerHealth): 
     print("While walking through the forest, you come across a golden box \
 that shimmers in the sunlight. A key lays inside the tree next to the box, \
@@ -246,11 +249,13 @@ a small and unassuming cave that offers shelter at the expense of not knowing wh
 and an abandoned watchtower that accentuates the damaging effects of the past war.", "Being alive for this long is very commendable, \
 so you pat yourself on the back as you cross a boring old bridge. You actually notice how distinctly boring this bridge is, \
 and voice your distaste of the structure. As you do this, a rumbling can be heard from under you, and as you recover from the friction,\
-a gross troll appears in front of you, and you're able to notice that it did NOT approve of your comment, and lets you know just as much."] 
+a gross troll appears in front of you, and you're able to notice that she did NOT approve of your comment, and lets you know just as much."] 
 outroMessages = ["The ogre stumbles to the ground, but before you can search him \
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
-as you collect your items and continue towards the castle."] 
+as you collect your items and continue towards the castle.", "The troll becomes motionless, and after you poke it with your weapon to see if she's still alive, \
+gravity finally takes effect, and the troll falls over the side of the bridge into the murky depths below, creating such a splash that the water soaks your hair. \
+You regain your composure, and proceed to start walking along the path again."] 
 #GAME BEGINS AFTER HERE
 #GAME BEGINS AFTER HERE
 #Variables
@@ -268,6 +273,7 @@ def main():
     troll = 125
     playerHealth = 100 
     allIn = False 
+    potionTroll = False
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
     print("---------------------------------------------------------------------------------------------------------------------------")
@@ -421,13 +427,11 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
     potionTroll = False
     if caveWatchtower == "watchtower": 
         watchTower()
-    #DOESN'T CONTINUE CODE!!!!!!!!
-    #DOESN'T CONTINUE CODE!!!!!!!!
-    print("poopoo")
     if caveWatchtower == "cave":
         print("You leave the cave, and trek on towards the increasingly visible castle.")
     elif caveWatchtower == "watchtower":
         print("You exit the watchtower, and trek on towards the increasingly visible castle.")
+    print(" ")
     #Troll encounter/fight!!
     location = "old bridge"
     if location == "village": 
@@ -442,8 +446,56 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
         print(introMessages[4])
         #TRYING SOMETHING NEW OUT, MAY NOT WORK!!
     print("'I'm tired of you rude humans criticizing my bridge upkeep skills!:( Gah! All this yelling has got me thirsty, \
-    would you happen to have anything that could satiate my thirst?")
+would you happen to have anything that could satiate my thirst?")
     if potionTroll == True:
-        bargainFight = input("")
+    #!!!DOESN'T ALLOW THIS ALTERNATE ENCOUNTER PLAY OUT!!!
+        print("You suddenly remember that you have that potion from the cave, as well as the oddly specific dream that turned out \
+to manifest itself into reality... Anyway, you decide if you should give the troll the potion or keep it for yourself.")
+        bargainFight = input("Do you 'give' the troll the potion or 'keep' it for yourself? ")
+        while bargainFight != "give" and bargainFight != "keep":
+            bargainFight = input("That won't work this time! Do you 'give' the troll the potion or 'keep' it for yourself? ")
+        if bargainFight == "give":
+            print("You quickly give the troll the potion, and she monstrously consumes its contents before proceeding to burp in your \
+face with a satisfied grin on her face. 'WOW! I don't know what kind of stuff was in that, but I think I'm gonna take a nap for a little bit. \
+DON'T GO ANYWHERE HUMAN, or els-', is all the troll can say before the potion's effects fully take place, and she falls onto the bridge and starts snoring loudly.")
+            emptyStr, strings = stringWord(emptyStr)
+            stayGo = input("Maybe it's because you felt bad for disrespecting the troll's bridge, or more likely because you're crazy, but you \
+you hesitate before going and wonder whether or not you should 'stay' and see what the troll wants from you, or 'go' because the princess stuck in an \
+evil dragon's castle is still there and, well, that was the whole reason you're out here in the first place... What do you do? ")
+            while stayGo != "stay" and stayGo != "go":
+                stayGo = input("That won't work this time! Do you 'stay' or 'go'? ")
+            if stayGo == "stay":
+                print("You wait several hours (trolls are notorious for sleeping for long periods of time), and just as you're about to forget it, \
+the troll wakes up and looks considerably more happy. 'Heya pal! Look I'm sorry 'bout all that yelling I did earlier, I just can't stand inconsiderate individuals, \
+human, werewolf, goblin, what have you. So, as a token of my apology, I'll offer you a job that'll consist of helping me keep this place spick-and-span... \
+not at all because I get sorta lonely out here and could use another person to talk to... So whaddaya say?' Well, not one to turn down an offer as rare as this, you \
+accept the troll's offer, but remind her that you still have a girl to save, and she nods her head understandably. \
+You find out the troll's name is Samantha, and wish her well as you finally cross the bridge to continue your quest.")
+            #ENDING TWO
+            if stayGo == "go":
+                print("You decide that the troll was probably just saying all of that due to her inebriated state, and cross the bridge \
+quietly to continue your journey.")
+        elif bargainFight == "keep":
+            print("You decide to be greedy and admittedly sort of dumb so as not to rid yourself of extra weight, and it comes back to bite you. 'WOW! So first \
+you disrespect my bridge, and then you don't even give me something for my dehydration! This won't do! I'm going to have to teach you a lesson in manners!")
+            print("Quickly, you ask if there's a riddle you can try to solve in order to avoid a fight, but the troll's mind is already made up, and in fact this seems to \
+make her even more angry, which doesn't help things in the slightest. You ready your weapon and prepare to fight the burly creature.")
+            fightSequence(troll, playerHealth, location)
+            if restart:
+                return
+            allIn = True
+            print("P.S., while fighting the troll, the potion broke in your bag, so it's of no use to you now, and you think for a second how much \
+better that situation could've turned out if you would've given the troll the potion in the first place, but ah whatever it's just a game, morals don't matter.")
+    elif potionTroll == False:
+        print("Because you have nothing to give the troll, like a potion most likely found in a cave that could easily keep the upcoming situation peaceful, \
+you blank out, and the troll notices this. 'WOW! So first you disrespect my bridge, and then you don't even give me something for my dehydration! \
+This won't do! I'm going to have to teach you a lesson in manners!")
+        print("Quickly, you ask if there's a riddle you can try to solve in order to avoid a fight, but the troll's mind is already made up, and in fact this seems to \
+make her even more angry, which doesn't help things in the slightest. You ready your weapon and prepare to fight the burly creature.")
+        fightSequence(troll, playerHealth, location)
+        if restart:
+            return
+        allIn = True
+        ##CODE DOESN'T RESTART HERE EITHER
 while restart:
     main()
