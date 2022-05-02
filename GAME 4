@@ -539,5 +539,8 @@ make her even more angry, which doesn't help things in the slightest. You ready 
     else:
         print(introMessages[5])
     castleEntrance()
+    print(" ")
+    print("Inside the castle walls, you become flabbergasted as you realize that the castle was not what you thought it was, and, \
+instead of being one small keep, the castle actually houses a considerably sized village and population of people.")
 while restart:
     main()
