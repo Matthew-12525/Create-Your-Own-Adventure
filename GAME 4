@@ -8,6 +8,19 @@ their choices throughout the course of the game.
 """ 
 ISSUES-
 There's issues, and they're commented at their respective locations:((((((
+    def home(tavernInnCottage):
+        #tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+    while tavernInncottage != "tavern" and tavernInncottage != "cottage" and tavernInncottage != "inn":
+        tavernInncottage = input("That won't work this time! Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+    return tavernInncottage
+
+def test():
+    print("you return to", home())
+    
+x = home('innasdf')   
+print("You make the " + x + " your home.")
+
+test(x)
 """ 
 """ 
 IDEAS-  
@@ -542,5 +555,11 @@ make her even more angry, which doesn't help things in the slightest. You ready 
     print(" ")
     print("Inside the castle walls, you become flabbergasted as you realize that the castle was not what you thought it was, and, \
 instead of being one small keep, the castle actually houses a considerably sized village and population of people.")
+    print("Overwhelmed by this new revelation, you make your way through the solemn streets, and note how subdued the locals seem. \
+Luckily, you find a map taped to a community board that gives the location of 3 places you deem could function as temporary homes: \n\
+an inn, a two-person cottage in need of one more roommate, and a tavern with rooms to rent. Fortunately, your pickpocketing skills have empowered \
+you with the ability to easily pay for all three.")
+    tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+    while tavernInncottage != "tavern" and tavernInncottage != 
 while restart:
     main()
