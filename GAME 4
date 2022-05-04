@@ -7,20 +7,6 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
-global homeChosen
-homeChosen = False
-def home():
-    if homeChosen == False:
-        tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
-        while tavernInncottage != "tavern" and tavernInncottage != "cottage" and tavernInncottage != "inn":
-            tavernInncottage = input("That won't work this time! Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
-    homeChosen = True
-    return tavernInncottage
-x = home()   
-print("You make the " + x + " your home.")
-def comingHome():
-    print("You return to the ", x)
-comingHome()
 """ 
 """ 
 IDEAS-  
@@ -80,17 +66,12 @@ def fightSequence(enemy, playerHealth, location):
             playerHealth -= damage 
             print("You dodged the attack and took " + str(damage) + " damage!") 
         elif prompt == "all in": 
-            damage = random.randint(0,1) 
+            damage = 1 #random.randint(0,1) 
             if damage == 0: 
                 end() 
                 return
-            elif damage == 1: 
-                if location == "village": 
-                    print(outroMessages[0]) 
-                elif location == "forest": 
-                    print(outroMessages[1]) 
-                elif location == "old bridge":
-                    print(outroMessages[2])
+            else: # damage == 1
+                break
         if playerHealth <= 0: 
             end()
             return
@@ -164,14 +145,14 @@ def castleEntrance():
 an old 'stable', or a strangely shaped 'tree'. Where do you look? ")
         if whereTolook == "stable":
             print("You enter the dusty and decrepit stable, where you make a mental note of how rotten the wooden interior looks from the several \
-    years of neglect. Fortunately, a piece of wood that isn't entirely ruined juts out of the wall, and you decide that this will suffice as \
-    a lever. You grab the stick, and exit the stable.")
+years of neglect. Fortunately, a piece of wood that isn't entirely ruined juts out of the wall, and you decide that this will suffice as \
+a lever. You grab the stick, and exit the stable.")
             stick = True
             stable = True
         elif whereTolook == "shed":
             print("You enter the small shed, and laugh to yourself as you observe just how little gardening tools and other trinkets typically \
-    found in a shed are actually present. One thing that isn't present, however, is the placeholder, or even something that could pass for one. \
-    Saddened by this, you leave the shed.")
+found in a shed are actually present. One thing that isn't present, however, is the placeholder, or even something that could pass for one. \
+Saddened by this, you leave the shed.")
             shed = True
         elif whereTolook == "tree":
             print("After having a previous encounter when it comes to sticking your hand inside trees, you hesitate before blindly \
@@ -277,7 +258,17 @@ you must alternate between 'guh', 'gurr', and 'rawr'.")
     if tryAvoid == "avoid":
         print("You decide that your rest is more important than something that almost certainly seems as if it could be useful to you, \
 and go to sleep restlessly on the cold hard floor.")
-###ADD A WEAPON THAT IS ONLY ATTAINABLE IF A CONDITION IS MET AND UNAVAILABLE OTHERWISE
+def home():
+    global homeChosen
+    if homeChosen == False:
+        tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+        while tavernInncottage != "tavern" and tavernInncottage != "cottage" and tavernInncottage != "inn":
+            tavernInncottage = input("That won't work this time! Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+    homeChosen = True
+    return tavernInncottage
+# def comingHome():
+#     print("You return to the",x)
+# comingHome()
 introMessages = ["As you walk past the village tavern, a drunken ogre unfortunately \
 mistakes you for the same villager that stole his favorite gold coin, \
 and pulls out his rusty dagger to take it back.", "After walking through the forest some more, you come across a \
@@ -306,13 +297,14 @@ You regain your composure, and proceed to start walking along the path again."]
 #Variables
 #Variables
 global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
-location
+location, homeChosen
 restart = True
 
 def main():
     global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
-    location
+    location, homeChosen
     restart = False
+    homeChosen = False
     goblin = 75
     ogre = 100
     troll = 125
@@ -498,7 +490,7 @@ to manifest itself into reality... Anyway, you decide if you should give the tro
         if bargainFight == "give":
             print("You quickly give the troll the potion, and she monstrously consumes its contents before proceeding to burp in your \
 face with a satisfied grin on her face. 'WOW! I don't know what kind of stuff was in that, but I think I'm gonna take a nap for a little bit. \
-DON'T GO ANYWHERE HUMAN, or els-', is all the troll can say before the potion's effects fully take place, and she falls onto the bridge and starts snoring loudly.")
+DON'T GO ANYWHERE HUMAN, or els-', is all the troll can say before the potion's effects fully take place, and she falls onto the bridge and starts snoring loudly.'")
             emptyStr, strings = stringWord(emptyStr)
             stayGo = input("Maybe it's because you felt bad for disrespecting the troll's bridge, or more likely because you're crazy, but you \
 you hesitate before going and wonder whether or not you should 'stay' and see what the troll wants from you, or 'go' because the princess stuck in an \
@@ -559,7 +551,12 @@ instead of being one small keep, the castle actually houses a considerably sized
 Luckily, you find a map taped to a community board that gives the location of 3 places you deem could function as temporary homes: \n\
 an inn, a two-person cottage in need of one more roommate, and a tavern with rooms to rent. Fortunately, your pickpocketing skills have empowered \
 you with the ability to easily pay for all three.")
-    tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
-    while tavernInncottage != "tavern" and tavernInncottage != 
+    x = home()   
+    print("You choose to make the ",x,"your new home.")
+    if x == "cottage":
+        print("Knocking on the door of the cottage, you take a minute to observe that everyone has been avoiding you with intense dedication, \
+which deeply concerns you. The door then opens, and for the first time since you step foot in this strange place, a friendly face seems eager to see you. \n\
+'Hello there, sir', a woman with a strikingly beautiful appearance says earnestly. You both exchange pleasantries, and the lady, whose name is discovered to be \
+Olivia, shows you to your room, and you get settled into your new living situation. While having dinner, you find out that Olivia is a widow ")
 while restart:
     main()
