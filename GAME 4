@@ -7,20 +7,20 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
-There's issues, and they're commented at their respective locations:((((((
-    def home(tavernInnCottage):
-        #tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
-    while tavernInncottage != "tavern" and tavernInncottage != "cottage" and tavernInncottage != "inn":
-        tavernInncottage = input("That won't work this time! Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+global homeChosen
+homeChosen = False
+def home():
+    if homeChosen == False:
+        tavernInncottage = input("Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+        while tavernInncottage != "tavern" and tavernInncottage != "cottage" and tavernInncottage != "inn":
+            tavernInncottage = input("That won't work this time! Do you make the 'tavern', 'cottage', or 'inn' your new home? ")
+    homeChosen = True
     return tavernInncottage
-
-def test():
-    print("you return to", home())
-    
-x = home('innasdf')   
+x = home()   
 print("You make the " + x + " your home.")
-
-test(x)
+def comingHome():
+    print("You return to the ", x)
+comingHome()
 """ 
 """ 
 IDEAS-  
