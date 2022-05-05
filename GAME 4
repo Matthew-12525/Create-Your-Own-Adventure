@@ -7,6 +7,12 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
+library = []
+library.append(["'WEB OF CHARLOTTE'S'","INsIDe THE wATer, CHARLOTTE SEARCHED FOR WILBUR."])
+library.append(["'THE GODDESS OF THE NECKLACES'", "FRODO lookED At The EYE OF SAUrON INSANeLY."])
+library.append(["'FURRY PLANTER'", "hARRY urGENTLY NEEDED TO GET TO THE BrEWERy BEFORE LORD VOLDEMORT."])
+library.append(["'OUT OF THE CITY'", "CHRIS MCCANDLESS ATE POISONOUS FOOD, WHICH WAS BAD."])
+library.append(["'THE DELIGHT'", "JOHN PROCTOR GOT ARRESTED FOR BEING ASSOCIATED WITH THE DEVIL."])
 """ 
 """ 
 IDEAS-  
@@ -76,10 +82,11 @@ def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):
             end()
             return
         if spareEn == True and enemy <= 0:
-            spareKill = input("Do you spare or kill the mutant? ")
+            spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
             if spareKill == "spare":
-                print("You let the mutant go.")
+                print("You let the mutant go, and it shambles off into the early morning darkness.")
                 emptyStr, strings = stringWord(emptyStr)
+                #STILL READS DEATH MESSAGE!!!
             elif spareKill == "kill":
                 print("You end the mutant.")
                 return allIn
