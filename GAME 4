@@ -13,6 +13,27 @@ library.append(["'THE GODDESS OF THE NECKLACES'", "FRODO lookED At The EYE OF SA
 library.append(["'FURRY PLANTER'", "hARRY urGENTLY NEEDED TO GET TO THE BrEWERy BEFORE LORD VOLDEMORT."])
 library.append(["'OUT OF THE CITY'", "CHRIS MCCANDLESS ATE POISONOUS FOOD, WHICH WAS BAD."])
 library.append(["'THE DELIGHT'", "JOHN PROCTOR GOT ARRESTED FOR BEING ASSOCIATED WITH THE DEVIL."])
+for page in library:
+    finalCode = []
+    nextPage = False
+    while not nextPage:
+        for verse in page:
+            nextVerse = False
+            for letter in verse:
+                if letter.islower():
+                    finalCode.append(letter)
+            print(verse)
+            while not nextVerse:
+                next = input("Next verse or enter code: ")
+                if next == "yes":
+                    nextVerse = True
+        code = input("Next verse: ")
+        if list(code) == finalCode:
+            print("Hello")
+            nextPage = True
+            continue
+        if code == "go back to page":
+            continue
 """ 
 """ 
 IDEAS-  
