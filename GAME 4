@@ -11,29 +11,46 @@ library = []
 library.append(["'WEB OF CHARLOTTE'S'","INsIDe THE wATer, CHARLOTTE SEARCHED FOR WILBUR."])
 library.append(["'THE GODDESS OF THE NECKLACES'", "FRODO lookED At The EYE OF SAUrON INSANeLY."])
 library.append(["'FURRY PLANTER'", "hARRY urGENTLY NEEDED TO GET TO THE BrEWERy BEFORE LORD VOLDEMORT."])
-library.append(["'OUT OF THE CITY'", "CHRIS MCCANDLESS ATE POISONOUS FOOD, WHICH WAS BAD."])
-library.append(["'THE DELIGHT'", "JOHN PROCTOR GOT ARRESTED FOR BEING ASSOCIATED WITH THE DEVIL."])
 for page in library:
     finalCode = []
     nextPage = False
+    for verse in page:
+        for letter in verse:
+            if letter.islower():
+                finalCode.append(letter)
     while not nextPage:
+        enteredCode = True
+        userEnterCode = False
         for verse in page:
             nextVerse = False
-            for letter in verse:
-                if letter.islower():
-                    finalCode.append(letter)
             print(verse)
             while not nextVerse:
-                next = input("Next verse or enter code: ")
-                if next == "yes":
+                next = input("Do you want to go to the 'next' verse or 'enter' the code or go 'back' to the original page: ")
+                while next != "next" and next != "enter" and next != "back":
+                    next = input("That won't work this time! Do you want to go to the 'next' verse or 'enter' the code or go 'back' to the original page: ")
+                if next == "next":
                     nextVerse = True
-        code = input("Next verse: ")
-        if list(code) == finalCode:
-            print("Hello")
-            nextPage = True
-            continue
-        if code == "go back to page":
-            continue
+                elif next == "enter":
+                    userEnterCode = True
+                    enteredCode = False
+                    break
+                elif next == "back":
+                    userEnterCode = True
+                    enteredCode = True
+                    break
+            if userEnterCode == True:
+                break
+        
+        while enteredCode == False:
+            code = input("Enter: ")  
+            if list(code) == finalCode:
+                enteredCode = True
+                print("You got it!")
+                nextPage = True
+                continue
+            elif code == "go back to page":
+                enteredCode = True
+                continue
 """ 
 """ 
 IDEAS-  
