@@ -7,50 +7,10 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
-library = []
-library.append(["'WEB OF CHARLOTTE'S'","INsIDe THE wATer, CHARLOTTE SEARCHED FOR WILBUR."])
-library.append(["'THE GODDESS OF THE NECKLACES'", "FRODO lookED At The EYE OF SAUrON INSANeLY."])
-library.append(["'FURRY PLANTER'", "hARRY urGENTLY NEEDED TO GET TO THE BrEWERy BEFORE LORD VOLDEMORT."])
-for page in library:
-    finalCode = []
-    nextPage = False
-    for verse in page:
-        for letter in verse:
-            if letter.islower():
-                finalCode.append(letter)
-    while not nextPage:
-        enteredCode = True
-        userEnterCode = False
-        for verse in page:
-            nextVerse = False
-            print(verse)
-            while not nextVerse:
-                next = input("Do you want to go to the 'next' verse or 'enter' the code or go 'back' to the original page: ")
-                while next != "next" and next != "enter" and next != "back":
-                    next = input("That won't work this time! Do you want to go to the 'next' verse or 'enter' the code or go 'back' to the original page: ")
-                if next == "next":
-                    nextVerse = True
-                elif next == "enter":
-                    userEnterCode = True
-                    enteredCode = False
-                    break
-                elif next == "back":
-                    userEnterCode = True
-                    enteredCode = True
-                    break
-            if userEnterCode == True:
-                break
-        
-        while enteredCode == False:
-            code = input("Enter: ")  
-            if list(code) == finalCode:
-                enteredCode = True
-                print("You got it!")
-                nextPage = True
-                continue
-            elif code == "go back to page":
-                enteredCode = True
-                continue
+#DOESN'T PRINT THE 5TH STRING LETTER IF PLAYER IS GOING PACIFIST ROUTE!!!
+#DEFINITELY AN ISSUE BECAUSE OF THE MUTANT FIGHT SEQUENCE FUNCTION THING!!!
+^^
+THESE COMMENTS ARE LOCATED IN THE "rat" FIGHT SEQUENCE
 """ 
 """ 
 IDEAS-  
@@ -61,6 +21,7 @@ The word will be STRING, and the possibility to get the extra health will come r
 """ 
 #End of notes.
 #End of notes. 
+from cProfile import run #<--- WHAT ARE THESE FROM?!?!?!
 import random
 #Functions
 #Functions
@@ -85,7 +46,58 @@ def end():
     enter = input("Press 'enter' on your keyboard to start a new game:)") 
     global restart
     restart = True
-
+def codeFind():
+    print("After your fight with the mutant, you realize how dire the situation is, and sit on a bench to think about your next move \n\
+very carefully. All this worry has got you very stressed out, so to alleviate that, you make a stop by the local library to pick up a good read. \n\
+Inside the library, you find that only three books are available to be checked out. While grabbing the books, a letter falls out, which reads as follows: \n\
+'In order to infiltrate Joshro's fortress, you must find the secret code inscribed within the following texts. Good luck, brave traveller!' \n\
+Revived by this sudden revelation that could help you save Misty, you get comfortable and start sifting through the books to find what you need.")
+    print(" ")
+    library = []
+    library.append(["'WEB OF CHARLOTTE'S'","INsIDe THE wATer, CHARLOTTE SEARCHED FOR WILBUR."])
+    library.append(["'THE GODDESS OF THE NECKLACES'", "FRODO lookED At The EYE OF SAUrON INSANeLY."])
+    library.append(["'FURRY PLANTER'", "hARRY urGENTLY NEEDED TO GET TO THE BrEWERy BEFORE LORD VOLDEMORT."])
+    for page in library:
+        finalCode = []
+        nextPage = False
+        for verse in page:
+            for letter in verse:
+                if letter.islower():
+                    finalCode.append(letter)
+        while not nextPage:
+            enteredCode = True
+            userEnterCode = False
+            for verse in page:
+                nextVerse = False
+                print(verse)
+                while not nextVerse:
+                    next = input("Do you want to go to the 'next' verse or 'enter' the code or go 'back' to the original page: ")
+                    while next != "next" and next != "enter" and next != "back":
+                        next = input("That won't work this time! Do you want to go to the 'next' verse or 'enter' the code or go 'back' to the original page: ")
+                    if next == "next":
+                        nextVerse = True
+                    elif next == "enter":
+                        userEnterCode = True
+                        enteredCode = False
+                        break
+                    elif next == "back":
+                        userEnterCode = True
+                        enteredCode = True
+                        break
+                if userEnterCode == True:
+                    break
+            while enteredCode == False:
+                code = input("Enter (or type 'go back to page' if you need to check again): ")  
+                if list(code) == finalCode:
+                    enteredCode = True
+                    print("You got it!")
+                    nextPage = True
+                    continue
+                elif code == "go back to page":
+                    enteredCode = True
+                    continue
+    print("You piece the code together, and find that the completed code is 'sewer look there hurry'. You exit the library, and hurry off \n\
+to the local sewer entrance to search for the secret entrance to the fortress where Misty is held.")
 def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):       
     while enemy > 0 and playerHealth > 0: 
         print(enemy, "Enemy's health: ") 
@@ -99,10 +111,10 @@ def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):
             while prompt != "hit" and prompt != "dodge" and prompt != "all in":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or go 'all in'? ")
         if prompt == "hit": 
-            enemyDamage = random.randint(0,5) 
+            enemyDamage = random.randint(5,10) #CHANGE SOON
             enemy -= enemyDamage * weaponStrength 
             print("You hit the enemy and they took " + str(enemyDamage * weaponStrength) + " damage!") 
-            playerDamage = random.randint(10,20) 
+            playerDamage = random.randint(10,20)
             playerHealth -= playerDamage 
             print("The enemy hit you and you took " + str(playerDamage) + " damage!") 
         elif prompt == "dodge": 
@@ -115,6 +127,27 @@ def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):
                 end() 
                 return
             else: # damage == 1
+                if location == "village": 
+                    print(outroMessages[0]) 
+                elif location == "forest": 
+                    print(outroMessages[1]) 
+                elif location == "old bridge":
+                    print(outroMessages[2])
+                elif location == "sewers":
+                    print(outroMessages[3])
+                elif location == "random street":
+                    if spareEn == True:
+                        spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
+                        if spareKill == "spare":
+                            print("You let the mutant go, and it shambles off into the early morning darkness.")
+                            emptyStr, strings = stringWord(emptyStr)
+                            break
+                        elif spareKill == "kill":
+                            print("You end the mutant.")
+                            print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
+Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
+but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
+                            return allIn        
                 break
         if playerHealth <= 0: 
             end()
@@ -124,19 +157,22 @@ def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):
             if spareKill == "spare":
                 print("You let the mutant go, and it shambles off into the early morning darkness.")
                 emptyStr, strings = stringWord(emptyStr)
-                #STILL READS DEATH MESSAGE!!!
+                break
             elif spareKill == "kill":
                 print("You end the mutant.")
+                print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
+Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
+but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
                 return allIn
-
-    if location == "village": 
-        print(outroMessages[0]) 
-    elif location == "forest": 
-        print(outroMessages[1]) 
-    elif location == "old bridge":
-        print(outroMessages[2])
-    else:
-        print(outroMessages[3])
+        if enemy <= 0:
+            if location == "village": 
+                print(outroMessages[0]) 
+            elif location == "forest": 
+                print(outroMessages[1]) 
+            elif location == "old bridge":
+                print(outroMessages[2])
+            elif location == "sewers":
+                print(outroMessages[3])
 def deadlyTreasure(playerHealth): 
     print("While walking through the forest, you come across a golden box \n\
 that shimmers in the sunlight. A key lays inside the tree next to the box, \n\
@@ -205,7 +241,7 @@ an old 'stable', or a strangely shaped 'tree'. Where do you look? ")
         if whereTolook == "stable":
             print("You enter the dusty and decrepit stable, where you make a mental note of how rotten the wooden interior looks from the several \n\
 years of neglect. Fortunately, a piece of wood that isn't entirely ruined juts out of the wall, and you decide that this will suffice as \n\
-a lever. You grab the stick, and exit the stable.")
+a lever. You grab the STICK, and exit the stable.")
             stick = True
             stable = True
         elif whereTolook == "shed":
@@ -215,8 +251,8 @@ Saddened by this, you leave the shed.")
             shed = True
         elif whereTolook == "tree":
             print("After having a previous encounter when it comes to sticking your hand inside trees, you hesitate before blindly \n\
-shoving your hand inside the dark crevice, and your hand connects with something cold- the placeholder! You don't test your luck any further \n\
-and exit the hole, placeholder in hand.")
+shoving your hand inside the dark crevice, and your hand connects with something cold- the PLACEHOLDER! You don't test your luck any further \n\
+and exit the hole, PLACEHOLDER in hand.")
             placeholder = True
             tree = True
     print("Using your knowledge as the village carpenter, you combine these two objects into a functional lever, and place it in the appropriate location \n\
@@ -344,31 +380,33 @@ and voice your distaste of the structure. As you do this, a rumbling can be hear
 a gross troll appears in front of you, and you're able to notice that she did NOT approve of your comment, and lets you know just as much.", \
 "After going through a whopping SEVEN possibly deadly levels, you've finally reached the castle, well, correction- castle entrance. The gate is \
 still intact, although the lever used to open the hefty doors is of course missing, so you begin to look around for a solution to this most \
-coincidental of situations."] 
+coincidental of situations.", "Finding the sewers was easy, but actually navigating through the dense masses of questionable matter proves difficult. As you see a shimmer of light at the end of the tunnel, something large and hairy \n\
+brushes past your leg, and as you question what exactly that could've been, a freakishly large mutated rat jumps out of the water and tries to lunge at you, \n\
+but thankfully misses, and you retrieve your weapon from its holster and get ready to battle this rage-filled rodent."] 
 outroMessages = ["The ogre stumbles to the ground, but before you can search him \
 for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
 as you collect your items and continue towards the castle.", "The troll becomes motionless, and after you poke it with your weapon to see if she's still alive, \
 gravity finally takes effect, and the troll falls over the side of the bridge into the murky depths below, creating such a splash that the water soaks your hair. \
-You regain your composure, and proceed to start walking along the path again.", "The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \
-Death is something you've gotten used to after all of the previous fights you've been in, but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers."] 
+You regain your composure, and proceed to start walking along the path again.", "You slay the horrid creature, and continue walking towards the light."] 
 #GAME BEGINS AFTER HERE
 #GAME BEGINS AFTER HERE
 #Variables
 #Variables
-global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
+global goblin, ogre, troll, rat, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
 location, homeChosen
 restart = True
 
 def main():
-    global goblin, ogre, troll, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
+    global goblin, ogre, troll, rat, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
     location, homeChosen
     restart = False
     homeChosen = False
-    goblin = 75
-    ogre = 100
-    troll = 125
+    goblin = random.randint(60,90)
+    ogre = random.randint(85,115)
+    troll = random.randint(100,125)
     mutant = 120
+    rat = random.randint(90,110)
     playerHealth = 100 
     allIn = False 
     potionTroll = False
@@ -562,7 +600,7 @@ to manifest itself into reality... Anyway, you decide if you should give the tro
         if bargainFight == "give":
             print("You quickly give the troll the potion, and she monstrously consumes its contents before proceeding to burp in your \n\
 face with a satisfied grin on her face. 'WOW! I don't know what kind of stuff was in that, but I think I'm gonna take a nap for a little bit. \n\
-DON'T GO ANYWHERE HUMAN, or els-', is all the troll can say before the potion's effects fully take place, and she falls onto the bridge and starts snoring loudly.'")
+DON'T GO ANYWHERE HUMAN, OR ELS-', is all the troll can say before the potion's effects fully take place, and she falls onto the bridge and starts snoring loudly.'")
             emptyStr, strings = stringWord(emptyStr)
             stayGo = input("Maybe it's because you felt bad for disrespecting the troll's bridge, or more likely because you're crazy, but you \n\
 you hesitate before going and wonder whether or not you should 'stay' and see what the troll wants from you, or 'go' because the princess stuck in an \n\
@@ -652,13 +690,71 @@ In one of the drawers, you find a damaged note that warns its readers to be wear
     elif x == "inn":
         print("Once inside the inn, you eat a hearty meal in the lobby before purchasing a room. As you walk past the many rooms, an old and disheveled man grabs you and warns you to stay weary of the \n\
 'Dragon's Devils'. You push the man off you and hurry to your room. The man's words still linger in your mind, but you shut them off and go to sleep begrudgingly.")
-    print("After leaving the",x," in the morning, you turn the corner, but come face to face with a hideously disfigured mutant that shoves you to the ground before \n\
-exclaiming:'LeAvE, RiGhT nOw.' Obviously, you don't move, and the mutant spits on the ground before raising his axe to finish the job, but you quickly \n\
-dodge the attack and ready your weapon in retaliation.")
-    location = "castle"
-    allIn = fightSequence(mutant, playerHealth, location, True, emptyStr)
     print(" ")
     print("++++++++++++++++")
     print(" ")
+    print("After leaving the",x," in the morning, you turn the corner, but come face to face with a hideously disfigured mutant that shoves you to the ground before \n\
+exclaiming:'LeAvE, RiGhT nOw.' Obviously, you don't move, and the mutant spits on the ground before raising his axe to finish the job, but you quickly \n\
+dodge the attack and ready your weapon in retaliation.")
+    location = "random street"
+    allIn = fightSequence(mutant, playerHealth, location, True, emptyStr)
+    if restart:
+        return
+    allIn = True
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
+    codeFind()
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
+    location = "sewers"
+    if location == "village": 
+        print(introMessages[0]) 
+    elif location == "forest": 
+        print(introMessages[1]) 
+    elif location == "river": 
+        print(introMessages[2])
+    elif location == "cave/watchtower":
+        print(introMessages[3])
+    elif location == "old bridge":
+        print(introMessages[4])
+    elif location == "castle entrance":
+        print(introMessages[5])
+    else:
+        print(introMessages[6])
+    print("Before beginning your attack on the rat, you remember that you used to take \n\
+medieval track and field at your former academy, and ponder over whether or not you should see if your skills are still in tip-top shape. \n\
+The little voice in your head warns you, though, that if your health has not been increased \n\
+past the default 100 value, you might not be able to outrun the rambunctious rodent after all.")
+    outrunFight = input("Do you 'fight' or 'outrun' the rat? ")
+    while outrunFight != "fight" and outrunFight != "outrun":
+        outrunFight = input("That won't work this time! Do you 'fight' or 'outrun' the rat? ")
+    if outrunFight == "fight":
+        fightSequence(rat, playerHealth, location, False, emptyStr)
+        if restart:
+            return
+        allIn = True
+    elif outrunFight == "outrun":
+        print("You decide to try your luck and athletic skills by ceasing to fight the rat and instead violently thrash through the water \n\
+to attempt to reach a safe distance.")
+        if playerHealth > 100:
+            print("You end up creating such a large distance between you and the rodent that it eventually just gives up and waddles away in the other direction.")
+            emptyStr, strings = stringWord(emptyStr)
+            #DOESN'T PRINT THE 5TH STRING LETTER IF PLAYER IS GOING PACIFIST ROUTE!!!
+            #DEFINITELY AN ISSUE BECAUSE OF THE MUTANT FIGHT SEQUENCE FUNCTION THING!!!
+        elif playerHealth <= 100:
+            fastNot = 2 #random.randint(1,2)
+            if fastNot == 1:
+                print("Despite your determination in trying to outrun the creature, it catches up to you and drags you down to the murky depths... \n\
+and you never resurface.")
+                end()
+                return
+            if fastNot == 2:
+                print("In a surprising turn of events, you manage to wade quickly enough away from the rat that it decides that you're not worth the trouble, \n\
+and waddles away in the other direction.")
+                emptyStr, strings = stringWord(emptyStr)
+                #DOESN'T PRINT THE 5TH STRING LETTER IF PLAYER IS GOING PACIFIST ROUTE!!!
+                #DEFINITELY AN ISSUE BECAUSE OF THE MUTANT FIGHT SEQUENCE FUNCTION THING!!!
 while restart:
     main()
