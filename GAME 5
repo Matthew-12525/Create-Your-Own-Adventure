@@ -169,7 +169,8 @@ def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):
                             print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
 Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
 but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
-                            return allIn        
+                            return allIn
+                        return spareKill        
                 break
         if playerHealth <= 0: 
             end()
@@ -487,7 +488,7 @@ on your feet and pull out your weapon.")
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    playerHealth = deadlyTreasure(playerHealth)
+    #playerHealth = deadlyTreasure(playerHealth)
     if restart:
         return
     print(" ")
@@ -677,7 +678,7 @@ make her even more angry, which doesn't help things in the slightest. You ready 
         print(introMessages[4])
     else:
         print(introMessages[5])
-    castleEntrance()
+    #castleEntrance()
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -719,14 +720,14 @@ In one of the drawers, you find a damaged note that warns its readers to be wear
 exclaiming:'LeAvE, RiGhT nOw.' Obviously, you don't move, and the mutant spits on the ground before raising his axe to finish the job, but you quickly \n\
 dodge the attack and ready your weapon in retaliation.")
     location = "random street"
-    allIn = fightSequence(mutant, playerHealth, location, True, emptyStr)
+    allIn, spareKill = fightSequence(mutant, playerHealth, location, True, emptyStr)
     if restart:
         return
     allIn = True
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    codeFind()
+    #codeFind()
     print(" ")
     print("++++++++++++++++")
     print(" ")
