@@ -1,0 +1,173 @@
+import random
+global goblin, ogre, troll, rat, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
+location
+restart = False
+homeChosen = False
+goblin = random.randint(60,90)
+ogre = random.randint(85,115)
+troll = random.randint(100,125)
+mutant = 120
+rat = random.randint(90,110)
+playerHealth = 100 
+allIn = False 
+potionTroll = False
+def weaponSelect(): 
+    global weaponStrength 
+    if weapon == "bow": 
+        weaponStrength = 4 
+        print("A ranged weapon. It will allow you to strike from afar, but leaves \n\
+you vulnerable up close. You take both it and a quiver full of sharp \n\
+iron arrows.") 
+    elif weapon == "axe": 
+        weaponStrength = 7
+        print("A sturdy but lightweight melee weapon. Its metal shimmers as \n\
+you pick it up.") 
+    elif weapon == "sword": 
+        weaponStrength = 10 
+        print("A longsword made out of high quality steel. Its high quality and \n\
+damage comes at the cost of using more stamina with each attack. You struggle \n\
+to put it in your holster, and the blacksmith insultingly laughs.")  
+def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):       
+    while enemy > 0 and playerHealth > 0: 
+        print(enemy, "Enemy's health: ") 
+        print(playerHealth, "Max's health: ")
+        if allIn == False:
+            prompt = input(" 'hit' or 'dodge'? ") 
+            while prompt != "hit" and prompt != "dodge":
+                prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ") 
+        elif allIn == True: 
+            prompt = input(" 'hit' or 'dodge' or 'all in'? ")
+            while prompt != "hit" and prompt != "dodge" and prompt != "all in":
+                prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or go 'all in'? ")
+        if prompt == "hit": 
+            enemyDamage = random.randint(5,10) #CHANGE SOON
+            enemy -= enemyDamage * weaponStrength 
+            print("You hit the enemy and they took " + str(enemyDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(10,20)
+            playerHealth -= playerDamage 
+            print("The enemy hit you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!") 
+        elif prompt == "all in": 
+            damage = 1 #random.randint(0,1) 
+            if damage == 0: 
+                end() 
+                return
+            else: # damage == 1
+                if location == "village": 
+                    print(outroMessages[0]) 
+                elif location == "forest": 
+                    print(outroMessages[1]) 
+                elif location == "old bridge":
+                    print(outroMessages[2])
+                elif location == "sewers":
+                    print(outroMessages[3])
+                elif location == "random street":
+                    if spareEn == True:
+                        spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
+                        if spareKill == "spare":
+                            print("You let the mutant go, and it shambles off into the early morning darkness.")
+                            emptyStr, strings = stringWord(emptyStr)
+                            break
+                        elif spareKill == "kill":
+                            print("You end the mutant.")
+                            print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
+Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
+but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
+                            return allIn, ""
+                        return False, spareKill        
+                break
+        if playerHealth <= 0: 
+            end()
+            return
+        if spareEn == True and enemy <= 0:
+            spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
+            if spareKill == "spare":
+                print("You let the mutant go, and it shambles off into the early morning darkness.")
+                emptyStr, strings = stringWord(emptyStr)
+                break
+            elif spareKill == "kill":
+                print("You end the mutant.")
+                print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
+Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
+but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
+                return allIn, ""
+            return False, spareKill
+        if enemy <= 0:
+            if location == "village": 
+                print(outroMessages[0]) 
+            elif location == "forest": 
+                print(outroMessages[1]) 
+            elif location == "old bridge":
+                print(outroMessages[2])
+            elif location == "sewers":
+                print(outroMessages[3])
+outroMessages = ["The ogre stumbles to the ground, but before you can search him \
+for anything valuable, a guard approaches from the distance, and \
+you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
+as you collect your items and continue towards the castle.", "The troll becomes motionless, and after you poke it with your weapon to see if she's still alive, \
+gravity finally takes effect, and the troll falls over the side of the bridge into the murky depths below, creating such a splash that the water soaks your hair. \
+You regain your composure, and proceed to start walking along the path again.", "You slay the horrid creature, and continue walking towards the light."] 
+def stringWord(emptyStr):
+    letter = random.choice(strings)
+    strings.remove(letter)
+    emptyStr += letter
+    print("******")
+    print(emptyStr)
+    print("******")
+    return emptyStr, strings
+def end(): 
+    print("You have been slain.") 
+    enter = input("Press 'enter' on your keyboard to start a new game:)") 
+    global restart
+    restart = True
+playerHealth = 100 
+allIn = False
+strings = ["s", "t", "r", "i", "n", "g"]
+emptyStr = "" 
+location = "village"
+fightSequence(ogre, playerHealth, location, False, emptyStr)
+location = "random street"
+    fightSequence(mutant, playerHealth, location, True, emptyStr)
+    if restart:
+        return
+    allIn = True
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
+    #codeFind()
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
+    location = "sewers"
+    outrunFight = input("Do you 'fight' or 'outrun' the rat? ")
+    while outrunFight != "fight" and outrunFight != "outrun":
+        outrunFight = input("That won't work this time! Do you 'fight' or 'outrun' the rat? ")
+    if outrunFight == "fight":
+        fightSequence(rat, playerHealth, location, False, emptyStr)
+        if restart:
+            return
+        allIn = True
+    elif outrunFight == "outrun":
+        print("You decide to try your luck and athletic skills by ceasing to fight the rat and instead violently thrash through the water \n\
+to attempt to reach a safe distance.")
+        if playerHealth > 100:
+            print("You end up creating such a large distance between you and the rodent that it eventually just gives up and waddles away in the other direction.")
+            emptyStr, strings = stringWord(emptyStr)
+            #DOESN'T PRINT THE 5TH STRING LETTER IF PLAYER IS GOING PACIFIST ROUTE!!!
+            #DEFINITELY AN ISSUE BECAUSE OF THE MUTANT FIGHT SEQUENCE FUNCTION THING!!!
+        elif playerHealth <= 100:
+            fastNot = 2 #random.randint(1,2)
+            if fastNot == 1:
+                print("Despite your determination in trying to outrun the creature, it catches up to you and drags you down to the murky depths... \n\
+and you never resurface.")
+                end()
+                return
+            if fastNot == 2:
+                print("In a surprising turn of events, you manage to wade quickly enough away from the rat that it decides that you're not worth the trouble, \n\
+and waddles away in the other direction.")
+                emptyStr, strings = stringWord(emptyStr)
+                #DOESN'T PRINT THE 5TH STRING LETTER IF PLAYER IS GOING PACIFIST ROUTE!!!
+                #DEFINITELY AN ISSUE BECAUSE OF THE MUTANT FIGHT SEQUENCE FUNCTION THING!!!
