@@ -120,7 +120,7 @@ Revived by this sudden revelation that could help you save Misty, you get comfor
                     continue
     print("You piece the code together, and find that the completed code is 'sewer look there hurry'. You exit the library, and hurry off \n\
 to the local sewer entrance to search for the secret entrance to the fortress where Misty is held.")
-def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):       
+def fightSequence(enemy, playerHealth, location, emptyStr):       
     while enemy > 0 and playerHealth > 0: 
         print(enemy, "Enemy's health: ") 
         print(playerHealth, "Max's health: ")
@@ -148,45 +148,9 @@ def fightSequence(enemy, playerHealth, location, spareEn, emptyStr):
             if damage == 0: 
                 end() 
                 return
-            else: # damage == 1
-                if location == "village": 
-                    print(outroMessages[0]) 
-                elif location == "forest": 
-                    print(outroMessages[1]) 
-                elif location == "old bridge":
-                    print(outroMessages[2])
-                elif location == "sewers":
-                    print(outroMessages[3])
-                elif location == "random street":
-                    if spareEn == True:
-                        spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
-                        if spareKill == "spare":
-                            print("You let the mutant go, and it shambles off into the early morning darkness.")
-                            emptyStr, strings = stringWord(emptyStr)
-                            break
-                        elif spareKill == "kill":
-                            print("You end the mutant.")
-                            print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
-Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
-but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
-                            return allIn
-                        return spareKill        
-                break
         if playerHealth <= 0: 
             end()
             return
-        if spareEn == True and enemy <= 0:
-            spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
-            if spareKill == "spare":
-                print("You let the mutant go, and it shambles off into the early morning darkness.")
-                emptyStr, strings = stringWord(emptyStr)
-                break
-            elif spareKill == "kill":
-                print("You end the mutant.")
-                print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
-Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
-but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
-                return allIn
         if enemy <= 0:
             if location == "village": 
                 print(outroMessages[0]) 
@@ -459,7 +423,7 @@ on your journey.")
     while fightRun != "fight" and fightRun != "run":
         fightRun = input("That won't work this time! Do you want to 'fight' or 'run' away from the ogre? ") 
     if fightRun == "fight": 
-        fightSequence(ogre, playerHealth, location, False, emptyStr) 
+        fightSequence(ogre, playerHealth, location, emptyStr) 
         if restart:
             return
         allIn = True 
@@ -481,7 +445,7 @@ to the village exit.")
             print("The ogre becomes enraged and slams you on the ground, howling \n\
 like a dog as he searches himself for the dagger he carries. You get back \n\
 on your feet and pull out your weapon.") 
-            fightSequence(ogre, playerHealth, location, False, emptyStr)
+            fightSequence(ogre, playerHealth, location, emptyStr)
             if restart:
                 return
             allIn = True
@@ -503,7 +467,7 @@ on your feet and pull out your weapon.")
     while fightPersuade != "fight" and fightPersuade != "persuade":
         fightPersuade = input("That won't work this time! Do you want to 'fight' or 'persuade' the goblin? ")
     if fightPersuade == "fight":
-        fightSequence(goblin, playerHealth, location, False, emptyStr)
+        fightSequence(goblin, playerHealth, location, emptyStr)
         if restart:
             return
         allIn = True 
@@ -530,7 +494,7 @@ back after you finish your quest to come work for him to pay off your debt. You 
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
                 weaponStrength = int(weaponStrength/2)
                 playerHealth = int(playerHealth/2)
-                fightSequence(goblin, playerHealth, location, False, emptyStr)
+                fightSequence(goblin, playerHealth, location, emptyStr)
                 allIn = True
         elif parkour == "vault":
             weakStrong = random.randint(0,1)
@@ -557,7 +521,7 @@ back after you finish your quest to come work for him to pay off your debt. You 
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
                     weaponStrength = int(weaponStrength/2)
                     playerHealth = int(playerHealth/2)
-                    fightSequence(goblin, playerHealth, location, False, emptyStr)
+                    fightSequence(goblin, playerHealth, location, emptyStr)
                     if restart:
                         return
                     allIn = True
@@ -646,7 +610,7 @@ quietly to continue your journey.")
 you disrespect my bridge, and then you don't even give me something for my dehydration! This won't do! I'm going to have to teach you a lesson in manners!")
             print("Quickly, you ask if there's a riddle you can try to solve in order to avoid a fight, but the troll's mind is already made up, and in fact this seems to \n\
 make her even more angry, which doesn't help things in the slightest. You ready your weapon and prepare to fight the burly creature.")
-            fightSequence(troll, playerHealth, location, False, emptyStr)
+            fightSequence(troll, playerHealth, location, emptyStr)
             if restart:
                 return
             allIn = True
@@ -658,7 +622,7 @@ you blank out, and the troll notices this. 'WOW! So first you disrespect my brid
 This won't do! I'm going to have to teach you a lesson in manners!")
         print("Quickly, you ask if there's a riddle you can try to solve in order to avoid a fight, but the troll's mind is already made up, and in fact this seems to \n\
 make her even more angry, which doesn't help things in the slightest. You ready your weapon and prepare to fight the burly creature.")
-        fightSequence(troll, playerHealth, location, False, emptyStr)
+        fightSequence(troll, playerHealth, location, emptyStr)
         if restart:
             return
         allIn = True
@@ -720,7 +684,11 @@ In one of the drawers, you find a damaged note that warns its readers to be wear
 exclaiming:'LeAvE, RiGhT nOw.' Obviously, you don't move, and the mutant spits on the ground before raising his axe to finish the job, but you quickly \n\
 dodge the attack and ready your weapon in retaliation.")
     location = "random street"
-    allIn, spareKill = fightSequence(mutant, playerHealth, location, True, emptyStr)
+    fightSequence(mutant, playerHealth, location, emptyStr)
+    spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
+    if spareKill == "spare":
+        print("You let the mutant go, and it shambles off into the early morning darkness.")
+        emptyStr, strings = stringWord(emptyStr)
     if restart:
         return
     allIn = True
@@ -754,7 +722,7 @@ past the default 100 value, you might not be able to outrun the rambunctious rod
     while outrunFight != "fight" and outrunFight != "outrun":
         outrunFight = input("That won't work this time! Do you 'fight' or 'outrun' the rat? ")
     if outrunFight == "fight":
-        fightSequence(rat, playerHealth, location, False, emptyStr)
+        fightSequence(rat, playerHealth, location, emptyStr)
         if restart:
             return
         allIn = True
