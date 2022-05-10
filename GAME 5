@@ -14,31 +14,36 @@ THESE COMMENTS ARE LOCATED IN THE "rat" FIGHT SEQUENCE
 """ 
 """ 
 IDEAS-  
-#!!!ENDING ONE!!!(Lines 177, 199)
-I want to take advantage of strings and their various uses to make a guessing game that rewards the player with +50 playerHealth if they get it right. \
-I'll print one letter of the mystery word at the end of every pacifist option(ex: avoiding the fight with the ogre, working for the goblin, etc.) \
-The word will be STRING, and the possibility to get the extra health will come right before the boss fight:)
-###################################################
 #Only a few issues with this code:
 #I need to make it so that the user can only enter numbers that are at most 1/4 of the randomly chosen number, \
 # and if the number is higher or is zero or is not a number at all, tell them to enter an acceptable number.
 #Also need to make it so that the integer chosen can be cleanly divided into something that won't turn into a float or require decimals.
 #Maybe a list of "divisible by 4" integers up until a maximum amount (40 or 100 maybe?) that's randomly chosen at the start to be the special number.
 import random
+divByfour = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60]
 def randomNumtosolve(number):
     print(number)
     playerNum = 0
     while playerNum < number:
-        numberGiven = int(input("Choose a number that is at most 1/4 \n\
-of what the number to solve is (keep in mind you'll have to add more numbers to this one): "))
+        inputString = input("Choose a number that is at most 1/4 \n\
+of what the number to solve is (keep in mind you'll have to add more numbers to this one): ")
+        if inputString.isnumeric():    
+            numberGiven = int(inputString)
+        else:
+            continue
+        while numberGiven >= number/4:
+            numberGiven = int(input("That won't work this time! Choose a number that is at most 1/4 \n\
+    of what the number to solve is (keep in mind you'll have to add more numbers to this one): "))
         playerNum += numberGiven
         print(playerNum)
         if playerNum > number:
             print("You went over the number, and have to start over!")
+            number = random.choice(divByfour)
+            print(number)
             playerNum = 0
     if playerNum == number:
         print("You did it! Good job!")
-randomNumtosolve(random.randint(4,40))
+randomNumtosolve(random.choice(divByfour))
 ###################################################
 """ 
 #End of notes.
@@ -689,6 +694,12 @@ dodge the attack and ready your weapon in retaliation.")
     if spareKill == "spare":
         print("You let the mutant go, and it shambles off into the early morning darkness.")
         emptyStr, strings = stringWord(emptyStr)
+    elif spareKill == "kill":
+        print("You end the mutant.")
+        print("The mutant shrivels up, and you jump back in horror as the supernatural occurrence unfolds in front of your eyes. \n\
+Death is something you've sort of gotten used to after all of the previous fights you've been in, \n\
+but this definitely takes the cake. You dust yourself off, and resume walking around the town in search of answers.")
+        allIn = True
     if restart:
         return
     allIn = True
@@ -745,7 +756,5 @@ and you never resurface.")
                 print("In a surprising turn of events, you manage to wade quickly enough away from the rat that it decides that you're not worth the trouble, \n\
 and waddles away in the other direction.")
                 emptyStr, strings = stringWord(emptyStr)
-                #DOESN'T PRINT THE 5TH STRING LETTER IF PLAYER IS GOING PACIFIST ROUTE!!!
-                #DEFINITELY AN ISSUE BECAUSE OF THE MUTANT FIGHT SEQUENCE FUNCTION THING!!!
 while restart:
     main()
