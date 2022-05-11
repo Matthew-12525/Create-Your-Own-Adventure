@@ -143,6 +143,8 @@ def fightSequence(enemy, playerHealth, location, emptyStr):
             if damage == 0: 
                 end() 
                 return
+            else:
+                enemy = 0 #TEST THIS OUT
         if playerHealth <= 0: 
             end()
             return
