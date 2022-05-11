@@ -98,14 +98,14 @@ def randomNumtosolve(number):
     playerNum = 0
     while playerNum < number:
         inputString = input("Choose a number that is less than 1/4 \n\
-of what the number to solve is (keep in mind you'll have to add more numbers to this one): ")
+of what the number is, and try to add up to the sum of it (keep in mind you'll have to add more numbers to this one): ")
         if inputString.isnumeric():    
             numberGiven = int(inputString)
         else:
             continue
         while numberGiven >= number/4:
             numberGiven = int(input("That won't work this time! Choose a number that is less than 1/4 \n\
-    of what the number to solve is (keep in mind you'll have to add more numbers to this one): "))
+    of what the number is, and try to add up to the sum of it (keep in mind you'll have to add more numbers to this one): "))
         playerNum += numberGiven
         print(playerNum)
         if playerNum > number:
@@ -298,7 +298,7 @@ def swordPull():
             userGrunt = []
             gruntCount += 1
             if correct == False:
-                break
+                break       
             if gruntCount == 6:
                 exercise = False
                 break
@@ -313,6 +313,7 @@ def swordPull():
                     print("You strain your back and have to start over!")
                     gruntCount = 0
                     break
+            print("The sword wiggles slightly out of place, and you continue trying.")
     print("Huzzah! The sword finally nudges out of its nested position, and you bask in its strangely magical glory. 'The Python' is \n\
 engraved on the side of the blade, and you deduce that this is the name of the sword.")
     print("Attached to the handle of the blade is a leaflet that reveals why 'The Python' feels so powerful: 'The blade decides \n\
@@ -763,6 +764,5 @@ and continue on your way to the armory.")
     print(" ")
     print("++++++++++++++++")
     print(" ")
-
 while restart:
     main()
