@@ -210,7 +210,116 @@ you hear a loud roar from behind you, and turn to find a scaly creature that tow
 LEAVE NOW AND I WON'T BURN YOU, OR STAY AND END UP BECOMING A MEDIUM-RARE STEAK FOR MY MUTANT MINIONS.' Because you're a stereotypical hero that won't play it safe and leave while your \n\
 body is still at room temperature, you shake your head in disagreement, and get ready to have the fight that will determine whether all of your rigorous typing was worth it...")
     #Have different body parts that Max has to target (the legs, arms, and then finally the killing blow)
-    #CONTINUE HERE!!!! YOU'RE ALMOST DONE MATTHEW YOU GOT THIS!!!! DON'T LET ADHD SCREW YOU OVER!!!!
+    rLeg = 50
+    lLeg = 50
+    rArm = 50
+    lArm = 50
+    finalBlow = 100
+    while rLeg > 0 and playerHealth > 0:
+        print(rLeg, "Joshro's right leg's health: ") 
+        print(playerHealth, "Max's health: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            rLegDamage = random.randint(5,10) #CHANGE SOON
+            rLeg -= rLegDamage * weaponStrength 
+            print("You hit his right leg and it took " + str(rLegDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(0,5)
+            playerHealth -= playerDamage 
+            print("Joshro razed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    while lLeg > 0 and playerHealth > 0:
+        print(lLeg, "Joshro's left leg's health: ") 
+        print(playerHealth, "Max's health: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            lLegDamage = random.randint(5,10) #CHANGE SOON
+            lLeg -= lLegDamage * weaponStrength 
+            print("You hit his left leg and it took " + str(lLegDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(0,10)
+            playerHealth -= playerDamage 
+            print("Joshro crushed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    while rArm > 0 and playerHealth > 0:
+        print(rArm, "Joshro's right arm's health: ") 
+        print(playerHealth, "Max's health: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            rArmDamage = random.randint(5,10) #CHANGE SOON
+            rArm -= rArmDamage * weaponStrength 
+            print("You hit his right arm and it took " + str(rArmDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(0,15)
+            playerHealth -= playerDamage 
+            print("Joshro slashed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    while lArm > 0 and playerHealth > 0:
+        print(lArm, "Joshro's left arm's health: ") 
+        print(playerHealth, "Max's health: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            lArmDamage = random.randint(5,10) #CHANGE SOON
+            lArm -= lArmDamage * weaponStrength 
+            print("You hit his right arm and it took " + str(lArmDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(0,20)
+            playerHealth -= playerDamage 
+            print("Joshro slammed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    print("You've weakened Joshro severely, but the fight isn't over yet! You need to attack him directly and land the final blow \n\
+so that Joshro's reign of terror can end once and for all...")
+    while finalBlow > 0 and playerHealth > 0:
+        print(finalBlow, "Joshro's health: ") 
+        print(playerHealth, "Max's health: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            finalBlowDamage = random.randint(5,10) #CHANGE SOON
+            finalBlow -= finalBlowDamage * weaponStrength 
+            print("You hit Joshro and he took " + str(finalBlowDamage * weaponStrength) + " damage!") 
+            playerDamage = random.randint(10,20)
+            playerHealth -= playerDamage 
+            print("Joshro set you on fire and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    print("With a thunderous crash, Joshro falls lifeless to the ground with an intense thump. Misty, overjoyed that she's finally been saved, \n\
+falls into your arms, and you sit on the ground to take a breather. \n\
+You did it! You slayed the dragon and saved the girl, but there are still things you must take care of...")
 def deadlyTreasure(playerHealth): 
     print("While walking through the forest, you come across a golden box \n\
 that shimmers in the sunlight. A key lays inside the tree next to the box, \n\
@@ -523,7 +632,7 @@ on your feet and pull out your weapon.")
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    #playerHealth = deadlyTreasure(playerHealth)
+    playerHealth = deadlyTreasure(playerHealth)
     if restart:
         return
     print(" ")
@@ -903,5 +1012,6 @@ You scoff at this remark, but before you can do anything about it, the sorcerer 
     print(" ")
     print("++++++++++++++++")
     print(" ")
+    finalFight(playerHealth)
 while restart:
     main()
