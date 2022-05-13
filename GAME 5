@@ -151,7 +151,7 @@ but the guard rejects your cries for peace and hits you, making you lose ",playe
 and the guard hesitantly stops his attack to let you plead your case.")
                 return morality
         elif prompt == "all in": 
-            damage = random.randint(0,1) 
+            damage = 1 #random.randint(0,1) 
             if damage == 0: 
                 end() 
                 return
@@ -186,7 +186,7 @@ def fightSequence(enemy, playerHealth, location):
             playerHealth -= damage 
             print("You dodged the attack and took " + str(damage) + " damage!") 
         elif prompt == "all in": 
-            damage = random.randint(0,1) 
+            damage = 1 #random.randint(0,1) 
             if damage == 0: 
                 end() 
                 return
@@ -204,6 +204,13 @@ def fightSequence(enemy, playerHealth, location):
                 print(outroMessages[2])
             elif location == "sewers":
                 print(outroMessages[3])
+def finalFight(playerHealth): #OMG THE FINAL FIGHT IT'S HERE I'VE FINALLY GOTTEN TO THIS POINT
+    print("You open the doors to find Misty tied up to the a pole, surrounded by a lake of acidic stuff that you don't even think about messing with. SUDDENLY, \n\
+you hear a loud roar from behind you, and turn to find a scaly creature that towers over you. 'YOUR EFFORTS TO GET HERE ARE ADMIRABLE, MAX. WHICH IS WHY I OFFER YOU THIS DEAL: \n\
+LEAVE NOW AND I WON'T BURN YOU, OR STAY AND END UP BECOMING A MEDIUM-RARE STEAK FOR MY MUTANT MINIONS.' Because you're a stereotypical hero that won't play it safe and leave while your \n\
+body is still at room temperature, you shake your head in disagreement, and get ready to have the fight that will determine whether all of your rigorous typing was worth it...")
+    #Have different body parts that Max has to target (the legs, arms, and then finally the killing blow)
+    #CONTINUE HERE!!!! YOU'RE ALMOST DONE MATTHEW YOU GOT THIS!!!! DON'T LET ADHD SCREW YOU OVER!!!!
 def deadlyTreasure(playerHealth): 
     print("While walking through the forest, you come across a golden box \n\
 that shimmers in the sunlight. A key lays inside the tree next to the box, \n\
@@ -211,7 +218,7 @@ but the tree hole is too dark for you to see what else is inside the tree.")
     key = input("Do you 'take the key' or 'let it be'? ")
     while key != "take the key" and key != "let it be":
         key = input("That won't work this time! Do you 'take the key' or 'let it be'? ")
-    dieLive = random.randint(1,3) 
+    dieLive = 2 #random.randint(1,3) 
     if key == "take the key": 
         if dieLive == 1: 
             print("You reach inside the hole to grab the key, but a \n\
@@ -228,7 +235,7 @@ road.")
     return playerHealth
 def pigLanguage():
     print(" ")
-    print("The pig says, 'atwhay isyay ouryay amenay?' ")
+    print("The pig says, 'Atwhay isyay ouryay amenay?' ")
     pigName = input("What did the pig say in English? ")
     while pigName != "What is your name?":
         pigName = input("That won't work this time! What did the pig say in English? ")
@@ -236,7 +243,7 @@ def pigLanguage():
     while pigNameask != "Axmay":
         pigNameask = input("That won't work this time! What is your character's name? ")
     print(" ")
-    print("The pig then says, 'areyay ouyay ethay ersonpay at'sthay upposedsay otay ebay ivinggay oshrojay ishay ailyday assagemay?' ")
+    print("The pig then says, 'Areyay ouyay ethay ersonpay at'sthay upposedsay otay ebay ivinggay oshrojay ishay ailyday assagemay?' ")
     pigLie = input("What did the pig say in English? ")
     while pigLie != "Are you the person that's supposed to be giving Joshro his daily massage?":
         pigLie = input("That won't work this time! What did the pig say in English? ")
@@ -325,11 +332,12 @@ Before you take a swig, you doubt how safe ingesting the bottle's contents will 
     while drinkDroptake != "drink" and drinkDroptake != "drop" and drinkDroptake != "take":
         drinkDroptake = input("That won't work this time! Do you 'drink' or 'drop' or 'take' the bottle? ")
     if drinkDroptake == "drink":
-        healthNothingdeadly = random.randint(1,3)
+        healthNothingdeadly = 1#random.randint(1,3)
         if healthNothingdeadly == 1:
             print("You drink the potion, but after sitting down, you instantly pass out. You wake up in the morning feeling strangely \n\
 healthier, and relish in the fact that you now have 50 more health!")
             playerHealth = playerHealth + 50
+            print(playerHealth)
         elif healthNothingdeadly == 2:
             print("You drink the potion, but feel nothing. You wake up in the morning and notice that you are in fact still alive, \n\
 and end up assuming that the benefits of the drink became nullified just like the person who left it.")
@@ -748,7 +756,11 @@ exclaiming:'LeAvE, RiGhT nOw.' Obviously, you don't move, and the mutant spits o
 dodge the attack and ready your weapon in retaliation.")
     location = "random street"
     fightSequence(mutant, playerHealth, location)
+    if restart:
+        return
     spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
+    while spareKill != "spare" and spareKill != "kill":
+        spareKill = input("That won't work this time! Do you spare or kill the mutant? ")
     if spareKill == "spare":
         print("You let the mutant go, and it shambles off into the early morning darkness.")
         emptyStr, strings = stringWord(emptyStr)
@@ -760,7 +772,6 @@ but this definitely takes the cake. You dust yourself off, and resume walking ar
         allIn = True
     if restart:
         return
-    allIn = True
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -835,7 +846,6 @@ that the only way to enter the keep is through a direct encounter with the guard
     morality = guardFightsequence(playerHealth)
     if restart:
         return
-    allIn = True
     if morality == 2:
         print("The guard, whose name you soon find out is Bruce, explains to you that he doesn't even really like Joshro or his ideals, \n\
 but only works for him because the pay is good and he has mouths to feed. This seems like a fair reason to work for a ruthless overlord, so you empathize with him \n\
@@ -844,7 +854,8 @@ and offer to help him feed his family in exchange for him helping you take on Jo
         helpNot = random.randint(1,2)
         if helpNot == 1:
             print("After some thinking, Bruce declines your offer, stating that he 'has other methods of making money' in a concerningly \n\
-sinister voice... You don't question it, because he tells you that he'll instead let you past the gate if you promise to keep this encounter private. \n\
+sinister voice... \n\
+You don't question it, because he tells you that he'll instead let you past the gate if you promise to keep this encounter private. \n\
 You nod in agreement, and enter the keep, where the evil Joshro and precious Misty are located...")
         else:
             print("After some thinking, Bruce accepts your offer, and tells you that he will return to you only in the final fight with Joshro with the sole purpose of offering aid. \n\
