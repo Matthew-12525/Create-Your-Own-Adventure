@@ -230,10 +230,10 @@ def pigLanguage():
     print(" ")
     print("The pig says, 'atwhay isyay ouryay amenay?' ")
     pigName = input("What did the pig say in English? ")
-    while pigName != "what is your name?":
+    while pigName != "What is your name?":
         pigName = input("That won't work this time! What did the pig say in English? ")
     pigNameask = input("What is your character's name? ")
-    while pigNameask != "axmay":
+    while pigNameask != "Axmay":
         pigNameask = input("That won't work this time! What is your character's name? ")
     print(" ")
     print("The pig then says, 'areyay ouyay ethay ersonpay at'sthay upposedsay otay ebay ivinggay oshrojay ishay ailyday assagemay?' ")
@@ -241,7 +241,7 @@ def pigLanguage():
     while pigLie != "Are you the person that's supposed to be giving Joshro his daily massage?":
         pigLie = input("That won't work this time! What did the pig say in English? ")
     pigLieask = input("*Are* you the person that's supposed to be giving Joshro his daily massage(hint: you should *probably* say yes)? ")
-    while pigLieask != "esyay":
+    while pigLieask != "Esyay":
         pigLieask = input("That won't work this time! \n\
 *Are* you the person that's supposed to be giving Joshro his daily massage(hint: you should *probably* say yes)? ")
     print(" ")
@@ -833,6 +833,9 @@ appearance, and, in addition to that, offers more protection.")
     print("Approaching the keep, you see a human guard ahead that won't move no matter what distractions you use to guide him away. After some impatient waiting, you conclude \n\
 that the only way to enter the keep is through a direct encounter with the guard. A fight is inevitable, but the only question now is *how* the interaction with the guard will end...")
     morality = guardFightsequence(playerHealth)
+    if restart:
+        return
+    allIn = True
     if morality == 2:
         print("The guard, whose name you soon find out is Bruce, explains to you that he doesn't even really like Joshro or his ideals, \n\
 but only works for him because the pay is good and he has mouths to feed. This seems like a fair reason to work for a ruthless overlord, so you empathize with him \n\
@@ -854,10 +857,40 @@ He also makes you promise to give him a substantial amount of the riches located
 To enter the next room you first need to speak to the receptionist, who happens to be a pig. He appropriately talks to you in pig latin, \n\
 but because pig latin is not really in fashion anymore, you struggle to decipher what he's saying, and must employ the use of writing to help \n\
 you conversate better.")
-    pigLanguage()
+    #pigLanguage()
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    print("Entering the second to last chamber, you find a sorcerer that offers you a boggling 100 value health potion!  ")
+    print("Entering the second to last chamber, you find a sorcerer that offers you a boggling 100 value health potion! The only catch, he tells you, is that you must have no blood on \n\
+your hands from the time you picked your weapon to the present moment. Depending on how you dealt with the various adversaries throughout the course of the journey, this will either be \n\
+really helpful or a waste of potential...")
+    print("The sorcerer rubs his crystal ball, and reveals that......")
+    print(" ")
+    if len(emptyStr) == 6:
+        print("You were a pacifist! The sorcerer smiles and delights in the fact that you appreciate life, no matter if it's a troll, a human, or even a measly rat.")
+        print("The sorcerer points out that throughout your successful attempts at being peaceful, a letter was added to a growing list of seemingly random letters, but in actuality, \n\
+they add up to be the scrambled version of a six letter word. The only hint the sorcerer gives you is that the word is a part of what makes up cloth shirts, and also warns you that you \n\
+only have three chances to guess the word... \n\
+you crack your knuckles and massage your forehead in preparation for the mind-numbing task ahead...")
+        print(emptyStr)
+        askString = input("What is the word unscrambled? ")
+        for i in range(2):
+            if askString == "string":
+                print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
+You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
+                playerHealth += 100
+                print(playerHealth)
+                break
+            else:
+                print(emptyStr)
+                askString = input("That won't work this time! What is the word unscrambled? ")
+        if askString != "string":
+            print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
+    elif len(emptyStr) < 6:
+        print("You weren't a pacifist! The sorcerer's face becomes gloomy and tells you in an subtly angered voice to leave his chamber and save at least one person to show you have a heart. \n\
+You scoff at this remark, but before you can do anything about it, the sorcerer magically disappears, and you get mad about it before heading to the door separating you from the girl you came to save and the evil creature you must slay...")
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
 while restart:
     main()
