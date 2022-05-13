@@ -320,6 +320,195 @@ so that Joshro's reign of terror can end once and for all...")
     print("With a thunderous crash, Joshro falls lifeless to the ground with an intense thump. Misty, overjoyed that she's finally been saved, \n\
 falls into your arms, and you sit on the ground to take a breather. \n\
 You did it! You slayed the dragon and saved the girl, but there are still things you must take care of...")
+def finalFightGuard(playerHealth):
+    print("You open the doors to find Misty tied up to the a pole, surrounded by a lake of acidic stuff that you don't even think about messing with. SUDDENLY, \n\
+you hear a loud roar from behind you, and turn to find a scaly creature that towers over you. 'YOUR EFFORTS TO GET HERE ARE ADMIRABLE, MAX. WHICH IS WHY I OFFER YOU THIS DEAL: \n\
+LEAVE NOW AND I WON'T BURN YOU, OR STAY AND END UP BECOMING A MEDIUM-RARE STEAK FOR MY MUTANT MINIONS.' Because you're a stereotypical hero that won't play it safe and leave while your \n\
+body is still at room temperature, you shake your head in disagreement, and get ready to have the fight that will determine whether all of your rigorous typing was worth it...")
+    #Have different body parts that Max has to target (the legs, arms, and then finally the killing blow)
+    rLeg = 50
+    lLeg = 50
+    rArm = 50
+    lArm = 50
+    finalBlow = 100
+    bruceHelp = 10
+    leaveMessage = False
+    bruceDamage = random.randint(1,8)
+    while rLeg > 0 and playerHealth > 0:
+        print(rLeg, "Joshro's right leg's health: ") 
+        print(playerHealth, "Max's health: ")
+        print(bruceHelp, "Times Bruce will help you: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            rLegDamage = random.randint(5,10) #CHANGE SOON
+            rLeg -= rLegDamage * weaponStrength 
+            print("You hit his right leg and it took " + str(rLegDamage * weaponStrength) + " damage!")
+            if bruceHelp > 0:
+                bruceHelpNot = random.randint(1,2)  
+                if bruceHelpNot == 1:
+                    brucerLegDamage = random.randint(1,8)
+                    rLeg -= brucerLegDamage * bruceDamage
+                    print("Bruce hit his right leg and it took " + str(brucerLegDamage * bruceDamage) + " damage!")
+                    bruceHelp -= 1
+                else:
+                    print("Bruce isn't able to attack!")
+            else:
+                if leaveMessage == False:
+                    print("Bruce decides to leave after assuming that he's helped enough, leaving you to face the dragon alone!")
+                    leaveMessage = True 
+            playerDamage = random.randint(0,5)
+            playerHealth -= playerDamage 
+            print("Joshro razed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    while lLeg > 0 and playerHealth > 0:
+        print(lLeg, "Joshro's left leg's health: ") 
+        print(playerHealth, "Max's health: ")
+        print(bruceHelp, "Times Bruce will help you: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            lLegDamage = random.randint(5,10) #CHANGE SOON
+            lLeg -= lLegDamage * weaponStrength 
+            print("You hit his left leg and it took " + str(lLegDamage * weaponStrength) + " damage!")
+            if bruceHelp > 0:
+                bruceHelpNot = random.randint(1,2)  
+                if bruceHelpNot == 1:
+                    brucelLegDamage = random.randint(1,8)
+                    lLeg -= brucelLegDamage * bruceDamage
+                    print("Bruce hit his leftt leg and it took " + str(brucelLegDamage * bruceDamage) + " damage!")
+                    bruceHelp -= 1
+                else:
+                    print("Bruce isn't able to attack!")
+            else: 
+                if leaveMessage == False:
+                    print("Bruce decides to leave after assuming that he's helped enough, leaving you to face the dragon alone!")
+                    leaveMessage = True
+            playerDamage = random.randint(0,10)
+            playerHealth -= playerDamage 
+            print("Joshro crushed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    while rArm > 0 and playerHealth > 0:
+        print(rArm, "Joshro's right arm's health: ") 
+        print(playerHealth, "Max's health: ")
+        print(bruceHelp, "Times Bruce will help you: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            rArmDamage = random.randint(5,10) #CHANGE SOON
+            rArm -= rArmDamage * weaponStrength 
+            print("You hit his right arm and it took " + str(rArmDamage * weaponStrength) + " damage!")
+            if bruceHelp > 0:
+                bruceHelpNot = random.randint(1,2)  
+                if bruceHelpNot == 1:
+                    brucerArmDamage = random.randint(1,8)
+                    rArm -= brucerArmDamage * bruceDamage
+                    print("Bruce hit his right arm and it took " + str(brucerArmDamage * bruceDamage) + " damage!")
+                    bruceHelp -= 1
+                else:
+                    print("Bruce isn't able to attack!")
+            else: 
+                if leaveMessage == False:
+                    print("Bruce decides to leave after assuming that he's helped enough, leaving you to face the dragon alone!")
+                    leaveMessage = True
+            playerDamage = random.randint(0,15)
+            playerHealth -= playerDamage 
+            print("Joshro slashed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    while lArm > 0 and playerHealth > 0:
+        print(lArm, "Joshro's left arm's health: ") 
+        print(playerHealth, "Max's health: ")
+        print(bruceHelp, "Times Bruce will help you: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            lArmDamage = random.randint(5,10) #CHANGE SOON
+            lArm -= lArmDamage * weaponStrength 
+            print("You hit his right arm and it took " + str(lArmDamage * weaponStrength) + " damage!")
+            if bruceHelp > 0:
+                bruceHelpNot = random.randint(1,2)  
+                if bruceHelpNot == 1:
+                    brucelArmDamage = random.randint(1,8)
+                    lArm -= brucelArmDamage * bruceDamage
+                    print("Bruce hit his left arm and it took " + str(brucelArmDamage * bruceDamage) + " damage!")
+                    bruceHelp -= 1
+                else:
+                    print("Bruce isn't able to attack!")
+            else: 
+                if leaveMessage == False:
+                    print("Bruce decides to leave after assuming that he's helped enough, leaving you to face the dragon alone!")
+                    leaveMessage = True
+            playerDamage = random.randint(0,20)
+            playerHealth -= playerDamage 
+            print("Joshro slammed you and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    print("You've weakened Joshro severely, but the fight isn't over yet! You need to attack him directly and land the final blow \n\
+so that Joshro's reign of terror can end once and for all...")
+    while finalBlow > 0 and playerHealth > 0:
+        print(finalBlow, "Joshro's health: ") 
+        print(playerHealth, "Max's health: ")
+        print(bruceHelp, "Times Bruce will help you: ")
+        prompt = input(" 'hit' or 'dodge'? ") 
+        while prompt != "hit" and prompt != "dodge":
+            prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
+        if prompt == "hit": 
+            finalBlowDamage = random.randint(5,10) #CHANGE SOON
+            finalBlow -= finalBlowDamage * weaponStrength 
+            print("You hit Joshro and he took " + str(finalBlowDamage * weaponStrength) + " damage!")
+            if bruceHelp > 0:
+                bruceHelpNot = random.randint(1,2)  
+                if bruceHelpNot == 1:
+                    bruceFinalDamage = random.randint(1,8)
+                    finalBlow -= bruceFinalDamage * bruceDamage
+                    print("Bruce hit Joshro and he took " + str(bruceFinalDamage * bruceDamage) + " damage!")
+                    bruceHelp -= 1
+                else:
+                    print("Bruce isn't able to attack!")
+            else: 
+                if leaveMessage == False:
+                    print("Bruce decides to leave after assuming that he's helped enough, leaving you to face the dragon alone!")
+                    leaveMessage = True
+            playerDamage = random.randint(10,20)
+            playerHealth -= playerDamage 
+            print("Joshro set you on fire and you took " + str(playerDamage) + " damage!") 
+        elif prompt == "dodge": 
+            damage = random.randint(0,5) 
+            playerHealth -= damage 
+            print("You dodged the attack and took " + str(damage) + " damage!")
+        if playerHealth <= 0: 
+            end()
+            return
+    print("With a thunderous crash, Joshro falls lifeless to the ground with an intense thump. Misty, overjoyed that she's finally been saved, \n\
+falls into your arms, and you sit on the ground to take a breather. \n\
+You did it! You slayed the dragon and saved the girl, but there are still things you must take care of...")
 def deadlyTreasure(playerHealth): 
     print("While walking through the forest, you come across a golden box \n\
 that shimmers in the sunlight. A key lays inside the tree next to the box, \n\
@@ -553,18 +742,23 @@ for anything valuable, a guard approaches from the distance, and \
 you pick up the pace to the village exit where you can continue your quest. ", "The goblin collapses, and you take pity on the creature \
 as you collect your items and continue towards the castle.", "The troll becomes motionless, and after you poke it with your weapon to see if she's still alive, \
 gravity finally takes effect, and the troll falls over the side of the bridge into the murky depths below, creating such a splash that the water soaks your hair. \
-You regain your composure, and proceed to start walking along the path again.", "You slay the horrid creature, and continue walking towards the light."] 
+You regain your composure, and proceed to start walking along the path again.", "You slay the horrid creature, and continue walking towards the light."]
+
 #GAME BEGINS AFTER HERE
 #GAME BEGINS AFTER HERE
 #Variables
 #Variables
 global goblin, ogre, troll, rat, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
-location, homeChosen, divByfour, morality
+location, homeChosen, divByfour, morality, trackEndings
 restart = True
 
 def main():
     global goblin, ogre, troll, rat, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
-    location, homeChosen, divByfour, morality
+    location, homeChosen, divByfour, morality, trackEndings
+    endingOneHappens = "You work for the goblin."
+    endingTwoHappens = print("You help the ogre keep the old bridge new.")
+    endingThreeHappens = print("You come back to Olivia and get married or some cheesy thing.")
+    endingFourHappens = print("You save Misty, and because she's fallen in love with you because you saved her, you both get married and you become king.")
     morality = 0
     restart = False
     homeChosen = False
@@ -582,6 +776,7 @@ def main():
     divByfour = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60]
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
+    trackEndings = []
     print("---------------------------------------------------------------------------------------------------------------------------")
     print("You are Max, a young man who takes on the brave quest of saving the \n\
 beautiful princess Misty from the evil dragon Joshro. Your story begins at the village \n\
@@ -668,7 +863,9 @@ just out of reach. What do you say to the scared creature? \n\
                 print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \n\
 back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                 emptyStr, strings = stringWord(emptyStr)
+                trackEndings.append("Do you want the goblin?")
                 #!!!ENDING ONE!!!
+
             elif persuade == "2":
                 print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \n\
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
@@ -695,7 +892,8 @@ just out of reach. What do you say to the scared creature? \n\
                     print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \n\
 back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                     emptyStr, strings = stringWord(emptyStr)
-                            #!!!ENDING ONE!!!
+                    trackEndings.append("Do you want the goblin?")
+                    #!!!ENDING ONE!!!
                 elif persuade == "2":
                     print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \n\
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
@@ -781,6 +979,7 @@ human, werewolf, goblin, what have you. So, as a token of my apology, I'll offer
 not at all because I get sorta lonely out here and could use another person to talk to... So whaddaya say?' Well, not one to turn down an offer as rare as this, you \n\
 accept the troll's offer, but remind her that you still have a girl to save, and she nods her head understandably. \n\
 You find out the troll's name is Samantha, and wish her well as you finally cross the bridge to continue your quest.")
+            trackEndings.append("Do you want the ogre?")
             #ENDING TWO
             if stayGo == "go":
                 print("You decide that the troll was probably just saying all of that due to her inebriated state, and cross the bridge \n\
@@ -849,6 +1048,7 @@ Taking in this information, as well as Olivia's flirting, you realize that you'r
 unwanted attention. The conversation ends, and you go to sleep swiftly.")
         print("Before you leave the house, Olivia rushes to you and gives you a hug, and through stifled sniffles, tells you to stop by her house again after you complete your mission, \n\
 promising you a place to lay low after the dragon is slayed. You accept the offer, and Olivia nods before letting you know that she'll be out of town for a few days to visit her husband's funeral.")
+        trackEndings.append("Do you want Olivia?")
         #ENDING THREE
     elif x == "tavern":
         print("Entering the tavern, you search out the bartender and negotiate the cost it'll take to rent out a spare room. A deal is settled, and the bartender shows you around the place before directing you to your room. \n\
@@ -960,7 +1160,7 @@ that the only way to enter the keep is through a direct encounter with the guard
 but only works for him because the pay is good and he has mouths to feed. This seems like a fair reason to work for a ruthless overlord, so you empathize with him \n\
 and offer to help him feed his family in exchange for him helping you take on Joshro.")
         print(" ")
-        helpNot = random.randint(1,2)
+        helpNot = 2#random.randint(1,2)
         if helpNot == 1:
             print("After some thinking, Bruce declines your offer, stating that he 'has other methods of making money' in a concerningly \n\
 sinister voice... \n\
@@ -1012,6 +1212,25 @@ You scoff at this remark, but before you can do anything about it, the sorcerer 
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    finalFight(playerHealth)
+    if helpNot == 1:
+        finalFight(playerHealth)
+        if restart:
+            return
+        trackEndings.append("Do you want Misty?")
+    else:
+        finalFightGuard(playerHealth)
+        if restart:
+            return
+        trackEndings.append("Do you want Misty?")
+    print(trackEndings)
+    chooseEnding = input("What do you do? ")
+    if chooseEnding == "goblin":
+        print(endingOneHappens)
+    elif chooseEnding == "ogre":
+        print(endingTwoHappens)
+    elif chooseEnding == "olivia":
+        print(endingThreeHappens)
+    elif chooseEnding == "misty":
+        print(endingFourHappens)
 while restart:
     main()
