@@ -7,10 +7,9 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
-1. #DOESN'T PRINT ENDING EVEN IF BOOLEAN IS TRUE AND WORD IS CORRECTLY TYPED IN!!!
-2. #ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'!!!
-3. #DOESN'T RETURN HEALTH AND MAYBE WEAPON STRENGTH TO NORMAL VALUES AFTER FIGHT!!!
-ONLY THREE ISSUES WITH FINAL CODE SO FAR, THAT'S REALLY GOOD!!!!!!
+1. #ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'!!!
+2. #DOESN'T RETURN HEALTH AND MAYBE WEAPON STRENGTH TO NORMAL VALUES AFTER FIGHT!!!
+ONLY TWO ISSUES WITH FINAL CODE SO FAR, THAT'S REALLY GOOD!!!!!!
 """ 
 """ 
 IDEAS-  
@@ -807,6 +806,7 @@ YOU GOT THE 'From rags to royalty' ENDING (4 out of 4)"
     endingTwo = False
     endingThree = False
     endingFour = False
+    endingChosen = False
     print("---------------------------------------------------------------------------------------------------------------------------")
     print("You are Max, a young man who takes on the brave quest of saving the \n\
 beautiful princess Misty from the evil dragon Joshro. Your story begins at the village \n\
@@ -1271,17 +1271,24 @@ You scoff at this remark, but before you can do anything about it, the sorcerer 
     print("++++++++++++++++")
     print(" ")
     print(trackEndings)
-    chooseEnding = input("What do you do (Type only the lowercase name of the person)? ")
-    while (chooseEnding != "goblin" and endingOne == False) or (chooseEnding != "samantha" and endingTwo == False) or (chooseEnding != "olivia" and endingThree == False) or (chooseEnding != "misty" and endingFour == False):
-        chooseEnding = input("That won't work this time! What do you do (Type only the lowercase name of the person)? ")
-        #DOESN'T PRINT ENDING EVEN IF BOOLEAN IS TRUE AND WORD IS CORRECTLY TYPED IN!!!
-    if chooseEnding == "goblin":
-        print(endingOneHappens)
-    elif chooseEnding == "samantha":
-        print(endingTwoHappens)
-    elif chooseEnding == "olivia":
-        print(endingThreeHappens)
-    elif chooseEnding == "misty":
-        print(endingFourHappens)
+    while endingChosen == False:
+        chooseEnding = input("What do you do (Type only the lowercase name of the person)? ")
+        if (chooseEnding == "goblin" and endingOne == True) or (chooseEnding == "samantha" and endingTwo == True) or (chooseEnding == "olivia" and endingThree == True) or (chooseEnding == "misty" and endingFour == True):
+            if chooseEnding == "goblin":
+                print(" ")
+                print(endingOneHappens)
+                endingChosen = True
+            elif chooseEnding == "samantha":
+                print(" ")
+                print(endingTwoHappens)
+                endingChosen = True
+            elif chooseEnding == "olivia":
+                print(" ")
+                print(endingThreeHappens)
+                endingChosen = True
+            elif chooseEnding == "misty":
+                print(" ")
+                print(endingFourHappens)
+                endingChosen = True
 while restart:
     main()
