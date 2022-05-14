@@ -307,7 +307,7 @@ so that Joshro's reign of terror can end once and for all...")
             finalBlowDamage = random.randint(5,10) #CHANGE SOON
             finalBlow -= finalBlowDamage * weaponStrength 
             print("You hit Joshro and he took " + str(finalBlowDamage * weaponStrength) + " damage!") 
-            playerDamage = random.randint(10,20)
+            playerDamage = random.randint(10,25)
             playerHealth -= playerDamage 
             print("Joshro set you on fire and you took " + str(playerDamage) + " damage!") 
         elif prompt == "dodge": 
@@ -331,9 +331,9 @@ body is still at room temperature, you shake your head in disagreement, and get 
     rArm = 50
     lArm = 50
     finalBlow = 100
-    bruceHelp = 10
+    bruceHelp = 4
     leaveMessage = False
-    bruceDamage = random.randint(1,8)
+    bruceDamage = random.randint(1,10)
     while rLeg > 0 and playerHealth > 0:
         print(rLeg, "Joshro's right leg's health: ") 
         print(playerHealth, "Max's health: ")
@@ -348,7 +348,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
             if bruceHelp > 0:
                 bruceHelpNot = random.randint(1,2)  
                 if bruceHelpNot == 1:
-                    brucerLegDamage = random.randint(1,8)
+                    brucerLegDamage = random.randint(1,10)
                     rLeg -= brucerLegDamage * bruceDamage
                     print("Bruce hit his right leg and it took " + str(brucerLegDamage * bruceDamage) + " damage!")
                     bruceHelp -= 1
@@ -635,10 +635,12 @@ Before you take a swig, you doubt how safe ingesting the bottle's contents will 
             print("You drink the potion, but after sitting down, you instantly pass out. You wake up in the morning feeling strangely \n\
 healthier, and relish in the fact that you now have 50 more health!")
             playerHealth = playerHealth + 50
-            print(playerHealth)
+            potionTroll = False
+            return playerHealth, potionTroll
         elif healthNothingdeadly == 2:
             print("You drink the potion, but feel nothing. You wake up in the morning and notice that you are in fact still alive, \n\
 and end up assuming that the benefits of the drink became nullified just like the person who left it.")
+            potionTroll = False
             return playerHealth, potionTroll
         elif healthNothingdeadly == 3:
             print("You drink the potion, and feel completely normal.")
@@ -647,16 +649,19 @@ and end up assuming that the benefits of the drink became nullified just like th
             print(" ")
             print("You wake up, slay the dragon, save Misty, and live a happy and carefree life....NOT.")
             end()
+            potionTroll = False
             return playerHealth, potionTroll
     elif drinkDroptake == "drop":
         print("You drop the potion carelessly on the ground, and am unsurprised as you witness the potion's contents dissolve the hard rock \n\
 below. You go to sleep, and wake up, happy that you avoided a possibly deadly drink.")
+        potionTroll = False
+        return playerHealth, potionTroll
     elif drinkDroptake == "take":
         print("For some almost supernatural reason, you feel as though you can use the potion for something greater, and decide \n\
 to store it in your pack for later use. You have a dream that a large green creature asks you for the potion in exchange for \n\
 safe passage across a path, but brush it off as your mind playing tricks on you and have a pretty uneventful rest of the night.")
         potionTroll = True
-    return playerHealth, potionTroll
+        return playerHealth, potionTroll
 def swordPull():
     grunt = ["guh", "gurr", "rawr"]
     correct = True
@@ -792,8 +797,8 @@ YOU GOT THE 'From rags to royalty' ENDING (4 out of 4)"
     troll = random.randint(100,125)
     mutant = 120
     rat = random.randint(90,110)
-    playerHealth = 100 
-    allIn = False 
+    playerHealth = 10
+    allIn = True 
     potionTroll = False
     #Two booleans for one level
     stick = False
@@ -801,6 +806,8 @@ YOU GOT THE 'From rags to royalty' ENDING (4 out of 4)"
     divByfour = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60]
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
+    guardHelpNot = False
+    guardAlive = False
     trackEndings = []
     endingOne = False
     endingTwo = False
@@ -896,13 +903,20 @@ back after you finish your quest to come work for him to pay off your debt. You 
                 trackEndings.append("Do you want to repay your debt to the goblin?")
                 endingOne = True
                 #!!!ENDING ONE!!!
-
             elif persuade == "2":
                 print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \n\
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
-                weaponStrength = int(weaponStrength/2)
-                playerHealth = int(playerHealth/2)
-                fightSequence(goblin, playerHealth, location)
+                goblinFight = True
+                while goblinFight == True:
+                    playerHealth = int(playerHealth/2)
+                    weaponStrength = int(weaponStrength/2)
+                    fightSequence(goblin, playerHealth, location)
+                    playerHealth = int(playerHealth * 2) 
+                    weaponStrength = int(weaponStrength * 2)
+                    goblinFight = False
+                print(playerHealth)
+                if restart:
+                    return
                 allIn = True
         elif parkour == "vault":
             weakStrong = random.randint(0,1)
@@ -929,16 +943,18 @@ back after you finish your quest to come work for him to pay off your debt. You 
                 elif persuade == "2":
                     print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \n\
 You're able to get up, but because of the surprise attack, you've lost valuable health and strength.")
-                    weaponStrength = int(weaponStrength/2)
-                    playerHealth = int(playerHealth/2)
-                    fightSequence(goblin, playerHealth, location)
-                    weaponStrength = int(weaponStrength * 2)
-                    playerHealth = int(playerHealth * 2)
-                    #DOESN'T RETURN HEALTH AND MAYBE WEAPON STRENGTH TO NORMAL VALUES AFTER FIGHT!!!
+                    goblinFight = True
+                    while goblinFight == True:
+                        playerHealth = int(playerHealth/2)
+                        weaponStrength = int(weaponStrength/2)
+                        fightSequence(goblin, playerHealth, location)
+                        playerHealth = int(playerHealth * 2) 
+                        weaponStrength = int(weaponStrength * 2)
+                        goblinFight = False
+                    print(playerHealth)
                     if restart:
                         return
                     allIn = True
-                    
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -1160,7 +1176,7 @@ to attempt to reach a safe distance.")
             print("You end up creating such a large distance between you and the rodent that it eventually just gives up and waddles away in the other direction.")
             emptyStr, strings = stringWord(emptyStr)
         elif playerHealth <= 100:
-            fastNot = 2#random.randint(1,2)
+            fastNot = 1#random.randint(1,2)
             if fastNot == 1:
                 print("Despite your determination in trying to outrun the creature, it catches up to you and drags you down to the murky depths... \n\
 and you never resurface.")
@@ -1186,7 +1202,7 @@ and continue on your way to the armory.")
     print(" ")
     print("Once reaching the armory, you insert the key and quietly let yourself inside the armory. The armor present will do more than enough to hide your non-mutant \n\
 appearance, and, in addition to that, offers more protection.")
-    playerHealth += 50
+    playerHealth += 60
     print(playerHealth)
     print("Approaching the keep, you see a human guard ahead that won't move no matter what distractions you use to guide him away. After some impatient waiting, you conclude \n\
 that the only way to enter the keep is through a direct encounter with the guard. A fight is inevitable, but the only question now is *how* the interaction with the guard will end...")
@@ -1194,9 +1210,10 @@ that the only way to enter the keep is through a direct encounter with the guard
     if restart:
         return
     if morality == 2:
+        guardAlive = True
         print("The guard, whose name you soon find out is Bruce, explains to you that he doesn't even really like Joshro or his ideals, \n\
 but only works for him because the pay is good and he has mouths to feed. This seems like a fair reason to work for a ruthless overlord, so you empathize with him \n\
-and offer to help him feed his family in exchange for him helping you take on Joshro.")
+and offer to give him the riches found inside Joshro's treasury in exchange for him helping you take on Joshro.")
         print(" ")
         helpNot = 2#random.randint(1,2)
         if helpNot == 1:
@@ -1204,9 +1221,11 @@ and offer to help him feed his family in exchange for him helping you take on Jo
 sinister voice... \n\
 You don't question it, because he tells you that he'll instead let you past the gate if you promise to keep this encounter private. \n\
 You nod in agreement, and enter the keep, where the evil Joshro and precious Misty are located...")
+            
         else:
             print("After some thinking, Bruce accepts your offer, and tells you that he will return to you only in the final fight with Joshro with the sole purpose of offering aid. \n\
 He also makes you promise to give him a substantial amount of the riches located inside the keep as compensation for his support. You nod in agreement, and enter the keep, where the evil Joshro and precious Misty are located... ")
+            guardHelpNot = True
         emptyStr, strings = stringWord(emptyStr)
     print(" ")
     print("++++++++++++++++")
@@ -1255,7 +1274,7 @@ You scoff at this remark, but before you can do anything about it, the sorcerer 
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    if helpNot == 1:
+    if guardHelpNot != True or guardAlive != True:
         finalFight(playerHealth)
         if restart:
             return
