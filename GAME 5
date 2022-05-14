@@ -1,5 +1,5 @@
-#NOT OPERABLE AT THE MOMENT!!!!!
-#OPERABLE!!!!!<
+#NOT OPERABLE AT THE MOMENT!!!!!<
+#OPERABLE!!!!!
 """ 
 The story is about a young man named Max who has to save princess Misty from  
 the evil dragon Joshro. There are 4 endings that the user can have based on  
@@ -7,9 +7,10 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
-All in doesn't work for Mutant Fight Sequence
-^^
-
+1. #DOESN'T PRINT ENDING EVEN IF BOOLEAN IS TRUE AND WORD IS CORRECTLY TYPED IN!!!
+2. #ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'!!!
+3. #DOESN'T RETURN HEALTH AND MAYBE WEAPON STRENGTH TO NORMAL VALUES AFTER FIGHT!!!
+ONLY THREE ISSUES WITH FINAL CODE SO FAR, THAT'S REALLY GOOD!!!!!!
 """ 
 """ 
 IDEAS-  
@@ -755,10 +756,35 @@ restart = True
 def main():
     global goblin, ogre, troll, rat, playerHealth, allIn, strings, emptyStr, weapon, restart, weaponStrength, potionTroll, \
     location, homeChosen, divByfour, morality, trackEndings
-    endingOneHappens = "You work for the goblin."
-    endingTwoHappens = print("You help the ogre keep the old bridge new.")
-    endingThreeHappens = print("You come back to Olivia and get married or some cheesy thing.")
-    endingFourHappens = print("You save Misty, and because she's fallen in love with you because you saved her, you both get married and you become king.")
+    endingOneHappens = "After slaying the dragon, you return Misty to her respective kingdom, and she thanks you profusely. Before you fully become content with your life, you remember \n\
+the promise you made to the goblin that you would come work for him to repay your debt (although you still scratch your head as to what exactly the *debt* is). Nevertheless, you are a man of your word, \n\
+and make the long trek to the goblin's farm, and find that the farm life isn't so bad when the person you're doing the farming for is so small in stature that a farm to him is like a small garden to you. \n\
+In addition to this, you actually find that the goblin, whose name is soon discovered to be Bilbo, is surprisingly very funny and witty, and you two get along splendidly. The farm life treats you very well, \n\
+and you decide to take up farming even after your servitude to Bilbo was fulfilled, selling various vegetables to travellers going on journeys of their own... \n\
+YOU GOT THE 'Man of your word' ENDING! (1 out of 4)"
+    endingTwoHappens = "After defeating Joshro, you bring Misty back to her palace, where a celebration is held in your name for bringing back the kingdom's beloved princess. After recuperating yourself from the \n\
+many nights of royal partying, you leave the kingdom in a great mood. While walking across an outrageously decrepit bridge, you remember Samantha and the offer she made to you. Seeing how disgusting some bridges can be \n\
+without proper maintenance, you decide that bridge cleaning is the next endeavor you wish to undertake. Returning to Samantha's bridge, you see that she's already made several noticeable steps to \n\
+make her bridge look more approachable, which gives you the final push you need to really take this bridge thing seriously. For several years, you and Samantha work tirelessly to keep the bridge spotless, \n\
+and become great friends in the process. After Samantha leaves the bridge business to pursue a career in dramatic acting, you transform the bridge into a resting place for weary travellers to \n\
+to safely take shelter at while they go fight dragons and save princesses of their own... \n\
+YOU GOT THE 'Human troll' ENDING! (2 out of 4)"
+    endingThreeHappens = "After putting an end to Joshro's reign of terror, you and Misty travel back to her kingdom, and you get there just in time to see her get married, and start to feel a little bit empty. \n\
+This emptiness consumes you for the next couple of days while you head back to the cottage, and you struggle to put your finger on what exactly is bothering you so much. That is, until you and Olivia meet again. \n\
+The reunion fills you with an overwhelming sense of bliss, and you feel that emptiness become replaced with a new type of emotion- love. In the space of 8 years, you and Olivia open up a tavern, and your relationship with her \n\
+eventually shifts from a platonic one to one filled with golden memories and endless laughter, a sign of the increasingly apparent chemistry between you two. Then, on the tenth anniversary since you two met during your quest to \n\
+defeat Joshro, you propose to Olivia, and she says yes with tears in her eyes as you both hug. Many years go by, and a family of three is formed, with the new addition to it being your son Matthew. \n\
+One day, Matthew tells you privately that he wishes to go out and stop the tyrant serpent Tylo from taking over a kingdom several oceans away, but informs you that Olivia is aggressively against this. \n\
+Remembering how you met her in the first place, you smile and tell him to leave in the middle of the night and 'follow your dreams', just as you did so long ago... \n\
+YOU GOT THE 'Unwidowing the widow' ENDING! (3 out of 4)"
+    endingFourHappens = "After stopping Joshro dead in his tracks (hah, get it?), you and Misty begin the long trek back to her kingdom. While on the trip, you discover that there's more to Misty than her intense beauty, and \n\
+find that she's actually a really smart girl that aims to study international affairs at the college level. Her studious nature, among other cherished traits, makes you start to fall for her. \n\
+The night before you're expected to reach her kingdom, you profess your love to her, and she confesses her love for you as well. The arranged marriage she was supposed to end the next day was changed to one that she had \n\
+complete control over, and, as expected, she chooses to marry you. The wedding is magical for both of you, and, because of how marriage directly influences who becomes king and queen, you become the next king of her kingdom! \n\
+The next decades become one of the most prosperous times in the kingdom, and the public regard you as one of the best kings they've ever had. \n\
+Sitting one day in the royal court, a young but hardy man asks you for a small amount of money, and states that his intentions with the money will be to discover new lands and put an end to injustice all over the world. \n\
+Your advisors laugh him off, but you retain your steady gaze and approve the man's request, basking in the nostalgia of a time when you knew a man that also wanted to do good... \n\
+YOU GOT THE 'From rags to royalty' ENDING (4 out of 4)"
     morality = 0
     restart = False
     homeChosen = False
@@ -777,6 +803,10 @@ def main():
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
     trackEndings = []
+    endingOne = False
+    endingTwo = False
+    endingThree = False
+    endingFour = False
     print("---------------------------------------------------------------------------------------------------------------------------")
     print("You are Max, a young man who takes on the brave quest of saving the \n\
 beautiful princess Misty from the evil dragon Joshro. Your story begins at the village \n\
@@ -863,7 +893,8 @@ just out of reach. What do you say to the scared creature? \n\
                 print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \n\
 back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                 emptyStr, strings = stringWord(emptyStr)
-                trackEndings.append("Do you want the goblin?")
+                trackEndings.append("Do you want to repay your debt to the goblin?")
+                endingOne = True
                 #!!!ENDING ONE!!!
 
             elif persuade == "2":
@@ -892,7 +923,8 @@ just out of reach. What do you say to the scared creature? \n\
                     print("The goblin begrudgingly drops your items, but makes you promise that, under oath, you will come \n\
 back after you finish your quest to come work for him to pay off your debt. You gather your pack and continue towards the castle.")
                     emptyStr, strings = stringWord(emptyStr)
-                    trackEndings.append("Do you want the goblin?")
+                    trackEndings.append("Do you want to repay your debt to the goblin?")
+                    endingOne = True
                     #!!!ENDING ONE!!!
                 elif persuade == "2":
                     print("The goblin becomes furious after you insult and threaten him, and swiftly slashes you with his claws. \n\
@@ -900,9 +932,13 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
                     weaponStrength = int(weaponStrength/2)
                     playerHealth = int(playerHealth/2)
                     fightSequence(goblin, playerHealth, location)
+                    weaponStrength = int(weaponStrength * 2)
+                    playerHealth = int(playerHealth * 2)
+                    #DOESN'T RETURN HEALTH AND MAYBE WEAPON STRENGTH TO NORMAL VALUES AFTER FIGHT!!!
                     if restart:
                         return
                     allIn = True
+                    
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -979,7 +1015,8 @@ human, werewolf, goblin, what have you. So, as a token of my apology, I'll offer
 not at all because I get sorta lonely out here and could use another person to talk to... So whaddaya say?' Well, not one to turn down an offer as rare as this, you \n\
 accept the troll's offer, but remind her that you still have a girl to save, and she nods her head understandably. \n\
 You find out the troll's name is Samantha, and wish her well as you finally cross the bridge to continue your quest.")
-            trackEndings.append("Do you want the ogre?")
+            trackEndings.append("Do you want to help keep the bridge clean with Samantha the troll?")
+            endingTwo = True
             #ENDING TWO
             if stayGo == "go":
                 print("You decide that the troll was probably just saying all of that due to her inebriated state, and cross the bridge \n\
@@ -1048,7 +1085,8 @@ Taking in this information, as well as Olivia's flirting, you realize that you'r
 unwanted attention. The conversation ends, and you go to sleep swiftly.")
         print("Before you leave the house, Olivia rushes to you and gives you a hug, and through stifled sniffles, tells you to stop by her house again after you complete your mission, \n\
 promising you a place to lay low after the dragon is slayed. You accept the offer, and Olivia nods before letting you know that she'll be out of town for a few days to visit her husband's funeral.")
-        trackEndings.append("Do you want Olivia?")
+        trackEndings.append("Do you want to go back to the cottage and live with Olivia?")
+        endingThree = True
         #ENDING THREE
     elif x == "tavern":
         print("Entering the tavern, you search out the bartender and negotiate the cost it'll take to rent out a spare room. A deal is settled, and the bartender shows you around the place before directing you to your room. \n\
@@ -1186,14 +1224,17 @@ your hands from the time you picked your weapon to the present moment. Depending
 really helpful or a waste of potential...")
     print("The sorcerer rubs his crystal ball, and reveals that......")
     print(" ")
+    
     if len(emptyStr) == 6:
         print("You were a pacifist! The sorcerer smiles and delights in the fact that you appreciate life, no matter if it's a troll, a human, or even a measly rat.")
         print("The sorcerer points out that throughout your successful attempts at being peaceful, a letter was added to a growing list of seemingly random letters, but in actuality, \n\
 they add up to be the scrambled version of a six letter word. The only hint the sorcerer gives you is that the word is a part of what makes up cloth shirts, and also warns you that you \n\
 only have three chances to guess the word... \n\
 you crack your knuckles and massage your forehead in preparation for the mind-numbing task ahead...")
+        print("******")
         print(emptyStr)
-        askString = input("What is the word unscrambled? ")
+        print("******")
+        askString = input("What is the word unscrambled? ")#ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'
         for i in range(2):
             if askString == "string":
                 print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
@@ -1202,7 +1243,9 @@ You drink it, and bask in the glory that is being a nonviolent person before hea
                 print(playerHealth)
                 break
             else:
+                print("******")
                 print(emptyStr)
+                print("******")
                 askString = input("That won't work this time! What is the word unscrambled? ")
         if askString != "string":
             print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
@@ -1216,17 +1259,25 @@ You scoff at this remark, but before you can do anything about it, the sorcerer 
         finalFight(playerHealth)
         if restart:
             return
-        trackEndings.append("Do you want Misty?")
+        trackEndings.append("Do you want to stick with Misty?")
+        endingFour = True
     else:
         finalFightGuard(playerHealth)
         if restart:
             return
-        trackEndings.append("Do you want Misty?")
+        trackEndings.append("Do you want to stick with Misty?")
+        endingFour = True
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
     print(trackEndings)
-    chooseEnding = input("What do you do? ")
+    chooseEnding = input("What do you do (Type only the lowercase name of the person)? ")
+    while (chooseEnding != "goblin" and endingOne == False) or (chooseEnding != "samantha" and endingTwo == False) or (chooseEnding != "olivia" and endingThree == False) or (chooseEnding != "misty" and endingFour == False):
+        chooseEnding = input("That won't work this time! What do you do (Type only the lowercase name of the person)? ")
+        #DOESN'T PRINT ENDING EVEN IF BOOLEAN IS TRUE AND WORD IS CORRECTLY TYPED IN!!!
     if chooseEnding == "goblin":
         print(endingOneHappens)
-    elif chooseEnding == "ogre":
+    elif chooseEnding == "samantha":
         print(endingTwoHappens)
     elif chooseEnding == "olivia":
         print(endingThreeHappens)
