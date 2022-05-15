@@ -8,8 +8,75 @@ their choices throughout the course of the game.
 """ 
 ISSUES-
 1. #ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'!!!
-2. #DOESN'T RETURN HEALTH AND MAYBE WEAPON STRENGTH TO NORMAL VALUES AFTER FIGHT!!!
-ONLY TWO ISSUES WITH FINAL CODE SO FAR, THAT'S REALLY GOOD!!!!!!
+ONLY ONE ISSUE WITH FINAL CODE SO FAR, THAT'S REALLY GOOD!!!!!!
+IDEA FOR HOW TO FIX, DOESN'T WORK THO):
+import random
+playerHealth = 100
+strings = ["s", "t", "r", "i", "n", "g"]
+emptyStr = ""
+def stringWord(emptyStr):
+    letter = random.choice(strings)
+    strings.remove(letter)
+    emptyStr += letter
+    print("******")
+    print(emptyStr)
+    print("******")
+    return emptyStr, strings
+emptyStr, strings = stringWord(emptyStr)
+emptyStr, strings = stringWord(emptyStr)
+emptyStr, strings = stringWord(emptyStr)
+emptyStr, strings = stringWord(emptyStr)
+emptyStr, strings = stringWord(emptyStr)
+emptyStr, strings = stringWord(emptyStr)
+if len(emptyStr) == 6:
+        print("You were a pacifist! The sorcerer smiles and delights in the fact that you appreciate life, no matter if it's a troll, a human, or even a measly rat.")
+        print("The sorcerer points out that throughout your successful attempts at being peaceful, a letter was added to a growing list of seemingly random letters, but in actuality, \n\
+they add up to be the scrambled version of a six letter word. The only hint the sorcerer gives you is that the word is a part of what makes up cloth shirts, and also warns you that you \n\
+only have three chances to guess the word... \n\
+you crack your knuckles and massage your forehead in preparation for the mind-numbing task ahead...")
+        print("******")
+        print(emptyStr)
+        print("******")
+        questionAsked = False
+        stringCorrect = False
+        originalQuestion = False
+        stringGuesses = 0
+        for i in range(2):
+            if questionAsked == False:
+                askString = input("What is the word unscrambled? ")
+                stringGuesses += 1
+            if askString == "string":
+                questionAsked = True
+                print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
+You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
+                playerHealth += 100
+                print(playerHealth)
+                stringCorrect = True
+                break
+            else:
+                questionAsked = True
+                print("******")
+                print(emptyStr)
+                print("******")
+                askString = input("That won't work this time! What is the word unscrambled? ")
+                stringGuesses += 1
+        if stringGuesses == 2 and stringCorrect == False:   
+            askString = input("Last chance! What is the word unscrambled? ")
+            if askString == "string":
+                questionAsked = True
+                print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
+You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
+                playerHealth += 100
+                print(playerHealth)
+            elif askString != "string":
+                print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
+        
+elif len(emptyStr) < 6:
+    print("You weren't a pacifist! The sorcerer's face becomes gloomy and tells you in an subtly angered voice to leave his chamber and save at least one person to show you have a heart. \n\
+You scoff at this remark, but before you can do anything about it, the sorcerer magically disappears, and you get mad about it before heading to the door separating you from the girl you came to save and the evil creature you must slay...")
+print(" ")
+print("++++++++++++++++")
+print(" ")
 """ 
 """ 
 IDEAS-  
@@ -951,7 +1018,6 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
                         playerHealth = int(playerHealth * 2) 
                         weaponStrength = int(weaponStrength * 2)
                         goblinFight = False
-                    print(playerHealth)
                     if restart:
                         return
                     allIn = True
@@ -1243,7 +1309,6 @@ your hands from the time you picked your weapon to the present moment. Depending
 really helpful or a waste of potential...")
     print("The sorcerer rubs his crystal ball, and reveals that......")
     print(" ")
-    
     if len(emptyStr) == 6:
         print("You were a pacifist! The sorcerer smiles and delights in the fact that you appreciate life, no matter if it's a troll, a human, or even a measly rat.")
         print("The sorcerer points out that throughout your successful attempts at being peaceful, a letter was added to a growing list of seemingly random letters, but in actuality, \n\
