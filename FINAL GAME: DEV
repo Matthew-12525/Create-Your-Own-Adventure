@@ -1282,6 +1282,9 @@ You drink it, and bask in the glory that is being a nonviolent person before hea
                 stringCorrect = True
             elif askString != "string":
                 print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
+    elif len(emptyStr) < 6:
+        print("You weren't a pacifist! The sorcerer sighs, but because you're mad at the sorcerer for not giving you a chance, you try to attack him. The sorcerer teleports away just in time, and you hit the wall \n\
+with your sword in anger. After hitting the wall a couple more times just for good measure, you head to the door separating you from Misty and Joshro...")    
     print(" ")
     print("++++++++++++++++")
     print(" ")
