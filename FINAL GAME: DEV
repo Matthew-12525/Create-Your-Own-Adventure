@@ -127,7 +127,7 @@ def guardFightsequence(playerHealth):
             while prompt != "hit" and prompt != "dodge" and prompt != "plead" and prompt != "all in":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or 'plead' or go 'all in'? ")
         if prompt == "hit": 
-            guardDamage = random.randint(5,10) #CHANGE SOON
+            guardDamage = random.randint(0,5) #CHANGE SOON
             guard -= guardDamage * weaponStrength 
             print("You hit the enemy and they took " + str(guardDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(10,20)
@@ -140,7 +140,7 @@ def guardFightsequence(playerHealth):
         elif prompt == "plead":
             morality = random.randint(1,2)
             if morality == 1:
-                playerDamage = random.randint(5,10)
+                playerDamage = random.randint(0,5)
                 playerHealth -= playerDamage
                 print("You risk getting hit to try and desperately plead with the only human you've had to fight so far, \n\
 but the guard rejects your cries for peace and hits you, making you lose ",playerDamage," health!")
@@ -173,7 +173,7 @@ def fightSequence(enemy, playerHealth, location):
             while prompt != "hit" and prompt != "dodge" and prompt != "all in":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or go 'all in'? ")
         if prompt == "hit": 
-            enemyDamage = random.randint(5,10) #CHANGE SOON
+            enemyDamage = random.randint(0,5) #CHANGE SOON
             enemy -= enemyDamage * weaponStrength 
             print("You hit the enemy and they took " + str(enemyDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(10,20)
@@ -220,7 +220,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            rLegDamage = random.randint(5,10) #CHANGE SOON
+            rLegDamage = random.randint(0,5) #CHANGE SOON
             rLeg -= rLegDamage * weaponStrength 
             print("You hit his right leg and it took " + str(rLegDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(0,5)
@@ -240,7 +240,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            lLegDamage = random.randint(5,10) #CHANGE SOON
+            lLegDamage = random.randint(0,5) #CHANGE SOON
             lLeg -= lLegDamage * weaponStrength 
             print("You hit his left leg and it took " + str(lLegDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(0,10)
@@ -260,7 +260,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            rArmDamage = random.randint(5,10) #CHANGE SOON
+            rArmDamage = random.randint(0,5) #CHANGE SOON
             rArm -= rArmDamage * weaponStrength 
             print("You hit his right arm and it took " + str(rArmDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(0,15)
@@ -280,7 +280,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            lArmDamage = random.randint(5,10) #CHANGE SOON
+            lArmDamage = random.randint(0,5) #CHANGE SOON
             lArm -= lArmDamage * weaponStrength 
             print("You hit his right arm and it took " + str(lArmDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(0,20)
@@ -302,7 +302,7 @@ so that Joshro's reign of terror can end once and for all...")
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            finalBlowDamage = random.randint(5,10) #CHANGE SOON
+            finalBlowDamage = random.randint(0,5) #CHANGE SOON
             finalBlow -= finalBlowDamage * weaponStrength 
             print("You hit Joshro and he took " + str(finalBlowDamage * weaponStrength) + " damage!") 
             playerDamage = random.randint(10,25)
@@ -341,7 +341,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            rLegDamage = random.randint(5,10) #CHANGE SOON
+            rLegDamage = random.randint(0,5) #CHANGE SOON
             rLeg -= rLegDamage * weaponStrength 
             print("You hit his right leg and it took " + str(rLegDamage * weaponStrength) + " damage!")
             if bruceHelp > 0:
@@ -375,7 +375,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            lLegDamage = random.randint(5,10) #CHANGE SOON
+            lLegDamage = random.randint(0,5) #CHANGE SOON
             lLeg -= lLegDamage * weaponStrength 
             print("You hit his left leg and it took " + str(lLegDamage * weaponStrength) + " damage!")
             if bruceHelp > 0:
@@ -409,7 +409,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            rArmDamage = random.randint(5,10) #CHANGE SOON
+            rArmDamage = random.randint(0,5) #CHANGE SOON
             rArm -= rArmDamage * weaponStrength 
             print("You hit his right arm and it took " + str(rArmDamage * weaponStrength) + " damage!")
             if bruceHelp > 0:
@@ -443,7 +443,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            lArmDamage = random.randint(5,10) #CHANGE SOON
+            lArmDamage = random.randint(0,5) #CHANGE SOON
             lArm -= lArmDamage * weaponStrength 
             print("You hit his right arm and it took " + str(lArmDamage * weaponStrength) + " damage!")
             if bruceHelp > 0:
@@ -479,7 +479,7 @@ so that Joshro's reign of terror can end once and for all...")
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
-            finalBlowDamage = random.randint(5,10) #CHANGE SOON
+            finalBlowDamage = random.randint(0,5) #CHANGE SOON
             finalBlow -= finalBlowDamage * weaponStrength 
             print("You hit Joshro and he took " + str(finalBlowDamage * weaponStrength) + " damage!")
             if bruceHelp > 0:
