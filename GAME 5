@@ -118,8 +118,8 @@ of what the number is, and try to add up to the sum of it (keep in mind you'll h
 def guardFightsequence(playerHealth):
     guard = 150
     while guard > 0 and playerHealth > 0:
-        print(guard, "Guard's health: ") 
-        print(playerHealth, "Max's health: ")
+        print("Guard's health:",guard) 
+        print("Max's health:",playerHealth)
         if allIn == False:
             prompt = input(" 'hit' or 'dodge' or 'plead'? ") 
             while prompt != "hit" and prompt != "dodge" and prompt != "plead":
@@ -164,8 +164,8 @@ and the guard hesitantly stops his attack to let you plead your case.")
             print("The guard comes crashing to the ground, and you take pity on him as you open the doors to the keep, where Misty and the ferocious dragon are located...")
 def fightSequence(enemy, playerHealth, location):       
     while enemy > 0 and playerHealth > 0: 
-        print(enemy, "Enemy's health: ") 
-        print(playerHealth, "Max's health: ")
+        print("Enemy's health:",enemy) 
+        print("Max's health:",playerHealth)
         if allIn == False:
             prompt = input(" 'hit' or 'dodge'? ") 
             while prompt != "hit" and prompt != "dodge":
@@ -216,8 +216,8 @@ body is still at room temperature, you shake your head in disagreement, and get 
     lArm = 50
     finalBlow = 100
     while rLeg > 0 and playerHealth > 0:
-        print(rLeg, "Joshro's right leg's health: ") 
-        print(playerHealth, "Max's health: ")
+        print("Joshro's right leg's health:",rLeg) 
+        print("Max's health:",playerHealth)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -236,8 +236,8 @@ body is still at room temperature, you shake your head in disagreement, and get 
             end()
             return
     while lLeg > 0 and playerHealth > 0:
-        print(lLeg, "Joshro's left leg's health: ") 
-        print(playerHealth, "Max's health: ")
+        print("Joshro's left leg's health:",lLeg) 
+        print("Max's health:",playerHealth)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -256,8 +256,8 @@ body is still at room temperature, you shake your head in disagreement, and get 
             end()
             return
     while rArm > 0 and playerHealth > 0:
-        print(rArm, "Joshro's right arm's health: ") 
-        print(playerHealth, "Max's health: ")
+        print("Joshro's right arm's health:",rArm) 
+        print("Max's health:",playerHealth)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -276,8 +276,8 @@ body is still at room temperature, you shake your head in disagreement, and get 
             end()
             return
     while lArm > 0 and playerHealth > 0:
-        print(lArm, "Joshro's left arm's health: ") 
-        print(playerHealth, "Max's health: ")
+        print("Joshro's left arm's health:",lArm) 
+        print("Max's health:",playerHealth)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -298,7 +298,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
     print("You've weakened Joshro severely, but the fight isn't over yet! You need to attack him directly and land the final blow \n\
 so that Joshro's reign of terror can end once and for all...")
     while finalBlow > 0 and playerHealth > 0:
-        print(finalBlow, "Joshro's health: ") 
+        print("Joshro's health:",finalBlow) 
         print(playerHealth, "Max's health: ")
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
@@ -797,13 +797,13 @@ YOU GOT THE 'From rags to royalty' ENDING (4 out of 4)"
     troll = random.randint(100,125)
     mutant = 120
     rat = random.randint(90,110)
-    playerHealth = 10
+    playerHealth = 100
     allIn = True 
     potionTroll = False
     #Two booleans for one level
     stick = False
     placeholder = False
-    divByfour = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60]
+    divByfour = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64]
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
     guardHelpNot = False
@@ -965,7 +965,7 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
         print(introMessages[1]) 
     elif location == "river": 
         print(introMessages[2])
-    #riverEscape()
+    riverEscape()
     if restart:
         return
     print(" ")
@@ -1074,7 +1074,7 @@ make her even more angry, which doesn't help things in the slightest. You ready 
         print(introMessages[4])
     else:
         print(introMessages[5])
-    #castleEntrance()
+    castleEntrance()
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -1138,7 +1138,7 @@ but this definitely takes the cake. You dust yourself off, and resume walking ar
     print(" ")
     print("++++++++++++++++")
     print(" ")
-    #codeFind()
+    codeFind()
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -1176,7 +1176,7 @@ to attempt to reach a safe distance.")
             print("You end up creating such a large distance between you and the rodent that it eventually just gives up and waddles away in the other direction.")
             emptyStr, strings = stringWord(emptyStr)
         elif playerHealth <= 100:
-            fastNot = 1#random.randint(1,2)
+            fastNot = (1,2)
             if fastNot == 1:
                 print("Despite your determination in trying to outrun the creature, it catches up to you and drags you down to the murky depths... \n\
 and you never resurface.")
@@ -1194,7 +1194,7 @@ much more deadly and aggressive than the one you encountered earlier. You'll nee
 armory. The only issue with that is that a key is required to enter the building, and you don't have one. \n\
 You faintly remember that many keys are commonly kept in the main watchtower, so you sneak over there and find that the key you need is locked inside an \n\
 intricately designed mathematical padlock that protects a metal box. You read a note that gives the instructions needed to bypass this, and begin working.")
-    #randomNumtosolve(random.choice(divByfour))
+    randomNumtosolve(random.choice(divByfour))
     print("You complete the puzzle, and unlock the box to find the key you need. You exit the main watchtower without arousing suspicion from the nearby mutants, \n\
 and continue on your way to the armory.")
     print(" ")
@@ -1202,7 +1202,7 @@ and continue on your way to the armory.")
     print(" ")
     print("Once reaching the armory, you insert the key and quietly let yourself inside the armory. The armor present will do more than enough to hide your non-mutant \n\
 appearance, and, in addition to that, offers more protection.")
-    playerHealth += 60
+    playerHealth += 50
     print(playerHealth)
     print("Approaching the keep, you see a human guard ahead that won't move no matter what distractions you use to guide him away. After some impatient waiting, you conclude \n\
 that the only way to enter the keep is through a direct encounter with the guard. A fight is inevitable, but the only question now is *how* the interaction with the guard will end...")
@@ -1234,7 +1234,7 @@ He also makes you promise to give him a substantial amount of the riches located
 To enter the next room you first need to speak to the receptionist, who happens to be a pig. He appropriately talks to you in pig latin, \n\
 but because pig latin is not really in fashion anymore, you struggle to decipher what he's saying, and must employ the use of writing to help \n\
 you conversate better.")
-    #pigLanguage()
+    pigLanguage()
     print(" ")
     print("++++++++++++++++")
     print(" ")
@@ -1253,15 +1253,19 @@ you crack your knuckles and massage your forehead in preparation for the mind-nu
         print("******")
         print(emptyStr)
         print("******")
-        askString = input("What is the word unscrambled? ")#ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'
-        for i in range(2):
+        questionAsked = False
+        for i in range(3):
+            if questionAsked == False:
+                askString = input("What is the word unscrambled? ")
             if askString == "string":
+                questionAsked = True
                 print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
 You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
                 playerHealth += 100
                 print(playerHealth)
                 break
             else:
+                questionAsked = True
                 print("******")
                 print(emptyStr)
                 print("******")
@@ -1309,5 +1313,53 @@ You scoff at this remark, but before you can do anything about it, the sorcerer 
                 print(" ")
                 print(endingFourHappens)
                 endingChosen = True
+    print(" ")
+    print("++++++++++++++++")
+    print(" ")
+    specialThanks = input("Would you like to read my special thanks note (it's totally optional:)) \n\
+('yes' or 'no' question)? ")
+    while specialThanks != "yes" and specialThanks != "no":
+        specialThanks = input("That won't work this time! Do you want to read the note ('yes' or 'no')? ")
+    if specialThanks == "yes":
+        print("This game took me a little bit under 2 months to make, and it was definitely a rollercoaster \n\
+of hating programming and loving it, but I'd just like to say a couple quick things about some of the people who helped/supported me through \n\
+the development process... ") 
+        print(" ")
+        print("The first person I'd like to thank is God for allowing me to be here and have the experience to be able to make such a cool game, as well as allowing me to meet wonderful people \n\
+like Jasun, Jordan, Corbin, and other people I'd consider friends:)")
+        print(" ")
+        print("The next person is, of course, Jasun, for two very good reasons. First and foremost, without Jasun pushing me to constantly upgrade and continue learning Python as well as \n\
+making the game itself, this game would've never been completed. Him helping me get through tricky lines of code is the second reason, as many of the things you experience throughout the game, \n\
+such as the pig latin challenge and the normal fight scenes, would not functioned properly or at all without his advice. All in all, I'd like to thank Jasun for allowing me to do a project that I \n\
+genuinely enjoyed working on (for most of the time at least), as well as helping me explore programming in general, as it is something I definitely want to pursue as a future career.")
+        print(" ")
+        print("For the next person, I'm actually going to thank two people- those two people being Jordan and Corbin. When Jasun was busy helping other people out or was stumped about something \n\
+concerning my code, Jordan and Corbin, without hesitation, always came to my aid to help me solve whatever issue was plagueing my code. Without them and their \n\
+Albert Einstein-like brains, a substantial portion of this game would not be possible:)")
+        print(" ")
+        print("Ok because there are a bunch of other people on my list that deserve paragraphs of their own, but because I don't want this game to be like a million lines of code, I'm going to sum up the other people very quickly:")
+        print("MICHELLE, for being supportive of my interest in coding even through tough times:)")
+        print("~~~~~~~~~~~~~~~~")
+        print("LUKE, for showing a genuine interest in seeing my game be completed and even asking questions regarding the nerdy mechanics of what certain stuff did inside the code:)")
+        print("~~~~~~~~~~~~~~~~")
+        print("VICTORY, for being the person I could have a good laugh with when programming annoyed me and I needed a break:)")
+        print("~~~~~~~~~~~~~~~~")
+        print("DANNY, for being interested in playing my game once it was finished, as well as making ultimate frisbee be super fun and rewarding after doing a bunch of typing the Wednesday before in STEAM Club:)")
+        print("~~~~~~~~~~~~~~~~")
+        print("DOUG, CAITLIN, BENNY, and JEFF, for letting me leave their classes early so I could work on my game:)")
+        print("~~~~~~~~~~~~~~~~")
+        print("MORGAN, ELIZABETH, LUKAS, and GENEVIEVE, for being pretty cool people and keeping my mental state at a good place while personal issues were taking place that could've definitely sunk my drive to finish making the game, \n\
+as well as showing interest in wanting to play my game once it was finished:)")
+        print("~~~~~~~~~~~~~~~~")
+        print("And lastly, YOU, the player, whoever you are, for beating my broken but meaningful mess of a game!:)")
+        print(" ")
+        print("++++++++++++++++")
+        print(" ")
+        print("If you're curious about what the '(number out of 4)' means next to the name of the ending you got, try playing the game again and find out what would happen if you did things differently!:)")
+    else:
+        print(" ")
+        print("++++++++++++++++")
+        print(" ")
+        print("Thanks for playing my game! If you're curious about what the '(number out of 4)' means next to the name of the ending you got, try playing the game again and find out what would happen if you did things differently!:)")
 while restart:
     main()
