@@ -839,8 +839,8 @@ on your journey.")
         allIn = True 
     elif fightRun == "run": 
         print("Before you can run, the ogre grabs your shirt and pulls you back, \n\
-and asks in a booming but obviously slurred voice:''Bretton, do you have ma \n\
-gold coin yet or not?''") 
+and asks in a booming but obviously slurred voice:'Bretton, do you have ma \n\
+gold coin yet or not?'") 
         fightAvoid = input("'1'. Lie and say its back at the inn and you'll get it as soon as he lets you go.\n\
 '2'. Tell him to let you go or else he'll have to worry about more than just a stupid gold coin. \n\
 (pick a number): ")
