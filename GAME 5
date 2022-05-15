@@ -7,76 +7,6 @@ their choices throughout the course of the game.
 """
 """ 
 ISSUES-
-1. #ON LAST ATTEMPT, SKIPS FAIL DIALOGUE EVEN IF USER INPUT IS 'STRING'!!!
-ONLY ONE ISSUE WITH FINAL CODE SO FAR, THAT'S REALLY GOOD!!!!!!
-IDEA FOR HOW TO FIX, DOESN'T WORK THO):
-import random
-playerHealth = 100
-strings = ["s", "t", "r", "i", "n", "g"]
-emptyStr = ""
-def stringWord(emptyStr):
-    letter = random.choice(strings)
-    strings.remove(letter)
-    emptyStr += letter
-    print("******")
-    print(emptyStr)
-    print("******")
-    return emptyStr, strings
-emptyStr, strings = stringWord(emptyStr)
-emptyStr, strings = stringWord(emptyStr)
-emptyStr, strings = stringWord(emptyStr)
-emptyStr, strings = stringWord(emptyStr)
-emptyStr, strings = stringWord(emptyStr)
-emptyStr, strings = stringWord(emptyStr)
-if len(emptyStr) == 6:
-        print("You were a pacifist! The sorcerer smiles and delights in the fact that you appreciate life, no matter if it's a troll, a human, or even a measly rat.")
-        print("The sorcerer points out that throughout your successful attempts at being peaceful, a letter was added to a growing list of seemingly random letters, but in actuality, \n\
-they add up to be the scrambled version of a six letter word. The only hint the sorcerer gives you is that the word is a part of what makes up cloth shirts, and also warns you that you \n\
-only have three chances to guess the word... \n\
-you crack your knuckles and massage your forehead in preparation for the mind-numbing task ahead...")
-        print("******")
-        print(emptyStr)
-        print("******")
-        questionAsked = False
-        stringCorrect = False
-        originalQuestion = False
-        stringGuesses = 0
-        for i in range(2):
-            if questionAsked == False:
-                askString = input("What is the word unscrambled? ")
-                stringGuesses += 1
-            if askString == "string":
-                questionAsked = True
-                print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
-You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
-                playerHealth += 100
-                print(playerHealth)
-                stringCorrect = True
-                break
-            else:
-                questionAsked = True
-                print("******")
-                print(emptyStr)
-                print("******")
-                askString = input("That won't work this time! What is the word unscrambled? ")
-                stringGuesses += 1
-        if stringGuesses == 2 and stringCorrect == False:   
-            askString = input("Last chance! What is the word unscrambled? ")
-            if askString == "string":
-                questionAsked = True
-                print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
-You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
-                playerHealth += 100
-                print(playerHealth)
-            elif askString != "string":
-                print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
-        
-elif len(emptyStr) < 6:
-    print("You weren't a pacifist! The sorcerer's face becomes gloomy and tells you in an subtly angered voice to leave his chamber and save at least one person to show you have a heart. \n\
-You scoff at this remark, but before you can do anything about it, the sorcerer magically disappears, and you get mad about it before heading to the door separating you from the girl you came to save and the evil creature you must slay...")
-print(" ")
-print("++++++++++++++++")
-print(" ")
 """ 
 """ 
 IDEAS-  
@@ -366,7 +296,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
 so that Joshro's reign of terror can end once and for all...")
     while finalBlow > 0 and playerHealth > 0:
         print("Joshro's health:",finalBlow) 
-        print(playerHealth, "Max's health: ")
+        print("Max's health:",playerHealth)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -398,13 +328,13 @@ body is still at room temperature, you shake your head in disagreement, and get 
     rArm = 50
     lArm = 50
     finalBlow = 100
-    bruceHelp = 4
+    bruceHelp = 2
     leaveMessage = False
     bruceDamage = random.randint(1,10)
     while rLeg > 0 and playerHealth > 0:
-        print(rLeg, "Joshro's right leg's health: ") 
-        print(playerHealth, "Max's health: ")
-        print(bruceHelp, "Times Bruce will help you: ")
+        print("Joshro's right leg's health:",rLeg) 
+        print("Max's health:",playerHealth)
+        print("Times Bruce will help you:",bruceHelp)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -436,9 +366,9 @@ body is still at room temperature, you shake your head in disagreement, and get 
             end()
             return
     while lLeg > 0 and playerHealth > 0:
-        print(lLeg, "Joshro's left leg's health: ") 
-        print(playerHealth, "Max's health: ")
-        print(bruceHelp, "Times Bruce will help you: ")
+        print("Joshro's left leg's health:",lLeg) 
+        print("Max's health:",playerHealth)
+        print("Times Bruce will help you:",bruceHelp)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -470,9 +400,9 @@ body is still at room temperature, you shake your head in disagreement, and get 
             end()
             return
     while rArm > 0 and playerHealth > 0:
-        print(rArm, "Joshro's right arm's health: ") 
-        print(playerHealth, "Max's health: ")
-        print(bruceHelp, "Times Bruce will help you: ")
+        print("Joshro's right arm's health:",rArm) 
+        print("Max's health:",playerHealth)
+        print("Times Bruce will help you:",bruceHelp)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -504,9 +434,9 @@ body is still at room temperature, you shake your head in disagreement, and get 
             end()
             return
     while lArm > 0 and playerHealth > 0:
-        print(lArm, "Joshro's left arm's health: ") 
-        print(playerHealth, "Max's health: ")
-        print(bruceHelp, "Times Bruce will help you: ")
+        print("Joshro's left arm's health:",lArm) 
+        print("Max's health:",playerHealth)
+        print("Times Bruce will help you:",bruceHelp)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -540,9 +470,9 @@ body is still at room temperature, you shake your head in disagreement, and get 
     print("You've weakened Joshro severely, but the fight isn't over yet! You need to attack him directly and land the final blow \n\
 so that Joshro's reign of terror can end once and for all...")
     while finalBlow > 0 and playerHealth > 0:
-        print(finalBlow, "Joshro's health: ") 
-        print(playerHealth, "Max's health: ")
-        print(bruceHelp, "Times Bruce will help you: ")
+        print("Joshro's health:",finalBlow) 
+        print("Max's health:",playerHealth)
+        print("Times Bruce will help you:",bruceHelp)
         prompt = input(" 'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
@@ -1318,28 +1248,40 @@ you crack your knuckles and massage your forehead in preparation for the mind-nu
         print("******")
         print(emptyStr)
         print("******")
-        questionAsked = False
-        for i in range(3):
-            if questionAsked == False:
-                askString = input("What is the word unscrambled? ")
+        stringCorrect = False
+        askString = input("What is the word unscrambled? ")
+        if askString == "string":
+            print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
+You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
+            playerHealth += 100
+            print(playerHealth)
+            stringCorrect = True
+        else:
+            print("******")
+            print(emptyStr)
+            print("******")
+        if stringCorrect != True:
+            askString = input("That won't work this time! What is the word unscrambled? ")
             if askString == "string":
-                questionAsked = True
+                print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
+    You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
+                playerHealth += 100
+                print(playerHealth)
+                stringCorrect = True
+            else:
+                print("******")
+                print(emptyStr)
+                print("******")
+        if stringCorrect != True:
+            askString = input("Last chance! What is the word unscrambled? ")
+            if askString == "string":
                 print("You got it! The sorcerer smiles with admiration as he hands you the obviously enlarged and luxurious potion full of fizzling bubbles. \n\
 You drink it, and bask in the glory that is being a nonviolent person before heading to the door separating you from the girl you came to save and the unjust creature you must stop...")
                 playerHealth += 100
                 print(playerHealth)
-                break
-            else:
-                questionAsked = True
-                print("******")
-                print(emptyStr)
-                print("******")
-                askString = input("That won't work this time! What is the word unscrambled? ")
-        if askString != "string":
-            print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
-    elif len(emptyStr) < 6:
-        print("You weren't a pacifist! The sorcerer's face becomes gloomy and tells you in an subtly angered voice to leave his chamber and save at least one person to show you have a heart. \n\
-You scoff at this remark, but before you can do anything about it, the sorcerer magically disappears, and you get mad about it before heading to the door separating you from the girl you came to save and the evil creature you must slay...")
+                stringCorrect = True
+            elif askString != "string":
+                print("You didn't guess the word, and sulk about it before heading to the door separating you from the girl you came to save and the tyrannical creature you must defeat...")
     print(" ")
     print("++++++++++++++++")
     print(" ")
