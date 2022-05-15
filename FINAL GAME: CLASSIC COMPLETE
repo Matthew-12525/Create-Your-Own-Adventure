@@ -203,7 +203,7 @@ def fightSequence(enemy, playerHealth, location):
             elif location == "sewers":
                 print(outroMessages[3])
 def finalFight(playerHealth): #OMG THE FINAL FIGHT IT'S HERE I'VE FINALLY GOTTEN TO THIS POINT
-    print("You open the doors to find Misty tied up to the a pole, surrounded by a lake of acidic stuff that you don't even think about messing with. SUDDENLY, \n\
+    print("You open the doors to find Misty tied up to a pole, surrounded by a lake of acidic stuff that you don't even think about messing with. SUDDENLY, \n\
 you hear a loud roar from behind you, and turn to find a scaly creature that towers over you. 'YOUR EFFORTS TO GET HERE ARE ADMIRABLE, MAX. WHICH IS WHY I OFFER YOU THIS DEAL: \n\
 LEAVE NOW AND I WON'T BURN YOU, OR STAY AND END UP BECOMING A MEDIUM-RARE STEAK FOR MY MUTANT MINIONS.' Because you're a stereotypical hero that won't play it safe and leave while your \n\
 body is still at room temperature, you shake your head in disagreement, and get ready to have the fight that will determine whether all of your rigorous typing was worth it...")
@@ -319,7 +319,7 @@ so that Joshro's reign of terror can end once and for all...")
 falls into your arms, and you sit on the ground to take a breather. \n\
 You did it! You slayed the dragon and saved the girl, but there are still things you must take care of...")
 def finalFightGuard(playerHealth):
-    print("You open the doors to find Misty tied up to the a pole, surrounded by a lake of acidic stuff that you don't even think about messing with. SUDDENLY, \n\
+    print("You open the doors to find Misty tied up to a pole, surrounded by a lake of acidic stuff that you don't even think about messing with. SUDDENLY, \n\
 you hear a loud roar from behind you, and turn to find a scaly creature that towers over you. 'YOUR EFFORTS TO GET HERE ARE ADMIRABLE, MAX. WHICH IS WHY I OFFER YOU THIS DEAL: \n\
 LEAVE NOW AND I WON'T BURN YOU, OR STAY AND END UP BECOMING A MEDIUM-RARE STEAK FOR MY MUTANT MINIONS.' Because you're a stereotypical hero that won't play it safe and leave while your \n\
 body is still at room temperature, you shake your head in disagreement, and get ready to have the fight that will determine whether all of your rigorous typing was worth it...")
@@ -1029,9 +1029,9 @@ human, werewolf, goblin, what have you. So, as a token of my apology, I'll offer
 not at all because I get sorta lonely out here and could use another person to talk to... So whaddaya say?' Well, not one to turn down an offer as rare as this, you \n\
 accept the troll's offer, but remind her that you still have a girl to save, and she nods her head understandably. \n\
 You find out the troll's name is Samantha, and wish her well as you finally cross the bridge to continue your quest.")
-            trackEndings.append("Do you want to help keep the bridge clean with Samantha the troll?")
-            endingTwo = True
-            #ENDING TWO
+                trackEndings.append("Do you want to help keep the bridge clean with Samantha the troll?")
+                endingTwo = True
+                #ENDING TWO
             if stayGo == "go":
                 print("You decide that the troll was probably just saying all of that due to her inebriated state, and cross the bridge \n\
 quietly to continue your journey.")
@@ -1083,7 +1083,7 @@ Luckily, you find a map taped to a community board that gives the location of 3 
 an inn, a two-person cottage in need of one more roommate, and a tavern with rooms to rent. Fortunately, your pickpocketing skills have empowered \n\
 you with the ability to easily pay for all three.")
     x = home()   
-    print("You choose to make the ",x,"your new home.")
+    print("You choose to make the",x,"your new home.")
     if x == "cottage":
         print("Knocking on the door of the cottage, you take a minute to observe that everyone has been avoiding you with intense dedication, \n\
 which deeply concerns you. The door then opens, and for the first time since you step foot in this strange place, a friendly face seems eager to see you. \n\
