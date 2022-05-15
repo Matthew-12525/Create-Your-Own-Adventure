@@ -882,7 +882,7 @@ on your feet and pull out your weapon.")
             return
         allIn = True 
     elif fightPersuade == "persuade":
-        parkour = input("To catch up to the goblin, you can either 'slide' under a fallen log, or \n\
+        parkour = input("The goblin runs away, and you scramble after it. To catch up to the goblin, you can either 'slide' under a fallen log, or \n\
 'vault' over a thorny bush. What do you do? ")
         while parkour != "slide" and parkour != "vault":
             parkour = input("That won't work this time! What do you do? ")
