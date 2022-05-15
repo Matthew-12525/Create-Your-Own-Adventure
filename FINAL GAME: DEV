@@ -323,6 +323,7 @@ def finalFightGuard(playerHealth):
 you hear a loud roar from behind you, and turn to find a scaly creature that towers over you. 'YOUR EFFORTS TO GET HERE ARE ADMIRABLE, MAX. WHICH IS WHY I OFFER YOU THIS DEAL: \n\
 LEAVE NOW AND I WON'T BURN YOU, OR STAY AND END UP BECOMING A MEDIUM-RARE STEAK FOR MY MUTANT MINIONS.' Because you're a stereotypical hero that won't play it safe and leave while your \n\
 body is still at room temperature, you shake your head in disagreement, and get ready to have the fight that will determine whether all of your rigorous typing was worth it...")
+    print("As promised, Bruce enters the chamber with you, and prepares to start attacking Joshro.")
     #Have different body parts that Max has to target (the legs, arms, and then finally the killing blow)
     rLeg = 50
     lLeg = 50
