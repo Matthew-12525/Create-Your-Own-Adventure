@@ -1200,7 +1200,6 @@ and continue on your way to the armory.")
     print("Once reaching the armory, you insert the key and quietly let yourself inside the armory. The armor present will do more than enough to hide your non-mutant \n\
 appearance, and, in addition to that, offers more protection.")
     playerHealth += 50
-    print(playerHealth)
     print("Approaching the keep, you see a human guard ahead that won't move no matter what distractions you use to guide him away. After some impatient waiting, you conclude \n\
 that the only way to enter the keep is through a direct encounter with the guard. A fight is inevitable, but the only question now is *how* the interaction with the guard will end...")
     morality = guardFightsequence(playerHealth)
