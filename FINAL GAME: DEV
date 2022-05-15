@@ -103,7 +103,7 @@ of what the number is, and try to add up to the sum of it (keep in mind you'll h
             continue
         while numberGiven >= number/4:
             numberGiven = int(input("That won't work this time! Choose a number that is less than 1/4 \n\
-    of what the number is, and try to add up to the sum of it (keep in mind you'll have to add more numbers to this one): "))
+of what the number is, and try to add up to the sum of it (keep in mind you'll have to add more numbers to this one): "))
         playerNum += numberGiven
         print(playerNum)
         if playerNum > number:
@@ -119,11 +119,11 @@ def guardFightsequence(playerHealth):
         print("Guard's health:",guard) 
         print("Max's health:",playerHealth)
         if allIn == False:
-            prompt = input(" 'hit' or 'dodge' or 'plead'? ") 
+            prompt = input("'hit' or 'dodge' or 'plead'? ") 
             while prompt != "hit" and prompt != "dodge" and prompt != "plead":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or 'plead'? ") 
         elif allIn == True: 
-            prompt = input(" 'hit' or 'dodge' or 'plead' or 'all in'? ")
+            prompt = input("'hit' or 'dodge' or 'plead' or 'all in'? ")
             while prompt != "hit" and prompt != "dodge" and prompt != "plead" and prompt != "all in":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or 'plead' or go 'all in'? ")
         if prompt == "hit": 
@@ -165,11 +165,11 @@ def fightSequence(enemy, playerHealth, location):
         print("Enemy's health:",enemy) 
         print("Max's health:",playerHealth)
         if allIn == False:
-            prompt = input(" 'hit' or 'dodge'? ") 
+            prompt = input("'hit' or 'dodge'? ") 
             while prompt != "hit" and prompt != "dodge":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ") 
         elif allIn == True: 
-            prompt = input(" 'hit' or 'dodge' or 'all in'? ")
+            prompt = input("'hit' or 'dodge' or 'all in'? ")
             while prompt != "hit" and prompt != "dodge" and prompt != "all in":
                 prompt = input("That won't work this time! Do you want to 'hit' or 'dodge' or go 'all in'? ")
         if prompt == "hit": 
@@ -216,7 +216,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
     while rLeg > 0 and playerHealth > 0:
         print("Joshro's right leg's health:",rLeg) 
         print("Max's health:",playerHealth)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -236,7 +236,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
     while lLeg > 0 and playerHealth > 0:
         print("Joshro's left leg's health:",lLeg) 
         print("Max's health:",playerHealth)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -256,7 +256,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
     while rArm > 0 and playerHealth > 0:
         print("Joshro's right arm's health:",rArm) 
         print("Max's health:",playerHealth)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -276,7 +276,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
     while lArm > 0 and playerHealth > 0:
         print("Joshro's left arm's health:",lArm) 
         print("Max's health:",playerHealth)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -298,7 +298,7 @@ so that Joshro's reign of terror can end once and for all...")
     while finalBlow > 0 and playerHealth > 0:
         print("Joshro's health:",finalBlow) 
         print("Max's health:",playerHealth)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -329,14 +329,14 @@ body is still at room temperature, you shake your head in disagreement, and get 
     rArm = 50
     lArm = 50
     finalBlow = 100
-    bruceHelp = random.randint(3,7)
+    bruceHelp = 5
     leaveMessage = False
     bruceDamage = random.randint(1,10)
     while rLeg > 0 and playerHealth > 0:
         print("Joshro's right leg's health:",rLeg) 
         print("Max's health:",playerHealth)
         print("Times Bruce will help you:",bruceHelp)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -370,7 +370,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         print("Joshro's left leg's health:",lLeg) 
         print("Max's health:",playerHealth)
         print("Times Bruce will help you:",bruceHelp)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -404,7 +404,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         print("Joshro's right arm's health:",rArm) 
         print("Max's health:",playerHealth)
         print("Times Bruce will help you:",bruceHelp)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -438,7 +438,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
         print("Joshro's left arm's health:",lArm) 
         print("Max's health:",playerHealth)
         print("Times Bruce will help you:",bruceHelp)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -474,7 +474,7 @@ so that Joshro's reign of terror can end once and for all...")
         print("Joshro's health:",finalBlow) 
         print("Max's health:",playerHealth)
         print("Times Bruce will help you:",bruceHelp)
-        prompt = input(" 'hit' or 'dodge'? ") 
+        prompt = input("'hit' or 'dodge'? ") 
         while prompt != "hit" and prompt != "dodge":
             prompt = input("That won't work this time! Do you want to 'hit' or 'dodge'? ")
         if prompt == "hit": 
@@ -539,7 +539,7 @@ def pigLanguage():
     while pigNameask != "Axmay":
         pigNameask = input("That won't work this time! What is your character's name? ")
     print(" ")
-    print("The pig then says, 'Areyay ouyay ethay ersonpay at'sthay upposedsay otay ebay ivinggay oshrojay ishay ailyday assagemay?' ")
+    print("The pig then says, 'Areyay ouyay ethay ersonpay at'sthay upposedsay otay ebay ivinggay Oshrojay ishay ailyday assagemay?' ")
     pigLie = input("What did the pig say in English? ")
     while pigLie != "Are you the person that's supposed to be giving Joshro his daily massage?":
         pigLie = input("That won't work this time! What did the pig say in English? ")
@@ -801,7 +801,7 @@ YOU GOT THE 'From rags to royalty' ENDING (4 out of 4)"
     #Two booleans for one level
     stick = False
     placeholder = False
-    divByfour = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64]
+    divByfour = [8,12,16,20,24,28,32,36,40,44,48,52,56,60,64]
     strings = ["s", "t", "r", "i", "n", "g"]
     emptyStr = ""
     guardHelpNot = False
@@ -1363,11 +1363,11 @@ as well as showing interest in wanting to play my game once it was finished:)")
         print(" ")
         print("++++++++++++++++")
         print(" ")
-        print("If you're curious about what the '(number out of 4)' means next to the name of the ending you got, try playing the game again and find out what would happen if you did things differently!:)")
+        print("If you're curious about what the '(NUMBER out of 4)' means next to the name of the ending you got, try playing the game again and find out what would happen if you did things differently!:)")
     else:
         print(" ")
         print("++++++++++++++++")
         print(" ")
-        print("Thanks for playing my game! If you're curious about what the '(number out of 4)' means next to the name of the ending you got, try playing the game again and find out what would happen if you did things differently!:)")
+        print("Thanks for playing my game! If you're curious about what the '(NUMBER out of 4)' means next to the name of the ending you got, try playing the game again and find out what would happen if you did things differently!:)")
 while restart:
     main()
