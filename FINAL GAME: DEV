@@ -383,7 +383,7 @@ body is still at room temperature, you shake your head in disagreement, and get 
                 if bruceHelpNot == 1:
                     brucelLegDamage = random.randint(1,10)
                     lLeg -= brucelLegDamage * bruceDamage
-                    print("Bruce hit his leftt leg and it took " + str(brucelLegDamage * bruceDamage) + " damage!")
+                    print("Bruce hit his left leg and it took " + str(brucelLegDamage * bruceDamage) + " damage!")
                     bruceHelp -= 1
                 else:
                     print("Bruce isn't able to attack!")
