@@ -913,7 +913,6 @@ You're able to get up, but because of the surprise attack, you've lost valuable 
                     playerHealth = int(playerHealth * 2) 
                     weaponStrength = int(weaponStrength * 2)
                     goblinFight = False
-                print(playerHealth)
                 if restart:
                     return
                 allIn = True
