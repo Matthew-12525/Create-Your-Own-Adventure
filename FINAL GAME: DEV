@@ -21,12 +21,12 @@ import random
 def weaponSelect(): 
     global weaponStrength 
     if weapon == "bow": 
-        weaponStrength = 4 
+        weaponStrength = 6 
         print("A ranged weapon. It will allow you to strike from afar, but leaves \n\
 you vulnerable up close. You take both it and a quiver full of sharp \n\
 iron arrows.") 
     elif weapon == "axe": 
-        weaponStrength = 7
+        weaponStrength = 8
         print("A sturdy but lightweight melee weapon. Its metal shimmers as \n\
 you pick it up.") 
     elif weapon == "sword": 
