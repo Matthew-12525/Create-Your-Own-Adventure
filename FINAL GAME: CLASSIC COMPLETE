@@ -577,11 +577,11 @@ and devour you.")
         if prodInput == "yes":
             prod = prod + 1
             print("You've prodded the fisherman " + str(prod) + " total time(s)")
-        wolfAdvance = random.randint(1,3)
-        if wolfAdvance == 1 or wolfAdvance == 2:
+        wolfAdvance = random.randint(1,4)
+        if wolfAdvance == 1 or wolfAdvance == 2 or wolfAdvance == 3:
             print("The werewolves advanced " + str(wolfRun) + " total step(s)")
             wolfRun = wolfRun + 1
-        elif wolfAdvance == 3:
+        elif wolfAdvance == 4:
             print("The werewolves advanced " + str(wolfRun) + " total step(s)")
     if prod == stepsYes:
         print("The fisherman FINALLY finishes talking and gets the boat going, and you breathe a much-deserved \
