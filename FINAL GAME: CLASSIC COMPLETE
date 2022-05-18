@@ -1143,9 +1143,9 @@ dodge the attack and ready your weapon in retaliation.")
     fightSequence(mutant, playerHealth, location)
     if restart:
         return
-    spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you spare or kill the mutant? ")
+    spareKill = input("The mutant crashes to the ground, pleading with you to spare it. Do you 'spare' or 'kill' the mutant? ")
     while spareKill != "spare" and spareKill != "kill":
-        spareKill = input("That won't work this time! Do you spare or kill the mutant? ")
+        spareKill = input("That won't work this time! Do you 'spare' or 'kill' the mutant? ")
     if spareKill == "spare":
         print("You let the mutant go, and it shambles off into the early morning darkness.")
         emptyStr, strings = stringWord(emptyStr)
