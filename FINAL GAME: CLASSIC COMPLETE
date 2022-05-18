@@ -582,7 +582,7 @@ and devour you.")
             print("The werewolves advanced " + str(wolfRun) + " total step(s)")
             wolfRun = wolfRun + 1
         elif wolfAdvance == 4:
-            print("The werewolves advanced " + str(wolfRun) + " total step(s)")
+            print("The werewolves didn't advance at all and are still at " + str(wolfRun) + " total step(s)")
     if prod == stepsYes:
         print("The fisherman FINALLY finishes talking and gets the boat going, and you breathe a much-deserved \
 sigh of relief as you sit back and watch the werewolves cower in fear from the rushing water.")
