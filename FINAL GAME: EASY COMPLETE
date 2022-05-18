@@ -145,7 +145,7 @@ def guardFightsequence(playerHealth):
             playerHealth -= damage 
             print("You dodged the attack and took " + str(damage) + " damage!") 
         elif prompt == "plead":
-            morality = random.randint(1,2)
+            morality = 2
             if morality == 1:
                 playerDamage = random.randint(5,10)
                 playerHealth -= playerDamage
