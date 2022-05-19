@@ -1399,7 +1399,8 @@ Albert Einstein-like brains, a substantial portion of this game would not be pos
         print("DOUG, CAITLIN, BENNY, and JEFF, for letting me leave their classes early so I could work on my game:)")
         time.sleep(5)
         print("~~~~~~~~~~~~~~~~")
-        print("MORGAN, ELIZABETH, LUKAS, and GENEVIEVE, for being pretty cool people and keeping my mental state at a good place while personal issues were taking place that could've definitely sunk my drive to finish making the game, \n\
+        print("MORGAN, ELIZABETH, LUKAS, and GENEVIEVE, for being pretty cool people and keeping my mental state at a good place while \n\
+personal issues were taking place that could've definitely sunk my drive to finish making the game, \n\
 as well as showing interest in wanting to play my game once it was finished:)")
         time.sleep(5)
         print("~~~~~~~~~~~~~~~~")
