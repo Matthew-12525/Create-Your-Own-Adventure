@@ -621,8 +621,8 @@ and exit the hole, PLACEHOLDER in hand.")
             time.sleep(5)
             placeholder = True
             tree = True
-    print("Using your knowledge as the village carpenter, you combine these two objects into a functional lever, and place it in the appropriate location \n\
-next to the gate.")
+    print("Using your knowledge as the village carpenter, you combine these two objects into a functional lever, and place it in the \n\
+appropriate locationnext to the gate.")
     print("Hearing the gears churn inside the gate's various mechanisms, you take this as a good sign as you see the gate slowly open. \n\
 Huzzah! The gate has opened and you finally come to the last part of your journey... or so you think;)")
     return placeholder, stick, tree, shed, stable
